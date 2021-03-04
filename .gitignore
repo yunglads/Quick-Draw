@@ -1,0 +1,10 @@
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
+Quick Draw.sln
+UnityGifDecoder.csproj
+UserSettings/
+Packages/
+obj/
+Logs/
+Library/
+.vs/
