@@ -2073,7 +2073,8 @@ MonoBehaviour:
   reward: 50
   levelID: 1
   isLocked: 0
-  enemyImage: {fileID: 0}
+  enemyImage: {fileID: 1557940233}
+  enemySprite: {fileID: 21300000, guid: b1deb933203490a4aaef4c8123c01492, type: 3}
   enemyNameText: {fileID: 2116653899}
   rewardText: {fileID: 1875421824}
   detailedPanel: {fileID: 1522751998}
@@ -6055,7 +6056,8 @@ MonoBehaviour:
   reward: 100
   levelID: 2
   isLocked: 0
-  enemyImage: {fileID: 0}
+  enemyImage: {fileID: 1557940233}
+  enemySprite: {fileID: 0}
   enemyNameText: {fileID: 2116653899}
   rewardText: {fileID: 1875421824}
   detailedPanel: {fileID: 1522751998}
@@ -6247,7 +6249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1291743556
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12259,6 +12261,11 @@ PrefabInstance:
       propertyPath: levelPanel
       value: 
       objectReference: {fileID: 1739750298}
+    - target: {fileID: 4185033297784265821, guid: 0455f8c922782f04aa2bda54cc7f5aad,
+        type: 3}
+      propertyPath: detailedPanel
+      value: 
+      objectReference: {fileID: 1522751998}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0455f8c922782f04aa2bda54cc7f5aad, type: 3}
 --- !u!1 &4185033297585924966 stripped

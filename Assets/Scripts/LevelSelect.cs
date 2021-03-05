@@ -10,8 +10,9 @@ public class LevelSelect : MonoBehaviour
     public int levelID;
     //bool levelComplete = false;
     public bool isLocked = true;
-
     public Image enemyImage;
+
+    public Sprite enemySprite;
     public Text enemyNameText;
     public Text rewardText;
     public GameObject detailedPanel;
@@ -24,6 +25,7 @@ public class LevelSelect : MonoBehaviour
         enemyNameText.text = enemyName;
         rewardText.text = reward.ToString();
         sceneController.LevelID = levelID;
+        enemyImage.sprite = enemySprite;
 
         detailedPanel.SetActive(true);
         if (isLocked)

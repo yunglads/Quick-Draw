@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
 
     public GameObject bountiesText;
     public GameObject levelPanel;
+    public GameObject detailedPanel;
 
 
     float timer = 0;
@@ -70,6 +71,9 @@ public class GameController : MonoBehaviour
         {
             backButton.SetActive(false);
             level1Button.SetActive(false);
+            bountiesText.SetActive(false);
+            levelPanel.SetActive(false);
+            detailedPanel.SetActive(false);
             
             timer += Time.deltaTime;
             if (timer >= 3f)
