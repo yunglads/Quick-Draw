@@ -17,9 +17,9 @@ MonoBehaviour:
     mAdCheckingInterval: 10
     mAdLoadingInterval: 20
     mIosDefaultAdNetworks:
-      bannerAdNetwork: 0
-      interstitialAdNetwork: 0
-      rewardedAdNetwork: 0
+      bannerAdNetwork: 2
+      interstitialAdNetwork: 2
+      rewardedAdNetwork: 2
     mAndroidDefaultAdNetworks:
       bannerAdNetwork: 0
       interstitialAdNetwork: 0
@@ -51,25 +51,25 @@ MonoBehaviour:
         keys: []
         values: []
     mAdMob:
-      mEnable: 0
+      mEnable: 1
       mTargetingSettings:
         mTagForChildDirectedTreatment: 0
         mExtraOptions:
           keys: []
           values: []
-      mEnableTestMode: 0
+      mEnableTestMode: 1
       mUseAdaptiveBanner: 0
       mAppId:
         mIosId: 
         mAndroidId: 
       mDefaultBannerAdId:
-        mIosId: 
+        mIosId: ca-app-pub-7473831862896859/9789532365
         mAndroidId: 
       mDefaultInterstitialAdId:
-        mIosId: 
+        mIosId: ca-app-pub-7473831862896859/9823824407
         mAndroidId: 
       mDefaultRewardedAdId:
-        mIosId: 
+        mIosId: ca-app-pub-7473831862896859/3415695707
         mAndroidId: 
       mCustomBannerAdIds:
         keys: []
@@ -202,9 +202,9 @@ MonoBehaviour:
         keys: []
         values: []
     mUnityAds:
-      mEnable: 0
+      mEnable: 1
       mAppId:
-        mIosId: 
+        mIosId: 4038958
         mAndroidId: 
       mDefaultBannerAdId:
         mIosId: 
@@ -224,7 +224,7 @@ MonoBehaviour:
       mCustomRewardedAdIds:
         keys: []
         values: []
-      mEnableTestMode: 0
+      mEnableTestMode: 1
     mVungleAds:
       mEnable: 0
       mAppId:
@@ -351,8 +351,35 @@ MonoBehaviour:
       mValue: '[Your usage description]'
     - mKey: NSPhotoLibraryAddUsageDescription
       mValue: '[Your usage description]'
+  mNativeApisSettings:
+    mIsMediaEnabled: 0
+    mMediaSettings:
+      mAndroidPermissions:
+      - mElementName: uses-permission
+        mValue: android.permission.WRITE_EXTERNAL_STORAGE
+      - mElementName: uses-feature
+        mValue: android.hardware.camera
+      mIOSInfoPlistKeys:
+      - mKey: NSPhotoLibraryUsageDescription
+        mValue: '[Your usage description]'
+      - mKey: NSPhotoLibraryAddUsageDescription
+        mValue: '[Your usage description]'
+      - mKey: NSCameraUsageDescription
+        mValue: '[Your usage description]'
+      - mKey: NSMicrophoneUsageDescription
+        mValue: '[Your usage description]'
+    mIsContactsEnabled: 0
+    mContactsSettings:
+      mAndroidPermissions:
+      - mElementName: uses-permission
+        mValue: android.permission.WRITE_CONTACTS
+      - mElementName: uses-permission
+        mValue: android.permission.READ_CONTACTS
+      mIOSInfoPlistKeys:
+      - mKey: NSContactsUsageDescription
+        mValue: '[Your usage description]'
   mRuntimeAutoInitialization: 1
-  mIsAdModuleEnable: 0
+  mIsAdModuleEnable: 1
   mIsIAPModuleEnable: 0
   mIsGameServiceModuleEnable: 0
   mIsNotificationModuleEnable: 0

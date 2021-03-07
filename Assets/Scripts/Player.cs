@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public GameObject ECM_FirstPerson;
 
     public bool isDead = false;
+    public bool allEnemiesDead = false;
 
     EnemyAI enemyAI;
 
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour
         {
             PlayerDead();
         }
-        else if (enemyAI.isDead)
+        else if (allEnemiesDead)
         {
             Invoke("PlayerWon", 3f);
         }

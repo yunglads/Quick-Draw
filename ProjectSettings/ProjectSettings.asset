@@ -581,18 +581,18 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    1: EASY_MOBILE;EASY_MOBILE_PRO
-    4: EASY_MOBILE;EASY_MOBILE_PRO
-    7: EASY_MOBILE;EASY_MOBILE_PRO
-    13: EASY_MOBILE;EASY_MOBILE_PRO
-    14: EASY_MOBILE;EASY_MOBILE_PRO
-    19: EASY_MOBILE;EASY_MOBILE_PRO
-    21: EASY_MOBILE;EASY_MOBILE_PRO
-    25: EASY_MOBILE;EASY_MOBILE_PRO
-    27: EASY_MOBILE;EASY_MOBILE_PRO
-    28: EASY_MOBILE;EASY_MOBILE_PRO
-    29: EASY_MOBILE;EASY_MOBILE_PRO
-    30: EASY_MOBILE;EASY_MOBILE_PRO
+    1: EASY_MOBILE;EASY_MOBILE_PRO;EM_UNITY_ADS;EM_ADMOB;UNITY_MONETIZATION
+    4: EASY_MOBILE;EASY_MOBILE_PRO;EM_UNITY_ADS;EM_ADMOB;UNITY_MONETIZATION
+    7: EASY_MOBILE;EASY_MOBILE_PRO;EM_UNITY_ADS;EM_ADMOB;UNITY_MONETIZATION
+    13: EASY_MOBILE;EASY_MOBILE_PRO;EM_UNITY_ADS;EM_ADMOB;UNITY_MONETIZATION
+    14: EASY_MOBILE;EASY_MOBILE_PRO;EM_UNITY_ADS;EM_ADMOB;UNITY_MONETIZATION
+    19: EASY_MOBILE;EASY_MOBILE_PRO;EM_UNITY_ADS;EM_ADMOB;UNITY_MONETIZATION
+    21: EASY_MOBILE;EASY_MOBILE_PRO;EM_UNITY_ADS;EM_ADMOB;UNITY_MONETIZATION
+    25: EASY_MOBILE;EASY_MOBILE_PRO;EM_UNITY_ADS;EM_ADMOB;UNITY_MONETIZATION
+    27: EASY_MOBILE;EASY_MOBILE_PRO;EM_UNITY_ADS;EM_ADMOB;UNITY_MONETIZATION
+    28: EASY_MOBILE;EASY_MOBILE_PRO;EM_UNITY_ADS;EM_ADMOB;UNITY_MONETIZATION
+    29: EASY_MOBILE;EASY_MOBILE_PRO;EM_UNITY_ADS;EM_ADMOB;UNITY_MONETIZATION
+    30: EASY_MOBILE;EASY_MOBILE_PRO;EM_UNITY_ADS;EM_ADMOB;UNITY_MONETIZATION
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
@@ -665,7 +665,13 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Analytics: 1
+    Build: 0
+    Collab: 0
+    Game Performance: 0
+    Purchasing: 0
     UNet: 1
+    Unity Ads: 1
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -678,10 +684,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 28918338-94ae-4e28-a3b2-0a5d74c4ab3d
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Quick Draw
+  organizationId: spitfire-games
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

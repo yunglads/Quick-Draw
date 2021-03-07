@@ -18,11 +18,19 @@ public class WeaponController : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
 
-    EnemyAI enemyAI;
+    GameObject target;
+
+    GameObject[] enemiesList;
+    int enemies;
+
+    Player player;
 
     private void Start()
     {
-        enemyAI = FindObjectOfType<EnemyAI>();
+        enemiesList = GameObject.FindGameObjectsWithTag("Enemy");
+        enemies = enemiesList.Length;
+
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
@@ -41,6 +49,11 @@ public class WeaponController : MonoBehaviour
             mobileShootPressed = false;
         }
 #endif
+
+        if (enemies <= 0)
+        {
+            player.allEnemiesDead = true;
+        }
     }
 
     void Shoot()
@@ -50,13 +63,15 @@ public class WeaponController : MonoBehaviour
         if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
+            target = hit.transform.gameObject;
 
             if (hit.transform.tag == "Enemy")
             {
                 GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactGO, 1f);
-                enemyAI.isDead = true;
-                enemyAI.Die();
+                target.GetComponent<EnemyAI>().isDead = true;
+                target.GetComponent<EnemyAI>().Die();
+                enemies--;
             }
         }
 
