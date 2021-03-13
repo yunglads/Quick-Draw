@@ -236,6 +236,13 @@ namespace EasyMobile.Editor
             // Now draw the GUI.
             if (!isAdModuleEnable.boolValue)
                 return;
+            
+            // Module auto initialization
+            DrawUppercaseSection("AUTO_INITIALIZATION_FOLDOUT_KEY", "AUTO INITIALIZATION", () =>
+            {
+                EditorGUILayout.PropertyField(AdProperties.autoInit.property, AdProperties.autoInit.content);
+            });
+
 
             // Ads auto-load setup
             EditorGUILayout.Space();

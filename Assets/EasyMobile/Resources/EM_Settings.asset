@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EM_Settings
   m_EditorClassIdentifier: 
   mAdvertisingSettings:
+    mAutoInit: 1
     mAutoLoadAdsMode: 2
     mAdCheckingInterval: 10
     mAdLoadingInterval: 20
@@ -385,4 +386,4 @@ MonoBehaviour:
   mIsNotificationModuleEnable: 0
   mIsSharingModuleEnable: 0
   mActiveModuleIndex: 0
-  mIsSelectingModule: 1
+  mIsSelectingModule: 0

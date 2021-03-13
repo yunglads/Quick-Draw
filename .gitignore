@@ -10,3 +10,5 @@ Library/
 .vs/
 GoogleMobileAds.csproj
 GoogleMobileAds.Editor.csproj
+.vsconfig
+Quick-Draw.sln

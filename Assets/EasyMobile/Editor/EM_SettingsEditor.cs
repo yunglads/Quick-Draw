@@ -72,6 +72,9 @@ namespace EasyMobile.Editor
             public static SerializedProperty tapjoySettings;
             public static SerializedProperty unityAdsSettings;
             public static SerializedProperty vungleAdsSettings;
+            
+            // Module auto-initialization
+            public static EMProperty autoInit = new EMProperty(null, new GUIContent("Auto Init", "Whether the module should automatically initialize itself"));
 
             // Auto ad-loading settings.
             public static EMProperty autoLoadAdsMode = new EMProperty(null, new GUIContent("Auto Ad-Loading Mode"));
@@ -364,7 +367,9 @@ namespace EasyMobile.Editor
             // Ad module properties.
             //--------------------------------------------------------------
             AdProperties.mainProperty = serializedObject.FindProperty("mAdvertisingSettings");
-
+            // Auto init
+            AdProperties.autoInit.property = AdProperties.mainProperty.FindPropertyRelative("mAutoInit");
+            
             // Auto ad-loading.
             AdProperties.autoLoadAdsMode.property = AdProperties.mainProperty.FindPropertyRelative("mAutoLoadAdsMode");
             AdProperties.adCheckingInterval.property = AdProperties.mainProperty.FindPropertyRelative("mAdCheckingInterval");

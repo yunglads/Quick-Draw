@@ -6,7 +6,13 @@ using ECM.Components;
 
 public class FightController : MonoBehaviour
 {
-    public float drawTimer;
+    float drawTimer;
+    public float gameTimer;
+    public float gameTimerSet;
+
+    public float twoStarTime;
+
+    public int levelStars;
 
     GameObject player;
     EnemyAI enemyAI;
@@ -20,6 +26,7 @@ public class FightController : MonoBehaviour
     float randomYpos;
 
     bool fightStarted = false;
+    bool timerSet = false;
 
     public GameObject mobileUI;
 
@@ -28,10 +35,13 @@ public class FightController : MonoBehaviour
     int rngLookPoint;
     int index = 0;
 
+    //WeaponController weaponController;
+
     // Start is called before the first frame update
     void Start()
     {
         enemyAI = FindObjectOfType<EnemyAI>();
+        //weaponController = FindObjectOfType<WeaponController>();
         player = GameObject.FindGameObjectWithTag("PlayerController");
 
         //player.GetComponentInChildren<MouseLook>().lockCursor = false;
@@ -65,6 +75,28 @@ public class FightController : MonoBehaviour
                 //drawButton.interactable = true;
             }
         }
+
+        if (fightStarted)
+        {
+            gameTimer += Time.deltaTime;
+
+            if (ecmFP.GetComponent<Player>().allEnemiesDead && !timerSet)
+            {
+                gameTimerSet = gameTimer;
+
+                if (gameTimerSet <= twoStarTime)
+                {
+                    levelStars = 2;
+                }
+                else if (gameTimerSet > twoStarTime)
+                {
+                    levelStars = 1;
+                }
+
+                timerSet = true;
+                //gameTimer = 0;
+            }
+        }
     }
 
     public void DrawButton()
@@ -84,6 +116,10 @@ public class FightController : MonoBehaviour
 
 #if UNITY_IOS
         mobileUI.SetActive(true);
+#endif
+
+#if UNITY_STANDALONE_WIN
+        Cursor.visible = false;
 #endif
     }
 
