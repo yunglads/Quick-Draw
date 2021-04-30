@@ -8,6 +8,9 @@ TagManager:
   - WinPanel
   - DeathPanel
   - PlayerController
+  - MoneyUI
+  - GoldUI
+  - StarsUI
   layers:
   - Default
   - TransparentFX

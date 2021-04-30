@@ -13,6 +13,7 @@ public class FightController : MonoBehaviour
     public float twoStarTime;
 
     public int levelStars;
+    public int levelReward;
 
     GameObject player;
     EnemyAI enemyAI;
@@ -35,13 +36,13 @@ public class FightController : MonoBehaviour
     int rngLookPoint;
     int index = 0;
 
-    //WeaponController weaponController;
+    GameStats gameStats;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyAI = FindObjectOfType<EnemyAI>();
-        //weaponController = FindObjectOfType<WeaponController>();
+        gameStats = FindObjectOfType<GameStats>();
         player = GameObject.FindGameObjectWithTag("PlayerController");
 
         //player.GetComponentInChildren<MouseLook>().lockCursor = false;
@@ -80,6 +81,11 @@ public class FightController : MonoBehaviour
         {
             gameTimer += Time.deltaTime;
 
+            //if(gameStats.levelReward == 0)
+            //{
+            //    gameStats.levelReward = levelRewards.levelMoneyReward;
+            //}
+
             if (ecmFP.GetComponent<Player>().allEnemiesDead && !timerSet)
             {
                 gameTimerSet = gameTimer;
@@ -93,8 +99,15 @@ public class FightController : MonoBehaviour
                     levelStars = 1;
                 }
 
+                gameStats.totalStars += levelStars;            
+                gameStats.playerMoney += gameStats.levelReward;
+                gameStats.levelReward = 0;
+                
                 timerSet = true;
+
                 //gameTimer = 0;
+
+                //gameStats.statUpdate = true;
             }
         }
     }

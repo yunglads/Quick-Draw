@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     bool backToMenuButtonClicked = false;
     bool selectButtonClicked = false;
 
-    public GameObject playButton;
+    public GameObject playLevelsButton;
     public GameObject backButton;
     public GameObject shopButton;
     public GameObject charactersButton;
@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     public GameObject leftButton;
     public GameObject rightButton;
     public GameObject selectButton;
-    public GameObject level1Button;
+    public GameObject playButton;
 
     public GameObject bountiesText;
     public GameObject levelPanel;
@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
         //Level poster screen
         if (levelButtonClicked)
         {
-            playButton.SetActive(false);
+            playLevelsButton.SetActive(false);
             shopButton.SetActive(false);
             charactersButton.SetActive(false);
             inventoryButton.SetActive(false);
@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
         if (backToMenuButtonClicked)
         {
             backButton.SetActive(false);
-            level1Button.SetActive(false);
+            //playButton.SetActive(false);
             bountiesText.SetActive(false);
             levelPanel.SetActive(false);
             detailedPanel.SetActive(false);
@@ -78,7 +78,7 @@ public class GameController : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= 3f)
             {
-                playButton.SetActive(true);
+                playLevelsButton.SetActive(true);
                 shopButton.SetActive(true);
                 charactersButton.SetActive(true);
                 inventoryButton.SetActive(true);
@@ -92,7 +92,7 @@ public class GameController : MonoBehaviour
 
         if (selectButtonClicked)
         {
-            playButton.SetActive(true);
+            playLevelsButton.SetActive(true);
             shopButton.SetActive(true);
             charactersButton.SetActive(true);
             inventoryButton.SetActive(true);
@@ -128,7 +128,7 @@ public class GameController : MonoBehaviour
 
     public void CharactersScreen()
     {
-        playButton.SetActive(false);
+        playLevelsButton.SetActive(false);
         //backButton.SetActive(true);
         shopButton.SetActive(false);
         charactersButton.SetActive(false);

@@ -9,11 +9,8 @@ public class SceneController : MonoBehaviour
     int buildIndex;
     public int LevelID;
 
-    //LevelSelect[] levelSelect;
-
     private void Awake()
     {
-        //levelSelect = FindObjectsOfType<LevelSelect>();
         buildIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
