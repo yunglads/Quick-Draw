@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
-{
+{    
     public Animator mainCamera;
 
     bool levelButtonClicked = false;
@@ -33,6 +33,11 @@ public class GameController : MonoBehaviour
     void Start()
     {
         //mainCamera = GetComponent<Animator>();
+        //PlayOpening();
+    }
+
+    public void PlayOpening()
+    {
         mainCamera.Play("menuOpening");
     }
 

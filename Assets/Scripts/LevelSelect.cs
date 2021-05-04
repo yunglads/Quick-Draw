@@ -21,7 +21,6 @@ public class LevelSelect : MonoBehaviour
 
     public Button playButton;
 
-    public SceneController sceneController;
     public GameStats gameStats;
 
     private void Update()
@@ -43,7 +42,10 @@ public class LevelSelect : MonoBehaviour
 
         enemyNameText.text = enemyName;
         rewardText.text = reward.ToString();
-        sceneController.LevelID = levelID;
+
+        //sceneController.LevelID = levelID;
+        LevelManagerSystem.Instance.SetCurrentLevel(levelID);
+
         enemyImage.sprite = enemySprite;
 
         detailedPanel.SetActive(true);

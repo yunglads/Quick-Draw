@@ -7,7 +7,6 @@ public class SceneController : MonoBehaviour
 {
     string sceneName;
     int buildIndex;
-    public int LevelID;
 
     private void Awake()
     {
@@ -19,9 +18,9 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void LoadLevelByInt()
+    public void LoadLevelByInt(int levelID)
     {
-        SceneManager.LoadScene(LevelID);
+        SceneManager.LoadScene(levelID);
     }
 
     public void LoadNextLevel()
