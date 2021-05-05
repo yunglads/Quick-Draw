@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {    
-    public Animator mainCamera;
-
     bool levelButtonClicked = false;
     bool backToMenuButtonClicked = false;
     bool selectButtonClicked = false;
@@ -29,18 +27,6 @@ public class GameController : MonoBehaviour
 
     float timer = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //mainCamera = GetComponent<Animator>();
-        //PlayOpening();
-    }
-
-    public void PlayOpening()
-    {
-        mainCamera.Play("menuOpening");
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -62,7 +48,7 @@ public class GameController : MonoBehaviour
             inventoryButton.SetActive(false);
             playerInfoBar.SetActive(false);
 
-            if (mainCamera.GetCurrentAnimatorStateInfo(0).IsTag("LevelBoard"))
+            if (LevelManagerSystem.Instance.CameraController.GetCurrentAnimationInfo())
             {
                 backButton.SetActive(true);
                 //level1Button.SetActive(true);
@@ -112,16 +98,14 @@ public class GameController : MonoBehaviour
 
     public void LevelButton()
     {
-        mainCamera.SetBool("levelButtonClicked", true);
-        mainCamera.SetBool("backToMenuButtonClicked", false);
+        LevelManagerSystem.Instance.CameraController.LevelButtonAnimation();
         levelButtonClicked = true;
         backToMenuButtonClicked = false;
     }
 
     public void BackToMenuButton()
     {
-        mainCamera.SetBool("backToMenuButtonClicked", true);
-        mainCamera.SetBool("levelButtonClicked", false);
+        LevelManagerSystem.Instance.CameraController.BackMenuButtonAnimation();
         backToMenuButtonClicked = true;
         levelButtonClicked = false;
     }

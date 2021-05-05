@@ -74,6 +74,11 @@ public class Player : MonoBehaviour
         ECM_FirstPerson.GetComponent<MouseLook>().lockCursor = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        if (LevelManagerSystem.Instance.IsNextLevelAvailable())
+        {
+            LevelManagerSystem.Instance.CheckLevelsLocked();
+        }
         winPanel.SetActive(true);
+
     }
 }

@@ -11,7 +11,7 @@ public class NextLevelButton : ButtonController
 
     private void OnEnable()
     {
-        if (LevelManagerSystem.Instance.IsLastLevel())
+        if (!LevelManagerSystem.Instance.IsNextLevelAvailable())
         {
             gameObject.SetActive(false);
         }
