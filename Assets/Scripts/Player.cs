@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ECM.Components;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -74,10 +75,9 @@ public class Player : MonoBehaviour
         ECM_FirstPerson.GetComponent<MouseLook>().lockCursor = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        if (LevelManagerSystem.Instance.IsNextLevelAvailable())
-        {
-            LevelManagerSystem.Instance.CheckLevelsLocked();
-        }
+
+        LevelManagerSystem.Instance.LevelCompleted(FightController.Instance.gameTimer + FightController.Instance.additionalTimer - 3);
+        
         winPanel.SetActive(true);
 
     }

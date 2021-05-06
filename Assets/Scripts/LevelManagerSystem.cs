@@ -83,7 +83,18 @@ public class LevelManagerSystem : MonoBehaviour
         return isAvailable;
     }
 
-    public void CheckLevelsLocked()
+    public void LevelCompleted(float time)
+    {
+        if(levels[currentLevel - 1].completionTime == 0 || levels[currentLevel - 1].completionTime > time)
+        {
+            Debug.Log("New Best Time");
+            levels[currentLevel - 1].completionTime = time;
+        }
+        levels[currentLevel - 1].levelCompleted = true;
+        CheckLevelsLocked();
+    }
+
+    private void CheckLevelsLocked()
     {
         for(int i=currentLevel; i<levels.Length; i++)
         {
@@ -100,7 +111,7 @@ public class LevelManagerSystem : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(scene.name == "MainMenu")
+        if (scene.name == "MainMenu")
         {
             if(gameController == null)
             {
@@ -115,6 +126,8 @@ public class LevelManagerSystem : MonoBehaviour
         }
     }
 }
+
+
 
 [System.Serializable]
 public class Level

@@ -6,6 +6,9 @@ using ECM.Components;
 
 public class FightController : MonoBehaviour
 {
+    public static FightController Instance { get; private set; }
+
+    public float additionalTimer;
     float drawTimer;
     public float gameTimer;
     public float gameTimerSet;
@@ -38,7 +41,15 @@ public class FightController : MonoBehaviour
 
     GameStats gameStats;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        if (Instance != null)
+            Destroy(this);
+        else
+            Instance = this;
+        additionalTimer = 0;
+    }
+
     void Start()
     {
         enemyAI = FindObjectOfType<EnemyAI>();
@@ -74,6 +85,8 @@ public class FightController : MonoBehaviour
 
                 drawButton.gameObject.SetActive(true);
                 //drawButton.interactable = true;
+
+                additionalTimer += Time.deltaTime;
             }
         }
 
