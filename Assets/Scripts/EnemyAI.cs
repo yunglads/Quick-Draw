@@ -6,6 +6,7 @@ public class EnemyAI : MonoBehaviour
 {
     public float timeTilShoot = 3f;
     public float timer;
+    [Tooltip("A higher number will lower the chance the enemy will sucessfully shoot player")]
     public float chanceToHit = 65f;
     float rngHit;
 
@@ -25,7 +26,7 @@ public class EnemyAI : MonoBehaviour
     {
         SetRigidbodyState(true);
         SetColliderState(false);
-        GetComponent<Animator>().enabled = true;
+        //GetComponent<Animator>().enabled = true;
         weaponController = FindObjectOfType<WeaponController>();
 
         rngHit = Random.Range(0, 100);

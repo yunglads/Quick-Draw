@@ -2053,10 +2053,10 @@ RectTransform:
   m_Father: {fileID: 1739750302}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30, y: -80}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &492282190
 MonoBehaviour:
@@ -2087,7 +2087,7 @@ MonoBehaviour:
     isLocked: 0
     enemyName: 
     reward: 0
-    twoStarTime: 0
+    twoStarTime: 10
 --- !u!114 &492282191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6124,10 +6124,10 @@ RectTransform:
   m_Father: {fileID: 1739750302}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90, y: -80}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1286983616
 MonoBehaviour:
@@ -6153,7 +6153,7 @@ MonoBehaviour:
     levelID: 0
     levelCompleted: 0
     stars: 0
-    starsNeeded: 0
+    starsNeeded: 2
     completionTime: 0
     isLocked: 0
     enemyName: 
@@ -9703,7 +9703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1739750299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9784,7 +9784,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 9}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 336.68414, y: 415.91058}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1739750303
@@ -11391,7 +11391,7 @@ MonoBehaviour:
     isLocked: 0
     enemyName: roger
     reward: 10
-    twoStarTime: 2
+    twoStarTime: 10
   - levelID: 2
     levelCompleted: 0
     stars: 0
@@ -11399,8 +11399,8 @@ MonoBehaviour:
     completionTime: 0
     isLocked: 0
     enemyName: amy
-    reward: 15
-    twoStarTime: 2
+    reward: 10
+    twoStarTime: 10
   currentLevel: 0
   gameController: {fileID: 207009592}
   sceneController: {fileID: 2001985672}
