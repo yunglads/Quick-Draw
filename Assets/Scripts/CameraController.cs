@@ -23,6 +23,12 @@ public class CameraController : MonoBehaviour
         levelAnimation.gameObject.SetActive(false);
     }
 
+    public void EnableMenuCamera()
+    {
+        initialAnimation.gameObject.SetActive(true);
+        mainCamera = initialAnimation.GetComponent<Animator>();
+    }
+
     public void EnableLevelCamera()
     {
         levelAnimation.gameObject.SetActive(true);

@@ -28,12 +28,20 @@ public class GameController : MonoBehaviour
     private GameObject selectButton;
     [SerializeField] 
     private GameObject playButton;
-
-    public GameObject bountiesText;
-    public GameObject levelPanel;
-    public GameObject detailedPanel;
+    [SerializeField]
+    private GameObject bountiesText;
+    [SerializeField]
+    private GameObject levelPanel;
+    [SerializeField]
+    private GameObject detailedPanel;
 
     float timer = 0;
+
+    private void Awake()
+    {
+        levelButtonClicked = false;
+        backToMenuButtonClicked = false;
+    }
 
     void Update()
     {

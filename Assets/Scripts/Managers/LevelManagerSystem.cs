@@ -14,6 +14,8 @@ public class LevelManagerSystem : Singleton<LevelManagerSystem>
     [SerializeField]
     private SceneController sceneController;
 
+    private LoadMenuMode loadMenuMode;
+
     public CameraController CameraController;
 
     [SerializeField]
@@ -22,6 +24,7 @@ public class LevelManagerSystem : Singleton<LevelManagerSystem>
     protected override void Awake()
     {
         base.Awake();
+        loadMenuMode = LoadMenuMode.MainMenu;
         CheckLevelsLocked();
     }
 
@@ -50,7 +53,7 @@ public class LevelManagerSystem : Singleton<LevelManagerSystem>
 
     public Level GetCurrentLevel()
     {
-        return levels[currentLevel];
+        return levels[currentLevel-1];
     }
 
 
@@ -73,14 +76,16 @@ public class LevelManagerSystem : Singleton<LevelManagerSystem>
         PlayLevel();
     }
 
-    public void BackToMenu()
-    {
-
-    }
-
     public void LoadMainMenu()
     {
         sceneController.LoadLevelByName("MainMenu");
+        loadMenuMode = LoadMenuMode.MainMenu;
+    }
+
+    public void LoadLevelSelection()
+    {
+        sceneController.LoadLevelByName("MainMenu");
+        loadMenuMode = LoadMenuMode.LevelSelection;
     }
 
     public bool IsNextLevelAvailable()
@@ -123,11 +128,16 @@ public class LevelManagerSystem : Singleton<LevelManagerSystem>
     {
         if (scene.name == "MainMenu")
         {
-            if(gameController == null)
+            gameController = FindObjectOfType<GameController>();
+            switch (loadMenuMode)
             {
-                CameraController.EnableLevelCamera();
-                gameController = FindObjectOfType<GameController>();
-                gameController.LevelButton();
+                case LoadMenuMode.LevelSelection:
+                    CameraController.EnableLevelCamera();
+                    gameController.LevelButton();
+                    break;
+                case LoadMenuMode.MainMenu:
+                    CameraController.EnableMenuCamera();
+                    break;
             }
         }
         else
@@ -149,4 +159,10 @@ public class Level
     public string enemyName;
     public int reward;
     public float twoStarTime;
+}
+
+public enum LoadMenuMode
+{
+    LevelSelection,
+    MainMenu
 }
