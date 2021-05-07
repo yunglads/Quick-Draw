@@ -11,7 +11,7 @@ public class FightController : Singleton<FightController>
     public float gameTimer;
     public float gameTimerSet;
 
-    public float twoStarTime;
+    //public float twoStarTime;
 
     public int levelStars;
     public int levelReward;
@@ -37,8 +37,6 @@ public class FightController : Singleton<FightController>
     int rngLookPoint;
     int index = 0;
 
-    GameStats gameStats;
-
     protected override void Awake()
     {
         base.Awake();
@@ -48,7 +46,6 @@ public class FightController : Singleton<FightController>
     void Start()
     {
         enemyAI = FindObjectOfType<EnemyAI>();
-        gameStats = FindObjectOfType<GameStats>();
         player = GameObject.FindGameObjectWithTag("PlayerController");
 
         //player.GetComponentInChildren<MouseLook>().lockCursor = false;
@@ -93,18 +90,18 @@ public class FightController : Singleton<FightController>
             {
                 gameTimerSet = gameTimer;
 
-                if (gameTimerSet <= twoStarTime)
+                if (gameTimerSet <= LevelManagerSystem.Instance.GetCurrentLevel().twoStarTime)
                 {
                     levelStars = 2;
                 }
-                else if (gameTimerSet > twoStarTime)
+                else if (gameTimerSet > LevelManagerSystem.Instance.GetCurrentLevel().twoStarTime)
                 {
                     levelStars = 1;
                 }
 
-                gameStats.totalStars += levelStars;            
-                gameStats.playerMoney += gameStats.levelReward;
-                gameStats.levelReward = 0;
+                GameStats.Instance.totalStars += levelStars;
+                GameStats.Instance.playerMoney += GameStats.Instance.levelReward;
+                GameStats.Instance.levelReward = 0;
                 
                 timerSet = true;
 

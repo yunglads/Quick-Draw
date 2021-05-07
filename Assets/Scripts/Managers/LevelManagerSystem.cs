@@ -48,6 +48,12 @@ public class LevelManagerSystem : Singleton<LevelManagerSystem>
         currentLevel = newLevel;
     }
 
+    public Level GetCurrentLevel()
+    {
+        return levels[currentLevel];
+    }
+
+
     public void PlayLevel()
     {
         sceneController.LoadLevelByInt(currentLevel);
@@ -142,4 +148,5 @@ public class Level
     public bool isLocked;
     public string enemyName;
     public int reward;
+    public float twoStarTime;
 }

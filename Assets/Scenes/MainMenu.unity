@@ -2087,6 +2087,7 @@ MonoBehaviour:
     isLocked: 0
     enemyName: 
     reward: 0
+    twoStarTime: 0
 --- !u!114 &492282191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6157,6 +6158,7 @@ MonoBehaviour:
     isLocked: 0
     enemyName: 
     reward: 0
+    twoStarTime: 0
 --- !u!114 &1286983617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11381,22 +11383,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - levelID: 0
+  - levelID: 1
     levelCompleted: 0
     stars: 0
     starsNeeded: 0
     completionTime: 0
     isLocked: 0
-    enemyName: 
-    reward: 0
-  - levelID: 0
+    enemyName: roger
+    reward: 10
+    twoStarTime: 2
+  - levelID: 2
     levelCompleted: 0
     stars: 0
-    starsNeeded: 0
+    starsNeeded: 2
     completionTime: 0
     isLocked: 0
-    enemyName: 
-    reward: 0
+    enemyName: amy
+    reward: 15
+    twoStarTime: 2
   currentLevel: 0
   gameController: {fileID: 207009592}
   sceneController: {fileID: 2001985672}

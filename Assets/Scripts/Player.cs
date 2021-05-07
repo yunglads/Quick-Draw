@@ -78,9 +78,28 @@ public class Player : MonoBehaviour
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        LevelManagerSystem.Instance.LevelCompleted(FightController.Instance.gameTimer + FightController.Instance.additionalTimer - winDelayTime);
-        
+
+        SetLevelResults();
         winPanel.SetActive(true);
+
+    }
+
+    void SetLevelResults()
+    {
+        float levelTimer = FightController.Instance.gameTimer + FightController.Instance.additionalTimer - winDelayTime;
+        LevelManagerSystem.Instance.LevelCompleted(levelTimer);
+        Debug.Log("Adding Level Results");
+        /* int levelStars = 1;
+
+
+         if (levelTimer <= LevelManagerSystem.Instance.GetCurrentLevel().twoStarTime)
+         {
+             levelStars = 2;
+         }
+
+         GameStats.Instance.totalStars += levelStars;
+         GameStats.Instance.playerMoney += GameStats.Instance.levelReward;
+         GameStats.Instance.levelReward = 0;*/
 
     }
 }
