@@ -1876,8 +1876,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 695258544340724855, guid: 07e1f8ded75201f42bd59c7e4178bf4a,
         type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 695258544340724855, guid: 07e1f8ded75201f42bd59c7e4178bf4a,
+        type: 3}
       propertyPath: m_SizeDelta.y
-      value: 600
+      value: 575
       objectReference: {fileID: 0}
     - target: {fileID: 695258544340724855, guid: 07e1f8ded75201f42bd59c7e4178bf4a,
         type: 3}
@@ -2042,7 +2047,7 @@ PrefabInstance:
     - target: {fileID: 8741051968754554331, guid: 07e1f8ded75201f42bd59c7e4178bf4a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8741051969077119746, guid: 07e1f8ded75201f42bd59c7e4178bf4a,
         type: 3}
@@ -7784,13 +7789,13 @@ Transform:
   - {fileID: 296030024}
   - {fileID: 1732261763}
   - {fileID: 1493197226}
-  - {fileID: 1245696840}
-  - {fileID: 1116925034}
-  - {fileID: 1986457567}
   - {fileID: 772792868}
-  - {fileID: 136888403}
   - {fileID: 661284815}
+  - {fileID: 1986457567}
+  - {fileID: 136888403}
+  - {fileID: 1245696840}
   - {fileID: 364519649}
+  - {fileID: 1116925034}
   - {fileID: 31663052}
   - {fileID: 1810152337}
   - {fileID: 2031908552}
