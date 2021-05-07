@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelSelect : MonoBehaviour
-{
-    public string enemyName;
-    public int reward;
+public class LevelUI : MonoBehaviour
+{    
     public int levelID;
-    public int starsNeeded;
-    //public bool levelComplete = false;
-    public bool isLocked = true;
-    public Image enemyImage;
 
+    public Image enemyImage;
     public Sprite enemySprite;
     public Text enemyNameText;
     public Text rewardText;
@@ -21,9 +16,15 @@ public class LevelSelect : MonoBehaviour
 
     public Button playButton;
 
-    public GameStats gameStats;
+    [SerializeField]
+    private Level level;
 
-    private void Update()
+    public void SetLevel(Level _level)
+    {
+        level = _level;
+    }
+
+    /*private void Update()
     {
         if (gameStats == null)
         {
@@ -34,23 +35,27 @@ public class LevelSelect : MonoBehaviour
         {
             isLocked = true;
         }
-    }
+    }*/
 
     public void DetailedLevelPage()
     {
-        gameStats.levelReward = reward;
+        if (level.starsNeeded > GameStats.Instance.totalStars)
+        {
+            level.isLocked = true;
+        }
 
-        enemyNameText.text = enemyName;
-        rewardText.text = reward.ToString();
+        GameStats.Instance.levelReward = level.reward;
 
-        //sceneController.LevelID = levelID;
+        enemyNameText.text = level.enemyName;
+        rewardText.text = level.reward.ToString();
+
         LevelManagerSystem.Instance.SetCurrentLevel(levelID);
 
         enemyImage.sprite = enemySprite;
 
         detailedPanel.SetActive(true);
 
-        if (isLocked)
+        if (level.isLocked)
         {
             lockImage.SetActive(true);
             playButton.interactable = false;
@@ -60,10 +65,6 @@ public class LevelSelect : MonoBehaviour
             lockImage.SetActive(false);
             playButton.interactable = true;
         }
-
-        //enemyImage.gameObject.SetActive(true);
-        //enemyNameText.gameObject.SetActive(true);
-        //rewardText.gameObject.SetActive(true);
     }
 
     public void BackToLevelSelect()

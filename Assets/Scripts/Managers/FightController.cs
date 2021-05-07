@@ -4,10 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using ECM.Components;
 
-public class FightController : MonoBehaviour
+public class FightController : Singleton<FightController>
 {
-    public static FightController Instance { get; private set; }
-
     public float additionalTimer;
     float drawTimer;
     public float gameTimer;
@@ -41,12 +39,9 @@ public class FightController : MonoBehaviour
 
     GameStats gameStats;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance != null)
-            Destroy(this);
-        else
-            Instance = this;
+        base.Awake();
         additionalTimer = 0;
     }
 
@@ -93,11 +88,6 @@ public class FightController : MonoBehaviour
         if (fightStarted)
         {
             gameTimer += Time.deltaTime;
-
-            //if(gameStats.levelReward == 0)
-            //{
-            //    gameStats.levelReward = levelRewards.levelMoneyReward;
-            //}
 
             if (ecmFP.GetComponent<Player>().allEnemiesDead && !timerSet)
             {

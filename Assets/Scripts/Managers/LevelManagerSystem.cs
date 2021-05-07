@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManagerSystem : MonoBehaviour
+public class LevelManagerSystem : Singleton<LevelManagerSystem>
 {
-    public static LevelManagerSystem Instance { get; private set; }
-
     [SerializeField]
     private Level[] levels;
     [SerializeField]
@@ -17,15 +15,13 @@ public class LevelManagerSystem : MonoBehaviour
     private SceneController sceneController;
 
     public CameraController CameraController;
+
     [SerializeField]
     private GameStats gameStats;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance != null)
-            Destroy(this);
-        else
-            Instance = this;
+        base.Awake();
         CheckLevelsLocked();
     }
 
@@ -37,6 +33,14 @@ public class LevelManagerSystem : MonoBehaviour
     void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void FillLevelsUI(LevelUI[] levelsUI)
+    {
+        for (int i = 0; i < levelsUI.Length; i++)
+        {
+            levelsUI[i].SetLevel(levels[i]);
+        }
     }
 
     public void SetCurrentLevel(int newLevel)
@@ -127,8 +131,6 @@ public class LevelManagerSystem : MonoBehaviour
     }
 }
 
-
-
 [System.Serializable]
 public class Level
 {
@@ -138,4 +140,6 @@ public class Level
     public int starsNeeded;
     public float completionTime;
     public bool isLocked;
+    public string enemyName;
+    public int reward;
 }

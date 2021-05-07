@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameStats : MonoBehaviour
+public class GameStats : Singleton<GameStats>
 {
     public int totalStars = 0;
     public float playerMoney = 0;
@@ -12,45 +12,36 @@ public class GameStats : MonoBehaviour
 
     public int levelReward;
     public bool statUpdate = false;
-    bool foundUI = false;
-    //bool statsSet = false;
 
-    Scene scene;
-    int index = 0;
+    [SerializeField]
+    private Text playerMoneyText;
+    [SerializeField]
+    private Text playerGoldText;
+    [SerializeField]
+    private Text totalStarsText;
 
-    public Text playerMoneyText;
-    public Text playerGoldText;
-    public Text totalStarsText;
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnDisable()
     {
-        scene = SceneManager.GetActiveScene();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
-        if (scene.buildIndex == index && !foundUI)
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MainMenu")
         {
-            //levelReward = 0;
             playerMoneyText = GameObject.FindGameObjectWithTag("MoneyUI").GetComponent<Text>();
             playerGoldText = GameObject.FindGameObjectWithTag("GoldUI").GetComponent<Text>();
             totalStarsText = GameObject.FindGameObjectWithTag("StarsUI").GetComponent<Text>();
-            foundUI = true;
-            Debug.Log("UI found");
-        }
-        else if (scene.buildIndex != index)
-        {
-            foundUI = false;
-        }
 
-        if (scene.buildIndex == index)
-        {
             playerMoneyText.text = playerMoney.ToString("F2");
             playerGoldText.text = playerGold.ToString();
             totalStarsText.text = totalStars.ToString();
+            Debug.Log("UI found");
         }
     }
 }

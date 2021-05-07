@@ -7,65 +7,50 @@ public class GameController : MonoBehaviour
 {    
     bool levelButtonClicked = false;
     bool backToMenuButtonClicked = false;
-    bool selectButtonClicked = false;
 
-    public GameObject playLevelsButton;
-    public GameObject backButton;
-    public GameObject shopButton;
-    public GameObject charactersButton;
-    public GameObject inventoryButton;
-    public GameObject playerInfoBar;
-    public GameObject leftButton;
-    public GameObject rightButton;
-    public GameObject selectButton;
-    public GameObject playButton;
+    [SerializeField] 
+    private GameObject playLevelsButton;
+    [SerializeField] 
+    private GameObject backButton;
+    [SerializeField] 
+    private GameObject shopButton;
+    [SerializeField] 
+    private GameObject charactersButton;
+    [SerializeField] 
+    private GameObject inventoryButton;
+    [SerializeField] 
+    private GameObject playerInfoBar;
+    [SerializeField] 
+    private GameObject leftButton;
+    [SerializeField] 
+    private GameObject rightButton;
+    [SerializeField] 
+    private GameObject selectButton;
+    [SerializeField] 
+    private GameObject playButton;
 
     public GameObject bountiesText;
     public GameObject levelPanel;
     public GameObject detailedPanel;
 
-
     float timer = 0;
 
-    // Update is called once per frame
     void Update()
     {
-        //if (mainCamera.GetCurrentAnimatorStateInfo(0).IsTag("Menu"))
-        //{
-        //    playButton.SetActive(true);
-        //    shopButton.SetActive(true);
-        //    charactersButton.SetActive(true);
-        //    inventoryButton.SetActive(true);
-        //    playerInfoBar.SetActive(true);
-        //}
-
         //Level poster screen
         if (levelButtonClicked)
         {
-            playLevelsButton.SetActive(false);
-            shopButton.SetActive(false);
-            charactersButton.SetActive(false);
-            inventoryButton.SetActive(false);
-            playerInfoBar.SetActive(false);
-
             if (LevelManagerSystem.Instance.CameraController.GetCurrentAnimationInfo())
             {
                 backButton.SetActive(true);
-                //level1Button.SetActive(true);
                 bountiesText.SetActive(true);
                 levelPanel.SetActive(true);
-
             }
         }
+
         //Main character screen
         if (backToMenuButtonClicked)
-        {
-            backButton.SetActive(false);
-            //playButton.SetActive(false);
-            bountiesText.SetActive(false);
-            levelPanel.SetActive(false);
-            detailedPanel.SetActive(false);
-            
+        {            
             timer += Time.deltaTime;
             if (timer >= 3f)
             {
@@ -80,25 +65,18 @@ public class GameController : MonoBehaviour
                 timer = 0;
             }
         }
-
-        if (selectButtonClicked)
-        {
-            playLevelsButton.SetActive(true);
-            shopButton.SetActive(true);
-            charactersButton.SetActive(true);
-            inventoryButton.SetActive(true);
-            playerInfoBar.SetActive(true);
-            leftButton.SetActive(false);
-            rightButton.SetActive(false);
-            selectButton.SetActive(false);
-
-            selectButtonClicked = false;
-        }
     }
 
     public void LevelButton()
     {
         LevelManagerSystem.Instance.CameraController.LevelButtonAnimation();
+
+        playLevelsButton.SetActive(false);
+        shopButton.SetActive(false);
+        charactersButton.SetActive(false);
+        inventoryButton.SetActive(false);
+        playerInfoBar.SetActive(false);
+
         levelButtonClicked = true;
         backToMenuButtonClicked = false;
     }
@@ -106,19 +84,31 @@ public class GameController : MonoBehaviour
     public void BackToMenuButton()
     {
         LevelManagerSystem.Instance.CameraController.BackMenuButtonAnimation();
+
+        backButton.SetActive(false);
+        bountiesText.SetActive(false);
+        levelPanel.SetActive(false);
+        detailedPanel.SetActive(false);
+
         backToMenuButtonClicked = true;
         levelButtonClicked = false;
     }
 
     public void SelectButton()
     {
-        selectButtonClicked = true;
+        playLevelsButton.SetActive(true);
+        shopButton.SetActive(true);
+        charactersButton.SetActive(true);
+        inventoryButton.SetActive(true);
+        playerInfoBar.SetActive(true);
+        leftButton.SetActive(false);
+        rightButton.SetActive(false);
+        selectButton.SetActive(false);
     }
 
     public void CharactersScreen()
     {
         playLevelsButton.SetActive(false);
-        //backButton.SetActive(true);
         shopButton.SetActive(false);
         charactersButton.SetActive(false);
         inventoryButton.SetActive(false);
@@ -126,9 +116,4 @@ public class GameController : MonoBehaviour
         rightButton.SetActive(true);
         selectButton.SetActive(true);
     }
-
-    //public void LevelLoad()
-    //{
-    //    SceneManager.LoadScene("GunfightScene");
-    //}
 }

@@ -2070,11 +2070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61de9445faf0c7d4fb70860e334b138a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: roger
-  reward: 10
   levelID: 1
-  starsNeeded: 0
-  isLocked: 0
   enemyImage: {fileID: 1557940233}
   enemySprite: {fileID: 21300000, guid: b1deb933203490a4aaef4c8123c01492, type: 3}
   enemyNameText: {fileID: 2116653899}
@@ -2082,7 +2078,15 @@ MonoBehaviour:
   detailedPanel: {fileID: 1522751998}
   lockImage: {fileID: 1507310835}
   playButton: {fileID: 688251923}
-  gameStats: {fileID: 2001985670}
+  level:
+    levelID: 0
+    levelCompleted: 0
+    stars: 0
+    starsNeeded: 0
+    completionTime: 0
+    isLocked: 0
+    enemyName: 
+    reward: 0
 --- !u!114 &492282191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6136,11 +6140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61de9445faf0c7d4fb70860e334b138a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: amy
-  reward: 15
   levelID: 2
-  starsNeeded: 2
-  isLocked: 0
   enemyImage: {fileID: 1557940233}
   enemySprite: {fileID: 0}
   enemyNameText: {fileID: 2116653899}
@@ -6148,7 +6148,15 @@ MonoBehaviour:
   detailedPanel: {fileID: 1522751998}
   lockImage: {fileID: 1507310835}
   playButton: {fileID: 688251923}
-  gameStats: {fileID: 2001985670}
+  level:
+    levelID: 0
+    levelCompleted: 0
+    stars: 0
+    starsNeeded: 0
+    completionTime: 0
+    isLocked: 0
+    enemyName: 
+    reward: 0
 --- !u!114 &1286983617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9686,6 +9694,7 @@ GameObject:
   - component: {fileID: 1739750301}
   - component: {fileID: 1739750300}
   - component: {fileID: 1739750299}
+  - component: {fileID: 1739750303}
   m_Layer: 5
   m_Name: Simplified Level Panel
   m_TagString: Untagged
@@ -9776,6 +9785,19 @@ RectTransform:
   m_AnchoredPosition: {x: 6, y: 9}
   m_SizeDelta: {x: 336.68414, y: 415.91058}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1739750303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739750298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ee17c97d088b34a8914e99239fad1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelsUI: []
 --- !u!1001 &1757607527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11359,18 +11381,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - levelID: 1
+  - levelID: 0
     levelCompleted: 0
     stars: 0
     starsNeeded: 0
     completionTime: 0
     isLocked: 0
-  - levelID: 2
+    enemyName: 
+    reward: 0
+  - levelID: 0
     levelCompleted: 0
     stars: 0
-    starsNeeded: 2
+    starsNeeded: 0
     completionTime: 0
     isLocked: 0
+    enemyName: 
+    reward: 0
   currentLevel: 0
   gameController: {fileID: 207009592}
   sceneController: {fileID: 2001985672}

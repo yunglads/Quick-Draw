@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public bool isDead = false;
     public bool allEnemiesDead = false;
 
+    private float winDelayTime = 3;
+
     EnemyAI enemyAI;
 
     // Start is called before the first frame update
@@ -34,7 +36,7 @@ public class Player : MonoBehaviour
         }
         else if (allEnemiesDead)
         {
-            Invoke("PlayerWon", 3f);
+            Invoke("PlayerWon", winDelayTime);
         }
 
         if (deathPanel == null)
@@ -73,10 +75,10 @@ public class Player : MonoBehaviour
         ECM_FirstPerson.GetComponent<MouseLook>().lateralSensitivity = 0;
         ECM_FirstPerson.GetComponent<MouseLook>().verticalSensitivity = 0;
         ECM_FirstPerson.GetComponent<MouseLook>().lockCursor = false;
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-
-        LevelManagerSystem.Instance.LevelCompleted(FightController.Instance.gameTimer + FightController.Instance.additionalTimer - 3);
+        LevelManagerSystem.Instance.LevelCompleted(FightController.Instance.gameTimer + FightController.Instance.additionalTimer - winDelayTime);
         
         winPanel.SetActive(true);
 
