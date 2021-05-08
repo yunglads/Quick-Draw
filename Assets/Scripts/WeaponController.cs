@@ -20,19 +20,6 @@ public class WeaponController : MonoBehaviour
 
     GameObject target;
 
-    GameObject[] enemiesList;
-    int enemies;
-
-    Player player;
-
-    private void Start()
-    {
-        enemiesList = GameObject.FindGameObjectsWithTag("Enemy");
-        enemies = enemiesList.Length;
-
-        player = FindObjectOfType<Player>();
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -49,11 +36,6 @@ public class WeaponController : MonoBehaviour
             mobileShootPressed = false;
         }
 #endif
-
-        if (enemies <= 0)
-        {
-            player.allEnemiesDead = true;
-        }
     }
 
     void Shoot()
@@ -71,7 +53,7 @@ public class WeaponController : MonoBehaviour
                 Destroy(impactGO, 1f);
                 target.GetComponent<EnemyAI>().isDead = true;
                 target.GetComponent<EnemyAI>().Die();
-                enemies--;
+                FightController.Instance.KillEnemy();
             }
         }
 

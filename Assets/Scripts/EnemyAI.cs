@@ -46,6 +46,7 @@ public class EnemyAI : MonoBehaviour
                 if (chanceToHit >= rngHit)
                 {
                     playerHit = true;
+                    FightController.Instance.KillPlayer();
                 }
                 else
                 {

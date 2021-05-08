@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ECM.Components;
-using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -14,48 +13,22 @@ public class Player : MonoBehaviour
     public GameObject ECM_FirstPerson;
 
     public bool isDead = false;
-    public bool allEnemiesDead = false;
-
     private float winDelayTime = 3;
 
-    EnemyAI enemyAI;
-
-    // Start is called before the first frame update
     void Start()
     {
-        enemyAI = FindObjectOfType<EnemyAI>();
         playerModel = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (enemyAI.playerHit)
-        {
-            PlayerDead();
-        }
-        else if (allEnemiesDead)
-        {
-            Invoke("PlayerWon", winDelayTime);
-        }
-
-        if (deathPanel == null)
-        {
-            deathPanel = GameObject.FindGameObjectWithTag("DeathPanel");
-        }
-
-        if (winPanel == null)
-        {
-            winPanel = GameObject.FindGameObjectWithTag("WinPanel");
-        }
-
         if (playerModel == null)
         {
             playerModel = GameObject.FindGameObjectWithTag("Player");
         }
     }
 
-    void PlayerDead()
+    public void PlayerDead()
     {
         playerWeapon.GetComponent<Rigidbody>().useGravity = true;
         playerWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -70,6 +43,11 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
+    public void Victory()
+    {
+        Invoke("PlayerWon", winDelayTime);
+    }
+
     void PlayerWon()
     {
         ECM_FirstPerson.GetComponent<MouseLook>().lateralSensitivity = 0;
@@ -81,17 +59,13 @@ public class Player : MonoBehaviour
 
         SetLevelResults();
         winPanel.SetActive(true);
-
     }
 
     void SetLevelResults()
     {
         float levelTimer = FightController.Instance.gameTimer + FightController.Instance.additionalTimer - winDelayTime;
-        LevelManagerSystem.Instance.LevelCompleted(levelTimer);
-        Debug.Log("Adding Level Results");
-        /* int levelStars = 1;
 
-
+        int levelStars = 1;
          if (levelTimer <= LevelManagerSystem.Instance.GetCurrentLevel().twoStarTime)
          {
              levelStars = 2;
@@ -99,7 +73,8 @@ public class Player : MonoBehaviour
 
          GameStats.Instance.totalStars += levelStars;
          GameStats.Instance.playerMoney += GameStats.Instance.levelReward;
-         GameStats.Instance.levelReward = 0;*/
+         GameStats.Instance.levelReward = 0;
 
+         LevelManagerSystem.Instance.LevelCompleted(levelTimer);
     }
 }

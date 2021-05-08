@@ -24,19 +24,6 @@ public class LevelUI : MonoBehaviour
         level = _level;
     }
 
-    /*private void Update()
-    {
-        if (gameStats == null)
-        {
-            gameStats = FindObjectOfType<GameStats>();
-        }
-
-        if (starsNeeded > gameStats.totalStars)
-        {
-            isLocked = true;
-        }
-    }*/
-
     public void DetailedLevelPage()
     {
         if (level.starsNeeded > GameStats.Instance.totalStars)

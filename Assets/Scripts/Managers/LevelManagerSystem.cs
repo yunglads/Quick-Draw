@@ -56,7 +56,6 @@ public class LevelManagerSystem : Singleton<LevelManagerSystem>
         return levels[currentLevel-1];
     }
 
-
     public void PlayLevel()
     {
         sceneController.LoadLevelByInt(currentLevel);

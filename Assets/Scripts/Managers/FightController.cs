@@ -11,8 +11,6 @@ public class FightController : Singleton<FightController>
     public float gameTimer;
     public float gameTimerSet;
 
-    //public float twoStarTime;
-
     public int levelStars;
     public int levelReward;
 
@@ -37,10 +35,15 @@ public class FightController : Singleton<FightController>
     int rngLookPoint;
     int index = 0;
 
+    Player playerC;
+    public int enemies;
+
     protected override void Awake()
     {
         base.Awake();
         additionalTimer = 0;
+        enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        playerC = FindObjectOfType<Player>();
     }
 
     void Start()
@@ -86,28 +89,11 @@ public class FightController : Singleton<FightController>
         {
             gameTimer += Time.deltaTime;
 
-            if (ecmFP.GetComponent<Player>().allEnemiesDead && !timerSet)
+            if (AllEnemiesDead() && !timerSet)
             {
                 gameTimerSet = gameTimer;
-
-                if (gameTimerSet <= LevelManagerSystem.Instance.GetCurrentLevel().twoStarTime)
-                {
-                    levelStars = 2;
-                }
-                else if (gameTimerSet > LevelManagerSystem.Instance.GetCurrentLevel().twoStarTime)
-                {
-                    levelStars = 1;
-                }
-
-                GameStats.Instance.totalStars += levelStars;
-                GameStats.Instance.playerMoney += GameStats.Instance.levelReward;
-                GameStats.Instance.levelReward = 0;
-                
+                                              
                 timerSet = true;
-
-                //gameTimer = 0;
-
-                //gameStats.statUpdate = true;
             }
         }
     }
@@ -142,5 +128,24 @@ public class FightController : Singleton<FightController>
         rngLookPoint = Random.Range(0, lookPoints.Length);
         index = rngLookPoint;
         return index;
+    }
+
+    public void KillEnemy()
+    {
+        enemies--;
+        if (AllEnemiesDead())
+        {
+            playerC.Victory();
+        }
+    }
+
+    public bool AllEnemiesDead()
+    {
+        return enemies <= 0;
+    }
+
+    public void KillPlayer()
+    {
+        playerC.PlayerDead();
     }
 }
