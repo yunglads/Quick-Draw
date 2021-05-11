@@ -4255,10 +4255,20 @@ PrefabInstance:
       propertyPath: requiredHit
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1131470309860897226, guid: 15b94d995b0e39d44a78d26b9868bcd0,
+        type: 3}
+      propertyPath: timeTilShoot
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1131860085063953804, guid: 15b94d995b0e39d44a78d26b9868bcd0,
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132182204472294070, guid: 15b94d995b0e39d44a78d26b9868bcd0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15b94d995b0e39d44a78d26b9868bcd0, type: 3}

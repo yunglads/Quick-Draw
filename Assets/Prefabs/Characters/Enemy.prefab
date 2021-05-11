@@ -1717,7 +1717,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.095494576
+  m_Radius: 0.16
   m_Center: {x: 0, y: 0.095494576, z: 0}
 --- !u!144 &1131470311262501611
 CharacterJoint:
@@ -2675,8 +2675,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3232053, y: 0.27846175, z: 0.38197836}
-  m_Center: {x: 0.1616027, y: -0.03091897, z: 0.00000010430813}
+  m_Size: {x: 0.56, y: 0.27846175, z: 0.38197836}
+  m_Center: {x: -0.02, y: -0.03091897, z: 0.00000010430813}
 --- !u!144 &1131470310745691304
 CharacterJoint:
   m_ObjectHideFlags: 0
