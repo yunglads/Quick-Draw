@@ -47,14 +47,30 @@ public class WeaponController : MonoBehaviour
             Debug.Log(hit.transform.name);
             target = hit.transform.gameObject;
 
-            if (hit.transform.tag == "Enemy")
+            BodyPart bodyPartHit = hit.transform.gameObject.GetComponent<BodyPart>();
+
+            if (bodyPartHit != null)
+            {
+                EnemyAI enemy = bodyPartHit.GetComponentInParent<EnemyAI>();
+                if(enemy.requiredHit == RequiredHit.None || enemy.requiredHit == bodyPartHit.bodyPart)
+                {
+                    GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(impactGO, 1f);
+                    enemy.isDead = true;
+                    enemy.Die();
+                    FightController.Instance.KillEnemy();                    
+                }
+            }
+
+
+            /*if (hit.transform.tag == "Enemy")
             {
                 GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactGO, 1f);
                 target.GetComponent<EnemyAI>().isDead = true;
                 target.GetComponent<EnemyAI>().Die();
                 FightController.Instance.KillEnemy();
-            }
+            }*/
         }
 
         ammoCount--;

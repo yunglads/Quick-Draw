@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+    [SerializeField]
+    public RequiredHit requiredHit;
+
     public float timeTilShoot = 3f;
     public float timer;
     [Tooltip("A higher number will lower the chance the enemy will sucessfully shoot player")]
@@ -25,14 +28,13 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         SetRigidbodyState(true);
-        SetColliderState(false);
+        //SetColliderState(false);
         //GetComponent<Animator>().enabled = true;
         weaponController = FindObjectOfType<WeaponController>();
 
         rngHit = Random.Range(0, 100);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (gunIsDrawn)
@@ -72,11 +74,6 @@ public class EnemyAI : MonoBehaviour
         GetComponent<Animator>().enabled = false;
         SetRigidbodyState(false);
         SetColliderState(true);
-        
-        //if (gameObject != null)
-        //{
-        //    Destroy(gameObject, 3f);
-        //}
     }
 
     void Ragdoll()
@@ -116,7 +113,17 @@ public class EnemyAI : MonoBehaviour
             collider.enabled = state;
         }
 
-        GetComponent<Collider>().enabled = !state;
+        //GetComponent<Collider>().enabled = !state;
     }
+}
 
+public enum RequiredHit
+{
+    Head,
+    Chest,
+    LeftArm,
+    RightArm,
+    LeftLeg,
+    RightLeg,
+    None
 }
