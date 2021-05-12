@@ -35,7 +35,7 @@ public class FightController : Singleton<FightController>
     int rngLookPoint;
     int index = 0;
 
-    Player playerC;
+    Player playerController;
     public int enemies;
 
     protected override void Awake()
@@ -43,7 +43,7 @@ public class FightController : Singleton<FightController>
         base.Awake();
         additionalTimer = 0;
         enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        playerC = FindObjectOfType<Player>();
+        playerController = FindObjectOfType<Player>();
     }
 
     void Start()
@@ -135,7 +135,7 @@ public class FightController : Singleton<FightController>
         enemies--;
         if (AllEnemiesDead())
         {
-            playerC.Victory();
+            playerController.Victory();
         }
     }
 
@@ -146,6 +146,6 @@ public class FightController : Singleton<FightController>
 
     public void KillPlayer()
     {
-        playerC.PlayerDead();
+        playerController.PlayerDead();
     }
 }

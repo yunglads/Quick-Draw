@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField]
-    public RequiredHit requiredHit;
+    public List<RequiredHit> requiredHits = new List<RequiredHit>();
 
     public float timeTilShoot = 3f;
     public float timer;
@@ -22,7 +22,8 @@ public class EnemyAI : MonoBehaviour
     public bool gunIsDrawn = false;
     //public bool gunDrawn = false;
 
-    WeaponController weaponController;
+    HitPoint hitPoint;
+    //WeaponController weaponController;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,8 @@ public class EnemyAI : MonoBehaviour
         SetRigidbodyState(true);
         //SetColliderState(false);
         //GetComponent<Animator>().enabled = true;
-        weaponController = FindObjectOfType<WeaponController>();
+
+        //weaponController = FindObjectOfType<WeaponController>();
 
         rngHit = Random.Range(0, 100);
     }
@@ -56,12 +58,6 @@ public class EnemyAI : MonoBehaviour
                 }
             }
         }
-
-        if (isDead)
-        {
-            Ragdoll();
-            gun.GetComponent<Rigidbody>().useGravity = true;
-        }
     }
 
     void EnemyShoot()
@@ -69,8 +65,11 @@ public class EnemyAI : MonoBehaviour
         muzzleFlash.Play();
     }
 
-    public void Die()
+    public void EnemyDeath(Vector3 _position, float _force)
     {
+        hitPoint = new HitPoint(_position, _force);
+        Ragdoll();
+        gun.GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Animator>().enabled = false;
         SetRigidbodyState(false);
         SetColliderState(true);
@@ -78,7 +77,8 @@ public class EnemyAI : MonoBehaviour
 
     void Ragdoll()
     {
-        Collider[] colliders = Physics.OverlapSphere(weaponController.hit.point, 1f);
+        //Collider[] colliders = Physics.OverlapSphere(weaponController.hit.point, 1f);
+        Collider[] colliders = GetComponentsInChildren<Collider>();
 
         foreach (Collider closeObjects in colliders)
         {
@@ -86,7 +86,8 @@ public class EnemyAI : MonoBehaviour
 
             if (rigidbody != null)
             {
-                rigidbody.AddExplosionForce(weaponController.force, weaponController.hit.point, 1f);
+                //rigidbody.AddExplosionForce(weaponController.force, weaponController.hit.point, 1f);
+                rigidbody.AddExplosionForce(hitPoint.force, hitPoint.position, 1f);
             }
         }
     }
@@ -117,13 +118,32 @@ public class EnemyAI : MonoBehaviour
     }
 }
 
-public enum RequiredHit
+public class HitPoint
+{
+    public Vector3 position;
+    public float force;
+
+    public HitPoint(Vector3 _position, float _force)
+    {
+        position = _position;
+        force = _force;
+    }
+}
+
+
+[System.Serializable]
+public class RequiredHit
+{
+    public BodyPart bodyPart;
+}
+
+public enum BodyPart
 {
     Head,
     Chest,
-    LeftArm,
-    RightArm,
-    LeftLeg,
-    RightLeg,
+    ArmLeft,
+    ArmRight,
+    LegLeft,
+    LegRight,
     None
 }

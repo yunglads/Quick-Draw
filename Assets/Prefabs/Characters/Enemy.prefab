@@ -120,7 +120,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1130425118581976496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e7c6cb814c9324a82e19871da39687, type: 3}
+  m_Script: {fileID: 11500000, guid: 580f044fd5a91724f9013d144d40189b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPart: 3
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1130445347894090082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e7c6cb814c9324a82e19871da39687, type: 3}
+  m_Script: {fileID: 11500000, guid: 580f044fd5a91724f9013d144d40189b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPart: 3
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1130466514193155908}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e7c6cb814c9324a82e19871da39687, type: 3}
+  m_Script: {fileID: 11500000, guid: 580f044fd5a91724f9013d144d40189b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPart: 5
@@ -965,7 +965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ebfb42c5ccc3342b9206060feb7a89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredHit: 0
+  requiredHits: []
   timeTilShoot: 5
   timer: 0
   chanceToHit: 65
@@ -1373,7 +1373,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1131982608117793078}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e7c6cb814c9324a82e19871da39687, type: 3}
+  m_Script: {fileID: 11500000, guid: 580f044fd5a91724f9013d144d40189b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPart: 2
@@ -1650,7 +1650,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1132080743864221536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e7c6cb814c9324a82e19871da39687, type: 3}
+  m_Script: {fileID: 11500000, guid: 580f044fd5a91724f9013d144d40189b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPart: 2
@@ -1774,7 +1774,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1132087111387642336}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e7c6cb814c9324a82e19871da39687, type: 3}
+  m_Script: {fileID: 11500000, guid: 580f044fd5a91724f9013d144d40189b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPart: 0
@@ -2238,7 +2238,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1132295163413355488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e7c6cb814c9324a82e19871da39687, type: 3}
+  m_Script: {fileID: 11500000, guid: 580f044fd5a91724f9013d144d40189b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPart: 5
@@ -2423,7 +2423,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1132317309039272188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e7c6cb814c9324a82e19871da39687, type: 3}
+  m_Script: {fileID: 11500000, guid: 580f044fd5a91724f9013d144d40189b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPart: 4
@@ -2578,7 +2578,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1132390307143298768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e7c6cb814c9324a82e19871da39687, type: 3}
+  m_Script: {fileID: 11500000, guid: 580f044fd5a91724f9013d144d40189b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPart: 4
@@ -2625,7 +2625,7 @@ GameObject:
   - component: {fileID: 1131470310745691307}
   - component: {fileID: 1131470310745691305}
   - component: {fileID: 1131470310745691304}
-  - component: {fileID: 5882277635784339240}
+  - component: {fileID: 1776296877101607648}
   m_Layer: 0
   m_Name: Spine_02
   m_TagString: Untagged
@@ -2723,7 +2723,7 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &5882277635784339240
+--- !u!114 &1776296877101607648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2732,7 +2732,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1132442572837604654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05e7c6cb814c9324a82e19871da39687, type: 3}
+  m_Script: {fileID: 11500000, guid: 580f044fd5a91724f9013d144d40189b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPart: 1

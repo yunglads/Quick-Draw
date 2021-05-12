@@ -18,9 +18,6 @@ public class WeaponController : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
 
-    GameObject target;
-
-    // Update is called once per frame
     void Update()
     {
 #if UNITY_STANDALONE_WIN
@@ -45,32 +42,28 @@ public class WeaponController : MonoBehaviour
         if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
-            target = hit.transform.gameObject;
 
-            BodyPart bodyPartHit = hit.transform.gameObject.GetComponent<BodyPart>();
+            BodyHit bodyHit = hit.transform.gameObject.GetComponent<BodyHit>();
 
-            if (bodyPartHit != null)
+            if (bodyHit != null)
             {
-                EnemyAI enemy = bodyPartHit.GetComponentInParent<EnemyAI>();
-                if(enemy.requiredHit == RequiredHit.None || enemy.requiredHit == bodyPartHit.bodyPart)
+                EnemyAI enemy = bodyHit.GetComponentInParent<EnemyAI>();
+                for (int i=0; i<enemy.requiredHits.Count; i++)
+                {
+                    if (enemy.requiredHits[i].bodyPart == bodyHit.bodyPart)
+                    {
+                        enemy.requiredHits.RemoveAt(i);
+                        i--;
+                    }
+                }              
+                if (enemy.requiredHits.Count == 0)
                 {
                     GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
                     Destroy(impactGO, 1f);
-                    enemy.isDead = true;
-                    enemy.Die();
-                    FightController.Instance.KillEnemy();                    
+                    enemy.EnemyDeath(hit.point, force);
+                    FightController.Instance.KillEnemy();
                 }
             }
-
-
-            /*if (hit.transform.tag == "Enemy")
-            {
-                GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                Destroy(impactGO, 1f);
-                target.GetComponent<EnemyAI>().isDead = true;
-                target.GetComponent<EnemyAI>().Die();
-                FightController.Instance.KillEnemy();
-            }*/
         }
 
         ammoCount--;

@@ -5859,6 +5859,11 @@ PrefabInstance:
       propertyPath: timeTilShoot
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1131470309860897226, guid: 15b94d995b0e39d44a78d26b9868bcd0,
+        type: 3}
+      propertyPath: requiredHits.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1131470311684891502, guid: 15b94d995b0e39d44a78d26b9868bcd0,
         type: 3}
       propertyPath: m_Mesh
