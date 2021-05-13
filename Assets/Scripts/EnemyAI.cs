@@ -7,6 +7,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     public List<RequiredHit> requiredHits = new List<RequiredHit>();
 
+    public bool allHitsRequired;
+
     public float timeTilShoot = 3f;
     public float timer;
     [Tooltip("A higher number will lower the chance the enemy will sucessfully shoot player")]
@@ -20,19 +22,11 @@ public class EnemyAI : MonoBehaviour
     public bool isDead = false;
     public bool playerHit = false;
     public bool gunIsDrawn = false;
-    //public bool gunDrawn = false;
 
     HitPoint hitPoint;
-    //WeaponController weaponController;
-
-    // Start is called before the first frame update
     void Start()
     {
         SetRigidbodyState(true);
-        //SetColliderState(false);
-        //GetComponent<Animator>().enabled = true;
-
-        //weaponController = FindObjectOfType<WeaponController>();
 
         rngHit = Random.Range(0, 100);
     }
@@ -68,11 +62,11 @@ public class EnemyAI : MonoBehaviour
     public void EnemyDeath(Vector3 _position, float _force)
     {
         hitPoint = new HitPoint(_position, _force);
+        isDead = true;
         Ragdoll();
         gun.GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Animator>().enabled = false;
         SetRigidbodyState(false);
-        SetColliderState(true);
     }
 
     void Ragdoll()
@@ -102,19 +96,6 @@ public class EnemyAI : MonoBehaviour
         }
 
         GetComponent<Rigidbody>().isKinematic = !state;
-    }
-
-
-    void SetColliderState(bool state)
-    {
-        Collider[] colliders = GetComponentsInChildren<Collider>();
-
-        foreach (Collider collider in colliders)
-        {
-            collider.enabled = state;
-        }
-
-        //GetComponent<Collider>().enabled = !state;
     }
 }
 

@@ -48,25 +48,46 @@ public class WeaponController : MonoBehaviour
             if (bodyHit != null)
             {
                 EnemyAI enemy = bodyHit.GetComponentInParent<EnemyAI>();
-                for (int i=0; i<enemy.requiredHits.Count; i++)
+                if (enemy.allHitsRequired)
                 {
-                    if (enemy.requiredHits[i].bodyPart == bodyHit.bodyPart)
+                    for (int i = 0; i < enemy.requiredHits.Count; i++)
                     {
-                        enemy.requiredHits.RemoveAt(i);
-                        i--;
+                        if (enemy.requiredHits[i].bodyPart == bodyHit.bodyPart)
+                        {
+                            enemy.requiredHits.RemoveAt(i);
+                            i--;
+                        }
                     }
-                }              
-                if (enemy.requiredHits.Count == 0)
+                    if (enemy.requiredHits.Count == 0)
+                    {
+                        Shoot(enemy);
+                    }
+                }
+                else
                 {
-                    GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-                    Destroy(impactGO, 1f);
-                    enemy.EnemyDeath(hit.point, force);
-                    FightController.Instance.KillEnemy();
+                    for (int i = 0; i < enemy.requiredHits.Count; i++)
+                    {
+                        if (enemy.requiredHits[i].bodyPart == bodyHit.bodyPart)
+                        {
+                            Shoot(enemy);
+                        }
+                    }
+                    if (enemy.requiredHits.Count == 0)
+                    {
+                        Shoot(enemy);
+                    }
                 }
             }
         }
-
         ammoCount--;
+    }
+
+    void Shoot(EnemyAI enemy)
+    {
+        GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+        Destroy(impactGO, 1f);
+        enemy.EnemyDeath(hit.point, force);
+        FightController.Instance.KillEnemy();
     }
 
     public void MobileShoot()

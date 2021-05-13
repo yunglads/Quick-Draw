@@ -141,6 +141,8 @@ public class LevelManagerSystem : Singleton<LevelManagerSystem>
         }
         else
         {
+            int levelNumber = int.Parse(scene.name.Substring(5));
+            SetCurrentLevel(levelNumber);
             CameraController.DisableCameras();
         }
     }

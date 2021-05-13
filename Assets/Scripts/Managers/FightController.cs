@@ -36,13 +36,13 @@ public class FightController : Singleton<FightController>
     int index = 0;
 
     Player playerController;
-    public int enemies;
+    public int enemiesNumber;
 
     protected override void Awake()
     {
         base.Awake();
         additionalTimer = 0;
-        enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        enemiesNumber = GameObject.FindGameObjectsWithTag("Enemy").Length;
         playerController = FindObjectOfType<Player>();
     }
 
@@ -64,7 +64,6 @@ public class FightController : Singleton<FightController>
         //drawButton.interactable = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!fightStarted)
@@ -132,7 +131,7 @@ public class FightController : Singleton<FightController>
 
     public void KillEnemy()
     {
-        enemies--;
+        enemiesNumber--;
         if (AllEnemiesDead())
         {
             playerController.Victory();
@@ -141,7 +140,7 @@ public class FightController : Singleton<FightController>
 
     public bool AllEnemiesDead()
     {
-        return enemies <= 0;
+        return enemiesNumber <= 0;
     }
 
     public void KillPlayer()
