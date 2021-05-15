@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
 
          GameStats.Instance.totalStars += levelStars;
          GameStats.Instance.playerMoney += GameStats.Instance.levelReward;
-         GameStats.Instance.levelReward = 0;
+         //GameStats.Instance.levelReward = 0;
 
          LevelManagerSystem.Instance.LevelCompleted(levelTimer);
     }

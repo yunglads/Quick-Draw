@@ -18,6 +18,7 @@ public class FightController : Singleton<FightController>
     EnemyAI enemyAI;
 
     public GameObject ecmFP;
+    public GameObject introCanvas;
 
     public Button drawButton;
     public Text drawTimerText;
@@ -25,12 +26,14 @@ public class FightController : Singleton<FightController>
     float randomXPos;
     float randomYpos;
 
+    bool startCounters = false;
     bool fightStarted = false;
     bool timerSet = false;
 
     public GameObject mobileUI;
 
     public Camera playerCam;
+    public Camera enemyCam;
     public GameObject[] lookPoints;
     int rngLookPoint;
     int index = 0;
@@ -50,6 +53,7 @@ public class FightController : Singleton<FightController>
     {
         enemyAI = FindObjectOfType<EnemyAI>();
         player = GameObject.FindGameObjectWithTag("PlayerController");
+        player.SetActive(false);
 
         //player.GetComponentInChildren<MouseLook>().lockCursor = false;
         //player.GetComponentInChildren<MouseLook>().lateralSensitivity = 0;
@@ -59,14 +63,19 @@ public class FightController : Singleton<FightController>
         randomXPos = Random.Range(0, 600);
         randomYpos = Random.Range(0, 250);
 
-        drawButton.transform.position = new Vector3(randomXPos, randomYpos, 0);
-        drawButton.gameObject.SetActive(false);
+        
         //drawButton.interactable = false;
     }
 
     void Update()
     {
-        if (!fightStarted)
+        if (startCounters)
+        {
+            drawButton.transform.position = new Vector3(randomXPos, randomYpos, 0);
+            drawButton.gameObject.SetActive(false);
+        }
+
+        if (!fightStarted && startCounters)
         {
             drawTimer += Time.deltaTime;
             drawTimerText.text = drawTimer.ToString("F2");
@@ -146,5 +155,13 @@ public class FightController : Singleton<FightController>
     public void KillPlayer()
     {
         playerController.PlayerDead();
+    }
+
+    public void StartFightButton()
+    {
+        startCounters = true;
+        introCanvas.SetActive(false);
+        enemyCam.enabled = false;
+        player.SetActive(true);
     }
 }
