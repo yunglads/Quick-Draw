@@ -26,15 +26,13 @@ public class LevelUI : MonoBehaviour
 
     public void DetailedLevelPage()
     {
-        if (level.starsNeeded > GameStats.Instance.totalStars)
+        if (level.starsNeeded > GameStats.Instance.TotalStars)
         {
             level.isLocked = true;
         }
 
-        GameStats.Instance.levelReward = level.reward;
-
         enemyNameText.text = level.enemyName;
-        rewardText.text = level.reward.ToString();
+        rewardText.text = level.levelReward.ToString();
 
         LevelManagerSystem.Instance.SetCurrentLevel(levelID);
 

@@ -12254,11 +12254,6 @@ PrefabInstance:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 207009592}
-    - target: {fileID: 2594867020294305875, guid: 80204a507e009c347b45196dfd0cc614,
-        type: 3}
-      propertyPath: levels.Array.data[1].reward
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 2594867020294305879, guid: 80204a507e009c347b45196dfd0cc614,
         type: 3}
       propertyPath: m_Name

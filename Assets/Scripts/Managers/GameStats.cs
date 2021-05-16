@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class GameStats : Singleton<GameStats>
 {
-    public int totalStars = 0;
-    public float playerMoney = 0;
-    public int playerGold = 0;
-
-    public int levelReward;
-    public bool statUpdate = false;
+    [SerializeField]
+    public int TotalStars = 0;
+    [SerializeField]
+    private float playerMoney = 0;
+    [SerializeField]
+    private int playerGold = 0;
 
     [SerializeField]
     private Text playerMoneyText;
@@ -40,8 +40,23 @@ public class GameStats : Singleton<GameStats>
 
             playerMoneyText.text = playerMoney.ToString("F2");
             playerGoldText.text = playerGold.ToString();
-            totalStarsText.text = totalStars.ToString();
+            totalStarsText.text = TotalStars.ToString();
             Debug.Log("UI found");
         }
+    }
+
+    public void UpdateStars(int starts)
+    {
+        TotalStars += starts;
+    }
+
+    public void UpdateMoney(float money)
+    {
+        playerMoney += money;
+    }
+
+    public void UpdateGold(int gold)
+    {
+        playerGold += gold;
     }
 }

@@ -173,11 +173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b4b839971dedf4ab25186c2f417d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalStars: 0
+  TotalStars: 0
   playerMoney: 0
   playerGold: 0
-  levelReward: 0
-  statUpdate: 0
   playerMoneyText: {fileID: 0}
   playerGoldText: {fileID: 0}
   totalStarsText: {fileID: 0}
@@ -213,7 +211,7 @@ MonoBehaviour:
     completionTime: 0
     isLocked: 0
     enemyName: roger
-    reward: 10
+    levelReward: 10
     twoStarTime: 10
   - levelID: 2
     levelCompleted: 0
@@ -222,7 +220,7 @@ MonoBehaviour:
     completionTime: 0
     isLocked: 0
     enemyName: amy
-    reward: 10
+    levelReward: 20
     twoStarTime: 10
   currentLevel: 0
   gameController: {fileID: 0}

@@ -97,7 +97,7 @@ public class LevelManagerSystem : Singleton<LevelManagerSystem>
         return isAvailable;
     }
 
-    public void LevelCompleted(float time)
+    public void CompleteLevel(float time)
     {
         if(levels[currentLevel - 1].completionTime == 0 || levels[currentLevel - 1].completionTime > time)
         {
@@ -112,7 +112,7 @@ public class LevelManagerSystem : Singleton<LevelManagerSystem>
     {
         for(int i=currentLevel; i<levels.Length; i++)
         {
-            if (levels[i].starsNeeded <= gameStats.totalStars)
+            if (levels[i].starsNeeded <= gameStats.TotalStars)
             {
                 levels[i].isLocked = false;
             }
@@ -158,7 +158,7 @@ public class Level
     public float completionTime;
     public bool isLocked;
     public string enemyName;
-    public int reward;
+    public int levelReward;
     public float twoStarTime;
 }
 
