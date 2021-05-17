@@ -20,6 +20,8 @@ public class GameStats : Singleton<GameStats>
     [SerializeField]
     private Text totalStarsText;
 
+    //bool playerUIFound = false;
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -34,14 +36,15 @@ public class GameStats : Singleton<GameStats>
     {
         if (scene.name == "MainMenu")
         {
-            playerMoneyText = GameObject.FindGameObjectWithTag("MoneyUI").GetComponent<Text>();
-            playerGoldText = GameObject.FindGameObjectWithTag("GoldUI").GetComponent<Text>();
-            totalStarsText = GameObject.FindGameObjectWithTag("StarsUI").GetComponent<Text>();
+            UpdateUI();
+        }
+    }
 
-            playerMoneyText.text = playerMoney.ToString("F2");
-            playerGoldText.text = playerGold.ToString();
-            totalStarsText.text = TotalStars.ToString();
-            Debug.Log("UI found");
+    private void Update()
+    {
+        if (playerGoldText == null && playerMoneyText == null && totalStarsText == null)
+        {
+            UpdateUI();
         }
     }
 
@@ -58,5 +61,17 @@ public class GameStats : Singleton<GameStats>
     public void UpdateGold(int gold)
     {
         playerGold += gold;
+    }
+
+    public void UpdateUI()
+    {
+        playerMoneyText = GameObject.FindGameObjectWithTag("MoneyUI").GetComponent<Text>();
+        playerGoldText = GameObject.FindGameObjectWithTag("GoldUI").GetComponent<Text>();
+        totalStarsText = GameObject.FindGameObjectWithTag("StarsUI").GetComponent<Text>();
+
+        playerMoneyText.text = "$ " + playerMoney.ToString("F2");
+        playerGoldText.text = playerGold.ToString();
+        totalStarsText.text = TotalStars.ToString();
+        Debug.Log("UI found");
     }
 }
