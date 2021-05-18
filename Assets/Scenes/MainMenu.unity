@@ -12451,32 +12451,32 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 9799a0c9e3b73bb478f0894e6f48c0f5, type: 2}
+      objectReference: {fileID: 9100000, guid: 3e6baf33fcdc66848a75a334ad02c225, type: 2}
     - target: {fileID: 7688842022641682661, guid: 201237bfa7529144c8b09a843c903ed7,
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 9799a0c9e3b73bb478f0894e6f48c0f5, type: 2}
+      objectReference: {fileID: 9100000, guid: 3e6baf33fcdc66848a75a334ad02c225, type: 2}
     - target: {fileID: 7689418599828654346, guid: 201237bfa7529144c8b09a843c903ed7,
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 9799a0c9e3b73bb478f0894e6f48c0f5, type: 2}
+      objectReference: {fileID: 9100000, guid: 3e6baf33fcdc66848a75a334ad02c225, type: 2}
     - target: {fileID: 7689542182161880441, guid: 201237bfa7529144c8b09a843c903ed7,
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 9799a0c9e3b73bb478f0894e6f48c0f5, type: 2}
+      objectReference: {fileID: 9100000, guid: 3e6baf33fcdc66848a75a334ad02c225, type: 2}
     - target: {fileID: 7689579683001156851, guid: 201237bfa7529144c8b09a843c903ed7,
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 9799a0c9e3b73bb478f0894e6f48c0f5, type: 2}
+      objectReference: {fileID: 9100000, guid: 3e6baf33fcdc66848a75a334ad02c225, type: 2}
     - target: {fileID: 7689643931460807050, guid: 201237bfa7529144c8b09a843c903ed7,
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 9799a0c9e3b73bb478f0894e6f48c0f5, type: 2}
+      objectReference: {fileID: 9100000, guid: 3e6baf33fcdc66848a75a334ad02c225, type: 2}
     - target: {fileID: 7774774767489267828, guid: 201237bfa7529144c8b09a843c903ed7,
         type: 3}
       propertyPath: m_Name
@@ -12537,5 +12537,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7858377965215217584, guid: 201237bfa7529144c8b09a843c903ed7,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3e6baf33fcdc66848a75a334ad02c225, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 201237bfa7529144c8b09a843c903ed7, type: 3}

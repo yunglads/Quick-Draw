@@ -15,7 +15,8 @@ public class EnemyAI : MonoBehaviour
     public float chanceToHit = 65f;
     float rngHit;
 
-    public GameObject gun;
+    public GameObject gunHand;
+    public GameObject gunHolster;
 
     public ParticleSystem muzzleFlash;
 
@@ -24,9 +25,13 @@ public class EnemyAI : MonoBehaviour
     public bool gunIsDrawn = false;
 
     HitPoint hitPoint;
+
+    Animator anim;
     void Start()
     {
         SetRigidbodyState(true);
+
+        anim = GetComponent<Animator>();
 
         rngHit = Random.Range(0, 100);
     }
@@ -36,6 +41,9 @@ public class EnemyAI : MonoBehaviour
         if (gunIsDrawn)
         {
             timer += Time.deltaTime;
+            anim.SetTrigger("drawGun");
+            gunHand.SetActive(true);
+            gunHolster.SetActive(false);
 
             if (!isDead && timer >= timeTilShoot && !playerHit)
             {
@@ -56,6 +64,7 @@ public class EnemyAI : MonoBehaviour
 
     void EnemyShoot()
     {
+        anim.SetTrigger("shoot");
         muzzleFlash.Play();
     }
 
@@ -64,7 +73,8 @@ public class EnemyAI : MonoBehaviour
         hitPoint = new HitPoint(_position, _force);
         isDead = true;
         Ragdoll();
-        gun.GetComponent<Rigidbody>().useGravity = true;
+        gunHand.GetComponent<Rigidbody>().useGravity = true;
+        gunHand.GetComponent<MeshCollider>().enabled = true;
         GetComponent<Animator>().enabled = false;
         SetRigidbodyState(false);
     }
