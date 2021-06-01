@@ -35,20 +35,39 @@ public class CameraController : MonoBehaviour
         mainCamera = levelAnimation.GetComponent<Animator>();
     }
 
-    public bool GetCurrentAnimationInfo()
+    public bool GetAnimationInfoLevel()
     {
         return mainCamera.GetCurrentAnimatorStateInfo(0).IsTag("LevelBoard");
+    } 
+    
+    public bool GetAnimationInfoShop()
+    {
+        return mainCamera.GetCurrentAnimatorStateInfo(0).IsTag("Shop");
     } 
 
     public void LevelButtonAnimation()
     {
         mainCamera.SetBool("levelButtonClicked", true);
         mainCamera.SetBool("backToMenuButtonClicked", false);
+        mainCamera.SetBool("menuFromShopClicked", false);
     }
 
     public void BackMenuButtonAnimation()
     {
         mainCamera.SetBool("backToMenuButtonClicked", true);
         mainCamera.SetBool("levelButtonClicked", false);
+    }
+    
+    public void ShopButtonAnimation()
+    {
+        mainCamera.SetBool("shopButtonClicked", true);
+        mainCamera.SetBool("menuFromShopClicked", false);
+        mainCamera.SetBool("backToMenuButtonClicked", false);
+    }
+    
+    public void BackFromShopAnimation()
+    {
+        mainCamera.SetBool("menuFromShopClicked", true);
+        mainCamera.SetBool("shopButtonClicked", false);
     }
 }

@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
 {    
     bool levelButtonClicked = false;
     bool backToMenuButtonClicked = false;
+    bool shopButtonClicked = false;
+    bool menuFromShopClicked = false;
 
     [SerializeField] 
     private GameObject playLevelsButton;
@@ -34,6 +36,8 @@ public class GameController : MonoBehaviour
     private GameObject levelPanel;
     [SerializeField]
     private GameObject detailedPanel;
+    [SerializeField]
+    private GameObject shopPanel;
 
     float timer = 0;
 
@@ -48,7 +52,7 @@ public class GameController : MonoBehaviour
         //Level poster screen
         if (levelButtonClicked)
         {
-            if (LevelManagerSystem.Instance.CameraController.GetCurrentAnimationInfo())
+            if (LevelManagerSystem.Instance.CameraController.GetAnimationInfoLevel())
             {
                 backButton.SetActive(true);
                 bountiesText.SetActive(true);
@@ -56,8 +60,16 @@ public class GameController : MonoBehaviour
             }
         }
 
+        if (shopButtonClicked)
+        {
+            if (LevelManagerSystem.Instance.CameraController.GetAnimationInfoShop())
+            {
+                shopPanel.SetActive(true);
+            }
+        }
+
         //Main character screen
-        if (backToMenuButtonClicked)
+        if (backToMenuButtonClicked || menuFromShopClicked)
         {            
             timer += Time.deltaTime;
             if (timer >= 3f)
@@ -70,6 +82,7 @@ public class GameController : MonoBehaviour
                 //leftButton.SetActive(false);
                 //rightButton.SetActive(false);
                 backToMenuButtonClicked = false;
+                menuFromShopClicked = false;
                 timer = 0;
             }
         }
@@ -123,5 +136,29 @@ public class GameController : MonoBehaviour
         leftButton.SetActive(true);
         rightButton.SetActive(true);
         selectButton.SetActive(true);
+    }
+
+    public void ShopButton()
+    {
+        LevelManagerSystem.Instance.CameraController.ShopButtonAnimation();
+
+        playLevelsButton.SetActive(false);
+        shopButton.SetActive(false);
+        charactersButton.SetActive(false);
+        inventoryButton.SetActive(false);
+        playerInfoBar.SetActive(false);
+
+        shopButtonClicked = true;
+        menuFromShopClicked = false;
+    }
+
+    public void MenuFromShopButton()
+    {
+        LevelManagerSystem.Instance.CameraController.BackFromShopAnimation();
+        
+        shopPanel.SetActive(false);
+
+        shopButtonClicked = false;
+        menuFromShopClicked = true;
     }
 }
