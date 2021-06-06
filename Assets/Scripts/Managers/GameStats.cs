@@ -11,7 +11,9 @@ public class GameStats : Singleton<GameStats>
     [SerializeField]
     private float playerMoney = 0;
     [SerializeField]
-    private int playerGold = 0;
+    public int playerGold = 0;
+
+    public bool uiUpdated = false;
 
     [SerializeField]
     private Text playerMoneyText;
@@ -19,6 +21,8 @@ public class GameStats : Singleton<GameStats>
     private Text playerGoldText;
     [SerializeField]
     private Text totalStarsText;
+
+    public Camera mainCamera;
 
     //bool playerUIFound = false;
 
@@ -46,6 +50,12 @@ public class GameStats : Singleton<GameStats>
         {
             UpdateUI();
         }
+
+        if (uiUpdated && mainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Menu"))
+        {
+            UpdateUI();
+            uiUpdated = false;
+        }
     }
 
     public void UpdateStars(int starts)
@@ -65,6 +75,7 @@ public class GameStats : Singleton<GameStats>
 
     public void UpdateUI()
     {
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         playerMoneyText = GameObject.FindGameObjectWithTag("MoneyUI").GetComponent<Text>();
         playerGoldText = GameObject.FindGameObjectWithTag("GoldUI").GetComponent<Text>();
         totalStarsText = GameObject.FindGameObjectWithTag("StarsUI").GetComponent<Text>();
