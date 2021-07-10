@@ -11,6 +11,7 @@ public class LevelUI : MonoBehaviour
     public Sprite enemySprite;
     public Text enemyNameText;
     public Text rewardText;
+    public GameObject capturedText;
     public GameObject detailedPanel;
     public GameObject lockImage;
 
@@ -49,6 +50,15 @@ public class LevelUI : MonoBehaviour
         {
             lockImage.SetActive(false);
             playButton.interactable = true;
+        }
+
+        if (level.levelCompleted)
+        {
+            capturedText.SetActive(true);
+        }
+        else
+        {
+            capturedText.SetActive(false);
         }
     }
 

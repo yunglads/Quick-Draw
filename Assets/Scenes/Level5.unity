@@ -638,17 +638,12 @@ PrefabInstance:
     - target: {fileID: 7725661840995852365, guid: 07e1f8ded75201f42bd59c7e4178bf4a,
         type: 3}
       propertyPath: m_Text
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7732972184929248610, guid: 07e1f8ded75201f42bd59c7e4178bf4a,
         type: 3}
       propertyPath: m_Text
-      value: Amy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8515266861254287581, guid: 07e1f8ded75201f42bd59c7e4178bf4a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: Bouncing Betty
       objectReference: {fileID: 0}
     - target: {fileID: 8741051968602172473, guid: 07e1f8ded75201f42bd59c7e4178bf4a,
         type: 3}
@@ -6376,7 +6371,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300004, guid: 4837235d67e136e4b883adb2bafc73e8, type: 3}
+      objectReference: {fileID: 4300000, guid: 4837235d67e136e4b883adb2bafc73e8, type: 3}
     - target: {fileID: 1131860085063953804, guid: 15b94d995b0e39d44a78d26b9868bcd0,
         type: 3}
       propertyPath: m_Name
