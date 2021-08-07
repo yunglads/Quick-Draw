@@ -31,6 +31,7 @@ public class FightController : Singleton<FightController>
     bool timerSet = false;
 
     public GameObject mobileUI;
+    public GameObject tutorialPanel;
 
     public Camera playerCam;
     public Camera enemyCam;
@@ -163,5 +164,10 @@ public class FightController : Singleton<FightController>
         introCanvas.SetActive(false);
         enemyCam.enabled = false;
         player.SetActive(true);
+    }
+
+    public void ContinueTutorialButton()
+    {
+        tutorialPanel.SetActive(false);
     }
 }

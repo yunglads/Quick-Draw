@@ -9,7 +9,7 @@ public class GameStats : Singleton<GameStats>
     [SerializeField]
     public int TotalStars = 0;
     [SerializeField]
-    private float playerMoney = 0;
+    public float playerMoney = 0;
     [SerializeField]
     public int playerGold = 0;
 
@@ -46,12 +46,18 @@ public class GameStats : Singleton<GameStats>
 
     private void Update()
     {
-        if (playerGoldText == null && playerMoneyText == null && totalStarsText == null)
+        if (mainCamera == null)
         {
-            UpdateUI();
+            mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         }
 
         if (uiUpdated && mainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Menu"))
+        {
+            UpdateUI();
+            uiUpdated = false;
+        }
+
+        if (playerGoldText == null && playerMoneyText == null && totalStarsText == null && mainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Menu"))
         {
             UpdateUI();
             uiUpdated = false;
@@ -83,6 +89,8 @@ public class GameStats : Singleton<GameStats>
         playerMoneyText.text = "$ " + playerMoney.ToString("F2");
         playerGoldText.text = playerGold.ToString();
         totalStarsText.text = TotalStars.ToString();
+
+        //uiUpdated = true;
         Debug.Log("UI found");
     }
 }

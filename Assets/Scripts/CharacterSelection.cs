@@ -4,30 +4,41 @@ using UnityEngine;
 
 public class CharacterSelection : MonoBehaviour
 {
-    public GameObject[] characterList;
+    public List<GameObject> characterList;
 
-    int index;
+    [HideInInspector]
+    public bool updateList = false;
+
+    public int index;
 
     // Start is called before the first frame update
     void Start()
     {
         index = PlayerPrefs.GetInt("CharacterSelected");
 
-        characterList = new GameObject[transform.childCount];
+        characterList = new List<GameObject>(transform.childCount);
 
         for (int i = 0; i < transform.childCount; i++)
         {
-            characterList[i] = transform.GetChild(i).gameObject;
-        }
-
-        foreach (GameObject go in characterList)
-        {
-            go.SetActive(false);
+            characterList.Add(transform.GetChild(i).gameObject);
         }
 
         if (characterList[index])
         {
             characterList[index].SetActive(true);
+        }
+    }
+
+    private void Update()
+    {
+        if (characterList[index])
+        {
+            characterList[index].SetActive(true);
+        }
+
+        if (updateList)
+        {
+            UpdateList();
         }
     }
 
@@ -38,7 +49,7 @@ public class CharacterSelection : MonoBehaviour
         index--;
         if(index < 0)
         {
-            index = characterList.Length - 1;
+            index = characterList.Count - 1;
         }
 
         characterList[index].SetActive(true);
@@ -49,12 +60,28 @@ public class CharacterSelection : MonoBehaviour
         characterList[index].SetActive(false);
 
         index++;
-        if(index == characterList.Length)
+        if(index == characterList.Count)
         {
             index = 0;
         }
 
         characterList[index].SetActive(true);
+    }
+
+    public void UpdateList()
+    {
+        characterList = new List<GameObject>(transform.childCount);
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            characterList.Add(transform.GetChild(i).gameObject);
+        }
+
+        foreach (GameObject go in characterList)
+        {
+            go.SetActive(false);
+        }
+        updateList = false;
     }
 
     public void SelectCharacter()

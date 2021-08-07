@@ -30,6 +30,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         SetRigidbodyState(true);
+        //SetColliderState(false);
 
         anim = GetComponent<Animator>();
 
@@ -60,6 +61,11 @@ public class EnemyAI : MonoBehaviour
                 }
             }
         }
+
+        if (isDead)
+        {
+            Ragdoll();
+        }
     }
 
     void EnemyShoot()
@@ -72,17 +78,22 @@ public class EnemyAI : MonoBehaviour
     {
         hitPoint = new HitPoint(_position, _force);
         isDead = true;
-        Ragdoll();
-        gunHand.GetComponent<Rigidbody>().useGravity = true;
-        gunHand.GetComponent<MeshCollider>().enabled = true;
         GetComponent<Animator>().enabled = false;
+        //GetComponent<Rigidbody>().isKinematic = false;
+        gunHand.GetComponent<Rigidbody>().useGravity = true;
+        gunHand.GetComponent<Rigidbody>().isKinematic = false;
+        gunHand.GetComponent<MeshCollider>().enabled = true;
+        //GetComponent<Collider>().enabled = true;
+        //GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+        //Ragdoll();
         SetRigidbodyState(false);
+        //SetColliderState(true);
     }
 
     void Ragdoll()
     {
-        //Collider[] colliders = Physics.OverlapSphere(weaponController.hit.point, 1f);
-        Collider[] colliders = GetComponentsInChildren<Collider>();
+        Collider[] colliders = Physics.OverlapSphere(hitPoint.position, .1f);
+        //Collider[] colliders = GetComponentsInChildren<Collider>();
 
         foreach (Collider closeObjects in colliders)
         {
@@ -91,7 +102,7 @@ public class EnemyAI : MonoBehaviour
             if (rigidbody != null)
             {
                 //rigidbody.AddExplosionForce(weaponController.force, weaponController.hit.point, 1f);
-                rigidbody.AddExplosionForce(hitPoint.force, hitPoint.position, 1f);
+                rigidbody.AddExplosionForce(hitPoint.force, hitPoint.position, .1f, .01f, ForceMode.Impulse);
             }
         }
     }
@@ -105,8 +116,20 @@ public class EnemyAI : MonoBehaviour
             rigidbody.isKinematic = state;
         }
 
-        GetComponent<Rigidbody>().isKinematic = !state;
+        //GetComponent<Rigidbody>().isKinematic = !state;
     }
+
+    //void SetColliderState(bool state)
+    //{
+    //    Collider[] colliders = GetComponentsInChildren<Collider>();
+
+    //    foreach (Collider collider in colliders)
+    //    {
+    //        collider.enabled = state;
+    //    }
+
+    //    GetComponent<Collider>().enabled = !state;
+    //}
 }
 
 public class HitPoint
