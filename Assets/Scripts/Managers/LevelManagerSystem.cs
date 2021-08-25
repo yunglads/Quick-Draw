@@ -97,6 +97,11 @@ public class LevelManagerSystem : Singleton<LevelManagerSystem>
         return isAvailable;
     }
 
+    public void SetLevelStars(int levelStars)
+    {
+        GetCurrentLevel().stars = levelStars;
+    }
+
     public void CompleteLevel(float time)
     {
         if(levels[currentLevel - 1].completionTime == 0 || levels[currentLevel - 1].completionTime > time)

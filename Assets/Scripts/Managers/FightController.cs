@@ -32,6 +32,7 @@ public class FightController : Singleton<FightController>
 
     public GameObject mobileUI;
     public GameObject tutorialPanel;
+    public GameObject weapon;
 
     public Camera playerCam;
     public Camera enemyCam;
@@ -55,6 +56,7 @@ public class FightController : Singleton<FightController>
         enemyAI = FindObjectOfType<EnemyAI>();
         player = GameObject.FindGameObjectWithTag("PlayerController");
         player.SetActive(false);
+        weapon = GameObject.FindGameObjectWithTag("Weapon");
 
         //player.GetComponentInChildren<MouseLook>().lockCursor = false;
         //player.GetComponentInChildren<MouseLook>().lateralSensitivity = 0;
@@ -70,6 +72,11 @@ public class FightController : Singleton<FightController>
 
     void Update()
     {
+        if (weapon == null)
+        {
+            weapon = GameObject.FindGameObjectWithTag("Weapon");
+        }
+
         if (startCounters)
         {
             drawButton.transform.position = new Vector3(randomXPos, randomYpos, 0);
@@ -113,6 +120,7 @@ public class FightController : Singleton<FightController>
         drawTimer = 0;
         drawButton.gameObject.SetActive(false);
         drawTimerText.gameObject.SetActive(false);
+        weapon.GetComponent<Animator>().SetTrigger("gunDrawn");
         //player.GetComponentInChildren<MouseLook>().lockCursor = true;
         //player.GetComponentInChildren<MouseLook>().lateralSensitivity = 2;
         //player.GetComponentInChildren<MouseLook>().verticalSensitivity = 2;

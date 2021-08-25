@@ -43,17 +43,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d00e8d10b14d5b44acea219b07ee22b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  additionalTimer: 0
   gameTimer: 0
   gameTimerSet: 0
-  twoStarTime: 3
   levelStars: 0
+  levelReward: 0
   ecmFP: {fileID: 0}
+  introCanvas: {fileID: 0}
   drawButton: {fileID: 0}
   drawTimerText: {fileID: 0}
   mobileUI: {fileID: 0}
+  tutorialPanel: {fileID: 0}
+  weapon: {fileID: 0}
   playerCam: {fileID: 0}
+  enemyCam: {fileID: 0}
   lookPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  enemiesNumber: 0

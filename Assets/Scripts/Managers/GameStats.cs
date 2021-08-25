@@ -26,6 +26,11 @@ public class GameStats : Singleton<GameStats>
 
     //bool playerUIFound = false;
 
+    void Start()
+    {
+        Application.targetFrameRate = 65;
+    }
+
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -64,9 +69,9 @@ public class GameStats : Singleton<GameStats>
         }
     }
 
-    public void UpdateStars(int starts)
+    public void UpdateStars(int stars)
     {
-        TotalStars += starts;
+        TotalStars += stars;
     }
 
     public void UpdateMoney(float money)

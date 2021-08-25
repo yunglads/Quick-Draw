@@ -14,6 +14,11 @@ public class LevelUI : MonoBehaviour
     public GameObject capturedText;
     public GameObject detailedPanel;
     public GameObject lockImage;
+    public GameObject completedImage;
+    public GameObject star1;
+    public GameObject star2;
+    public GameObject star2Gray;
+
 
     public Button playButton;
 
@@ -23,6 +28,18 @@ public class LevelUI : MonoBehaviour
     public void SetLevel(Level _level)
     {
         level = _level;
+    }
+
+    public void Update()
+    {
+        if (level.levelCompleted)
+        {
+            completedImage.SetActive(true);
+        }
+        else
+        {
+            completedImage.SetActive(false);
+        }
     }
 
     public void DetailedLevelPage()
@@ -59,6 +76,25 @@ public class LevelUI : MonoBehaviour
         else
         {
             capturedText.SetActive(false);
+        }
+
+        if (level.stars == 1)
+        {
+            star1.SetActive(true);
+            star2.SetActive(false);
+            star2Gray.SetActive(true);
+        }
+        else if (level.stars == 2)
+        {
+            star1.SetActive(true);
+            star2.SetActive(true);
+            star2Gray.SetActive(false);
+        }
+        else
+        {
+            star1.SetActive(false);
+            star2.SetActive(false);
+            star2Gray.SetActive(false);
         }
     }
 

@@ -11,6 +11,7 @@ TagManager:
   - MoneyUI
   - GoldUI
   - StarsUI
+  - Weapon
   layers:
   - Default
   - TransparentFX

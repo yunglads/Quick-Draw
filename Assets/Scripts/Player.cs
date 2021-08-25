@@ -66,14 +66,15 @@ public class Player : MonoBehaviour
         float levelTimer = FightController.Instance.gameTimer + FightController.Instance.additionalTimer - winDelayTime;
 
         int levelStars = 1;
-         if (levelTimer <= LevelManagerSystem.Instance.GetCurrentLevel().twoStarTime)
-         {
-             levelStars = 2;
-         }
+        if (levelTimer <= LevelManagerSystem.Instance.GetCurrentLevel().twoStarTime)
+        {
+            levelStars = 2;
+        }
 
-         GameStats.Instance.UpdateStars(levelStars);
-         GameStats.Instance.UpdateMoney(LevelManagerSystem.Instance.GetCurrentLevel().levelReward);
+        GameStats.Instance.UpdateStars(levelStars);
+        GameStats.Instance.UpdateMoney(LevelManagerSystem.Instance.GetCurrentLevel().levelReward);
+        LevelManagerSystem.Instance.SetLevelStars(levelStars);
 
-         LevelManagerSystem.Instance.CompleteLevel(levelTimer);
+        LevelManagerSystem.Instance.CompleteLevel(levelTimer);
     }
 }
