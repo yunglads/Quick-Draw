@@ -582,6 +582,10 @@ PrefabInstance:
       value: 'Some enemies can only be killed with shots on specified bodyparts.
         read objective! '
       objectReference: {fileID: 0}
+    - target: {fileID: 443135509, guid: 07e1f8ded75201f42bd59c7e4178bf4a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 583344928, guid: 07e1f8ded75201f42bd59c7e4178bf4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -781,7 +785,7 @@ PrefabInstance:
     - target: {fileID: 8741051970360125674, guid: 07e1f8ded75201f42bd59c7e4178bf4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 749752720}
+      objectReference: {fileID: 0}
     - target: {fileID: 8741051970360125674, guid: 07e1f8ded75201f42bd59c7e4178bf4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MobileShoot
@@ -3542,17 +3546,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 8371640408587023506, guid: 131e017590995134c844be8836c15187, type: 3}
   m_PrefabInstance: {fileID: 749752718}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &749752720 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8388300697310941102, guid: 131e017590995134c844be8836c15187, type: 3}
-  m_PrefabInstance: {fileID: 749752718}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5084cf60cc04466488ec97f3e2cd82d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &749752721 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8388754389373969860, guid: 131e017590995134c844be8836c15187, type: 3}

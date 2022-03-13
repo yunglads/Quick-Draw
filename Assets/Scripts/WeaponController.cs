@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WeaponController : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class WeaponController : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
 
+    private void Start()
+    {
+        playerCam = GameObject.FindGameObjectWithTag("PlayerCam").GetComponent<Camera>();
+    }
+
     void Update()
     {
 #if UNITY_STANDALONE_WIN
@@ -33,9 +39,14 @@ public class WeaponController : MonoBehaviour
             mobileShootPressed = false;
         }
 #endif
+
+        if (playerCam == null && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("MainMenu"))
+        {
+            playerCam = GameObject.FindGameObjectWithTag("PlayerCam").GetComponent<Camera>();
+        }
     }
 
-    void Shoot()
+    public void Shoot()
     {
         muzzleFlash.Play();
 
@@ -93,5 +104,6 @@ public class WeaponController : MonoBehaviour
     public void MobileShoot()
     {
         mobileShootPressed = true;
+        //Debug.Log("shoot button pressed");
     }
 }

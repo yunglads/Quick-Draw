@@ -39,7 +39,22 @@ public class ItemShopSkin : MonoBehaviour
         {
             purchased.SetActive(true);
             GetComponent<Button>().interactable = false;
-        }   
+        }
+
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        foreach (GameObject item in player.GetComponent<CharacterSelection>().characterList)
+        {
+            if (skin.name == item.name)
+            {
+                isPurchaseable = false;
+            }
+
+            Debug.Log(skin.name + " + " + item.name);
+        }
     }
 
     public void BuySkin()
@@ -50,7 +65,8 @@ public class ItemShopSkin : MonoBehaviour
             gameStats.playerMoney -= price;
             gameStats.uiUpdated = true;
             //characterSelection.characterList.Add(skin1);
-            Instantiate(skin, player.transform);
+            GameObject go = Instantiate(skin, player.transform);
+            go.name = skin.name;
             characterSelection.updateList = true;
         }
         else

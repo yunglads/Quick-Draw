@@ -10,7 +10,7 @@ public class ItemShopWeapon : MonoBehaviour
     public Text priceText;
 
     public GameObject purchased;
-    public GameObject player;
+    public GameObject weaponList;
 
     public GameObject weapon;
 
@@ -21,10 +21,14 @@ public class ItemShopWeapon : MonoBehaviour
     public bool isPurchaseable = true;
 
     GameStats gameStats;
+    WeaponSelection weaponSelection;
 
-    private void Awake()
+    private void Start()
     {
         gameStats = FindObjectOfType<GameStats>();
+        weaponSelection = FindObjectOfType<WeaponSelection>();
+
+        weaponList = GameObject.FindGameObjectWithTag("Weapon");
 
         titleText.text = title;
         descText.text = desc;
@@ -37,6 +41,22 @@ public class ItemShopWeapon : MonoBehaviour
         {
             purchased.SetActive(true);
             GetComponent<Button>().interactable = false;
+            isPurchaseable = false;
+        }
+
+        if (weaponList == null)
+        {
+            weaponList = GameObject.FindGameObjectWithTag("Weapon");
+        }
+
+        foreach (GameObject item in weaponList.GetComponent<WeaponSelection>().weaponList)
+        {
+            if (weapon.name == item.name)
+            {
+                isPurchaseable = false;
+            }
+
+            Debug.Log(weapon.name + " + " + item.name);
         }
     }
 
@@ -47,7 +67,9 @@ public class ItemShopWeapon : MonoBehaviour
             isPurchaseable = false;
             gameStats.playerMoney -= price;
             gameStats.uiUpdated = true;
-            Instantiate(weapon, player.transform);
+            GameObject go = Instantiate(weapon, weaponList.transform);
+            go.name = weapon.name;
+            weaponSelection.updateList = true;
         }
         else
         {

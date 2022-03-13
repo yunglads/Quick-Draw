@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerModel = GameObject.FindGameObjectWithTag("Player");
+        playerWeapon = GameObject.FindGameObjectWithTag("Weapon");
     }
 
     void Update()
@@ -25,6 +26,11 @@ public class Player : MonoBehaviour
         if (playerModel == null)
         {
             playerModel = GameObject.FindGameObjectWithTag("Player");
+        }
+
+        if (playerWeapon == null)
+        {
+            playerWeapon = GameObject.FindGameObjectWithTag("Weapon");
         }
     }
 
