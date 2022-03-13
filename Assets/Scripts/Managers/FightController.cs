@@ -61,7 +61,7 @@ public class FightController : Singleton<FightController>
         //player.GetComponentInChildren<MouseLook>().lockCursor = false;
         //player.GetComponentInChildren<MouseLook>().lateralSensitivity = 0;
         //player.GetComponentInChildren<MouseLook>().verticalSensitivity = 0;
-        player.GetComponentInChildren<WeaponController>().enabled = false;
+        //player.GetComponentInChildren<WeaponController>().enabled = false;
 
         randomXPos = Random.Range(0, 600);
         randomYpos = Random.Range(0, 250);
@@ -120,11 +120,11 @@ public class FightController : Singleton<FightController>
         drawTimer = 0;
         drawButton.gameObject.SetActive(false);
         drawTimerText.gameObject.SetActive(false);
-        weapon.GetComponent<Animator>().SetTrigger("gunDrawn");
+        weapon.GetComponentInChildren<Animator>().SetTrigger("gunDrawn");
         //player.GetComponentInChildren<MouseLook>().lockCursor = true;
         //player.GetComponentInChildren<MouseLook>().lateralSensitivity = 2;
         //player.GetComponentInChildren<MouseLook>().verticalSensitivity = 2;
-        player.GetComponentInChildren<WeaponController>().enabled = true;
+        weapon.GetComponentInChildren<WeaponController>().enabled = true;
         playerCam.transform.LookAt(lookPoints[RandomLookPoint(index)].gameObject.transform.position);
         Vector3 eulerRotation = playerCam.transform.rotation.eulerAngles;
         playerCam.transform.rotation = Quaternion.Euler(eulerRotation.x, 90, eulerRotation.z);
@@ -153,6 +153,8 @@ public class FightController : Singleton<FightController>
         if (AllEnemiesDead())
         {
             playerController.Victory();
+            weapon.transform.SetParent(null);
+            Invoke("ResetGunPos", 3f);
         }
     }
 
@@ -164,6 +166,7 @@ public class FightController : Singleton<FightController>
     public void KillPlayer()
     {
         playerController.PlayerDead();
+        weapon.transform.SetParent(null);
     }
 
     public void StartFightButton()
@@ -177,5 +180,10 @@ public class FightController : Singleton<FightController>
     public void ContinueTutorialButton()
     {
         tutorialPanel.SetActive(false);
+    }
+
+    void ResetGunPos()
+    {
+        weapon.GetComponentInChildren<Animator>().SetTrigger("resetGun");
     }
 }

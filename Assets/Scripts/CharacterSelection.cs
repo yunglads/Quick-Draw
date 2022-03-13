@@ -14,6 +14,9 @@ public class CharacterSelection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Use below code to reset index if index gets stuck on "out of range"
+        PlayerPrefs.SetInt("CharacterSelected", 0);
+
         index = PlayerPrefs.GetInt("CharacterSelected");
 
         characterList = new List<GameObject>(transform.childCount);

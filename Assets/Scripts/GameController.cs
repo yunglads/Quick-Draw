@@ -38,13 +38,23 @@ public class GameController : MonoBehaviour
     private GameObject detailedPanel;
     [SerializeField]
     private GameObject shopPanel;
+    [SerializeField]
+    private GameObject inventoryPanel;
+    [SerializeField]
+    private GameObject blackScreen;
 
     float timer = 0;
 
     private void Awake()
     {
         levelButtonClicked = false;
-        backToMenuButtonClicked = false;
+        backToMenuButtonClicked = false;  
+    }
+
+    private void Start()
+    {
+        Invoke("CloseShopAtStart", .05f);
+        Invoke("CloseBlackScreen", .1f);
     }
 
     void Update()
@@ -160,5 +170,27 @@ public class GameController : MonoBehaviour
 
         shopButtonClicked = false;
         menuFromShopClicked = true;
+    }
+
+    public void InventoryOpen()
+    {
+        inventoryPanel.SetActive(true);
+        shopButton.SetActive(false);
+    }
+
+    public void InventoryClose()
+    {
+        inventoryPanel.SetActive(false);
+        shopButton.SetActive(true);
+    }
+
+    public void CloseShopAtStart()
+    {
+        shopPanel.SetActive(false);
+    }
+
+    public void CloseBlackScreen()
+    {
+        blackScreen.SetActive(false);
     }
 }

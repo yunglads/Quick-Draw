@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 2594867020294305885}
   m_Layer: 0
   m_Name: GameStats
-  m_TagString: Untagged
+  m_TagString: GameStats
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,11 +174,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TotalStars: 0
-  playerMoney: 0
+  playerMoney: 75
   playerGold: 0
+  uiUpdated: 0
   playerMoneyText: {fileID: 0}
   playerGoldText: {fileID: 0}
   totalStarsText: {fileID: 0}
+  mainCamera: {fileID: 2594867021019954825}
 --- !u!114 &2594867020294305884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,17 +213,53 @@ MonoBehaviour:
     completionTime: 0
     isLocked: 0
     enemyName: roger
-    levelReward: 10
+    levelReward: 5
     twoStarTime: 10
   - levelID: 2
     levelCompleted: 0
     stars: 0
-    starsNeeded: 2
+    starsNeeded: 1
     completionTime: 0
-    isLocked: 0
+    isLocked: 1
     enemyName: amy
-    levelReward: 20
+    levelReward: 5
     twoStarTime: 10
+  - levelID: 3
+    levelCompleted: 0
+    stars: 0
+    starsNeeded: 1
+    completionTime: 0
+    isLocked: 1
+    enemyName: Slim Duncan
+    levelReward: 5
+    twoStarTime: 8
+  - levelID: 4
+    levelCompleted: 0
+    stars: 0
+    starsNeeded: 3
+    completionTime: 0
+    isLocked: 1
+    enemyName: Sticky Stan
+    levelReward: 7
+    twoStarTime: 8
+  - levelID: 5
+    levelCompleted: 0
+    stars: 0
+    starsNeeded: 4
+    completionTime: 0
+    isLocked: 1
+    enemyName: Bouncing Betty
+    levelReward: 7
+    twoStarTime: 8
+  - levelID: 6
+    levelCompleted: 0
+    stars: 0
+    starsNeeded: 8
+    completionTime: 0
+    isLocked: 1
+    enemyName: Billy the Zombie
+    levelReward: 15
+    twoStarTime: 5
   currentLevel: 0
   gameController: {fileID: 0}
   sceneController: {fileID: 2594867020294305884}
@@ -269,8 +307,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2594867021019954829}
-  m_LocalRotation: {x: -0.09055355, y: 0.68631124, z: -0.08224435, w: -0.7169469}
-  m_LocalPosition: {x: 4.87, y: 3.04, z: 10.45}
+  m_LocalRotation: {x: -0.12216266, y: 0.07751331, z: -0.006353117, w: -0.98945826}
+  m_LocalPosition: {x: 10.04, y: 2.71, z: 7.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2594867020294305873}

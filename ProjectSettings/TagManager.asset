@@ -12,6 +12,9 @@ TagManager:
   - GoldUI
   - StarsUI
   - Weapon
+  - PlayerCam
+  - GameStats
+  - UIWeapons
   layers:
   - Default
   - TransparentFX
