@@ -32,7 +32,7 @@ public class EnemyAI : MonoBehaviour
         SetRigidbodyState(true);
         //SetColliderState(false);
 
-        anim = GetComponent<Animator>();
+        anim = gameObject.GetComponent<Animator>();
 
         rngHit = Random.Range(0, 100);
     }
@@ -61,7 +61,10 @@ public class EnemyAI : MonoBehaviour
                 }
             }
         }
+    }
 
+    void FixedUpdate()
+    {
         if (isDead)
         {
             Ragdoll();
@@ -102,7 +105,7 @@ public class EnemyAI : MonoBehaviour
             if (rigidbody != null)
             {
                 //rigidbody.AddExplosionForce(weaponController.force, weaponController.hit.point, 1f);
-                rigidbody.AddExplosionForce(hitPoint.force, hitPoint.position, .1f, .01f, ForceMode.Impulse);
+                rigidbody.AddExplosionForce(hitPoint.force, hitPoint.position, .1f, .05f, ForceMode.Impulse);
             }
         }
     }

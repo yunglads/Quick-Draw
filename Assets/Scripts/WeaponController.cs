@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class WeaponController : MonoBehaviour
 {
-    public int ammoCount = 6;
+    public int ammoCount;
+    public int resetAmmoCount;
     public float range = 100f;
     public float force = 10f;
 
@@ -33,6 +34,14 @@ public class WeaponController : MonoBehaviour
         }
 #endif
 #if UNITY_IOS
+        if (mobileShootPressed && ammoCount > 0)
+        {
+            Shoot();
+            mobileShootPressed = false;
+        }
+#endif
+
+#if UNITY_ANDROID
         if (mobileShootPressed && ammoCount > 0)
         {
             Shoot();
@@ -105,5 +114,11 @@ public class WeaponController : MonoBehaviour
     {
         mobileShootPressed = true;
         //Debug.Log("shoot button pressed");
+    }
+
+    public void ResetAmmoCount()
+    {
+        ammoCount = resetAmmoCount;
+        Debug.Log("resetting ammo from: " + ammoCount + " to " + resetAmmoCount);
     }
 }

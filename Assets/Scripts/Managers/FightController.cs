@@ -15,7 +15,8 @@ public class FightController : Singleton<FightController>
     public int levelReward;
 
     GameObject player;
-    EnemyAI enemyAI;
+    EnemyAI[] enemyAI;
+    WeaponController[] weaponControllers;
 
     public GameObject ecmFP;
     public GameObject introCanvas;
@@ -53,7 +54,8 @@ public class FightController : Singleton<FightController>
 
     void Start()
     {
-        enemyAI = FindObjectOfType<EnemyAI>();
+        enemyAI = FindObjectsOfType<EnemyAI>();
+        weaponControllers = FindObjectsOfType<WeaponController>();
         player = GameObject.FindGameObjectWithTag("PlayerController");
         player.SetActive(false);
         weapon = GameObject.FindGameObjectWithTag("Weapon");
@@ -90,7 +92,10 @@ public class FightController : Singleton<FightController>
 
             if (drawTimer >= 3f)
             {
-                enemyAI.gunIsDrawn = true;
+                foreach (EnemyAI enemy in enemyAI)
+                {
+                    enemy.gunIsDrawn = true;
+                }
 
                 drawTimerText.text = "Draw!!!";
 
@@ -134,6 +139,10 @@ public class FightController : Singleton<FightController>
         mobileUI.SetActive(true);
 #endif
 
+#if UNITY_ANDROID
+        mobileUI.SetActive(true);
+#endif
+
 #if UNITY_STANDALONE_WIN
         Cursor.visible = false;
 #endif
@@ -152,8 +161,13 @@ public class FightController : Singleton<FightController>
         enemiesNumber--;
         if (AllEnemiesDead())
         {
+            foreach (WeaponController weapon in weaponControllers)
+            {
+                weapon.ResetAmmoCount();
+            }
+
             playerController.Victory();
-            weapon.transform.SetParent(null);
+            //weapon.transform.SetParent(null);
             Invoke("ResetGunPos", 3f);
         }
     }

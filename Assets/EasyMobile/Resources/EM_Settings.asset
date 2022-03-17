@@ -18,13 +18,13 @@ MonoBehaviour:
     mAdCheckingInterval: 10
     mAdLoadingInterval: 20
     mIosDefaultAdNetworks:
-      bannerAdNetwork: 2
-      interstitialAdNetwork: 2
-      rewardedAdNetwork: 2
+      bannerAdNetwork: 10
+      interstitialAdNetwork: 10
+      rewardedAdNetwork: 10
     mAndroidDefaultAdNetworks:
-      bannerAdNetwork: 0
-      interstitialAdNetwork: 0
-      rewardedAdNetwork: 0
+      bannerAdNetwork: 10
+      interstitialAdNetwork: 10
+      rewardedAdNetwork: 10
     mAdColony:
       mEnable: 0
       mAppId:
@@ -52,7 +52,7 @@ MonoBehaviour:
         keys: []
         values: []
     mAdMob:
-      mEnable: 1
+      mEnable: 0
       mTargetingSettings:
         mTagForChildDirectedTreatment: 0
         mExtraOptions:
@@ -205,8 +205,8 @@ MonoBehaviour:
     mUnityAds:
       mEnable: 1
       mAppId:
-        mIosId: 4038958
-        mAndroidId: 
+        mIosId: 4038960
+        mAndroidId: 4038961
       mDefaultBannerAdId:
         mIosId: 
         mAndroidId: 
@@ -388,5 +388,5 @@ MonoBehaviour:
   mIsGameServiceModuleEnable: 0
   mIsNotificationModuleEnable: 0
   mIsSharingModuleEnable: 0
-  mActiveModuleIndex: 3
-  mIsSelectingModule: 1
+  mActiveModuleIndex: 0
+  mIsSelectingModule: 0

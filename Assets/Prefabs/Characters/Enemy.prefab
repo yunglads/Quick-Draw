@@ -332,7 +332,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.23371536, y: -0.007857025, z: -0.19098908}
+  m_ConnectedAnchor: {x: -0.23371543, y: -0.007857032, z: -0.19098908}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -1049,7 +1049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredHits: []
   allHitsRequired: 0
-  timeTilShoot: 5
+  timeTilShoot: 200
   timer: 0
   chanceToHit: -100
   gunHand: {fileID: 1908760006191849}
@@ -2280,7 +2280,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.041157726, y: -0.026920848, z: -0.09896708}
+  m_ConnectedAnchor: {x: 0.041157667, y: -0.02692084, z: -0.09896708}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -2620,7 +2620,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.04115773, y: -0.026920818, z: 0.098967135}
+  m_ConnectedAnchor: {x: 0.04115779, y: -0.026920825, z: 0.098967135}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -2760,8 +2760,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.56, y: 0.27846175, z: 0.38197836}
-  m_Center: {x: -0.02, y: -0.03091897, z: 0.00000010430813}
+  m_Size: {x: 0.6485279, y: 0.27846175, z: 0.38197836}
+  m_Center: {x: 0.02426392, y: -0.030918963, z: 0.00000010753192}
 --- !u!144 &1131470310745691304
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2774,7 +2774,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.2818372, y: 0.036005676, z: 0}
+  m_ConnectedAnchor: {x: -0.2818373, y: 0.03600569, z: 0}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:

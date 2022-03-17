@@ -569,14 +569,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 413311823, guid: 07e1f8ded75201f42bd59c7e4178bf4a, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 203
-      objectReference: {fileID: 0}
-    - target: {fileID: 413311823, guid: 07e1f8ded75201f42bd59c7e4178bf4a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 33
-      objectReference: {fileID: 0}
     - target: {fileID: 413311824, guid: 07e1f8ded75201f42bd59c7e4178bf4a, type: 3}
       propertyPath: m_Text
       value: 'Some enemies can only be killed with shots on specified bodyparts.
@@ -600,7 +592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1732802929, guid: 07e1f8ded75201f42bd59c7e4178bf4a, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 157177393513248729, guid: 07e1f8ded75201f42bd59c7e4178bf4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

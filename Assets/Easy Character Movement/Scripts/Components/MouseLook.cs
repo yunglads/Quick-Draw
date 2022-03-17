@@ -189,6 +189,11 @@ namespace ECM.Components
             var pitch = joystick.GetComponent<Joystick>().Vertical * verticalSensitivity;
 #endif
 
+#if UNITY_ANDROID
+            var yaw = joystick.GetComponent<Joystick>().Horizontal * lateralSensitivity;
+            var pitch = joystick.GetComponent<Joystick>().Vertical * verticalSensitivity;
+#endif
+
             var yawRotation = Quaternion.Euler(0.0f, yaw, 0.0f);
             var pitchRotation = Quaternion.Euler(-pitch, 0.0f, 0.0f);
 
