@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class LevelManagerSystem : Singleton<LevelManagerSystem>
 {
-    [SerializeField]
-    private Level[] levels;
+    public Level[] levels;
     [SerializeField]
     private int currentLevel;
     [SerializeField]
@@ -117,7 +118,7 @@ public class LevelManagerSystem : Singleton<LevelManagerSystem>
     {
         for(int i=currentLevel; i<levels.Length; i++)
         {
-            if (levels[i].starsNeeded <= gameStats.TotalStars)
+            if (levels[i].starsNeeded <= gameStats.totalStars)
             {
                 levels[i].isLocked = false;
             }
@@ -151,6 +152,59 @@ public class LevelManagerSystem : Singleton<LevelManagerSystem>
             CameraController.DisableCameras();
         }
     }
+
+    //public void SaveLevelData()
+    //{
+    //    Level data = new Level();
+
+    //    for (int i = 0; i < levels.Length; i++)
+    //    {
+    //        data.levelID = levels[i].levelID;
+    //        data.levelCompleted = levels[i].levelCompleted;
+    //        data.stars = levels[i].stars;
+    //        data.starsNeeded = levels[i].starsNeeded;
+    //        data.completionTime = levels[i].completionTime;
+    //        data.isLocked = levels[i].isLocked;
+    //        data.enemyName = levels[i].enemyName;
+    //        data.levelReward = levels[i].levelReward;
+    //        data.twoStarTime = levels[i].twoStarTime;
+    //    }
+
+    //    SaveSystem.SaveLevelData(data);
+    //}
+
+    //public void LoadLevelData()
+    //{
+    //    string path = Application.persistentDataPath + "/player.save";
+    //    if (File.Exists(path))
+    //    {
+    //        BinaryFormatter formatter = new BinaryFormatter();
+    //        FileStream stream = File.Open(path, FileMode.Open);
+
+    //        Level saveData = (Level)formatter.Deserialize(stream);
+
+    //        for (int i = 0; i < levels.Length; i++)
+    //        {
+    //            levels[i].levelID = saveData.levelID;
+    //            levels[i].levelCompleted = saveData.levelCompleted;
+    //            levels[i].stars = saveData.stars;
+    //            levels[i].starsNeeded = saveData.starsNeeded;
+    //            levels[i].completionTime = saveData.completionTime;
+    //            levels[i].isLocked = saveData.isLocked;
+    //            levels[i].enemyName = saveData.enemyName;
+    //            levels[i].levelReward = saveData.levelReward;
+    //            levels[i].twoStarTime = saveData.twoStarTime;
+    //        }
+
+    //        stream.Close();
+
+    //        Debug.Log("Game Loaded!");
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("Save file not found in " + path);
+    //    }
+    //}
 }
 
 [System.Serializable]

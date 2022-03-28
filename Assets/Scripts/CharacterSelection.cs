@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class CharacterSelection : MonoBehaviour
 {
     public List<GameObject> characterList;
@@ -19,7 +20,7 @@ public class CharacterSelection : MonoBehaviour
 
         index = PlayerPrefs.GetInt("CharacterSelected");
 
-        characterList = new List<GameObject>(transform.childCount);
+        characterList = new List<GameObject>();
 
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -34,14 +35,14 @@ public class CharacterSelection : MonoBehaviour
 
     private void Update()
     {
+        if (updateList)
+        {
+            Invoke("UpdateList", 1f);
+        }
+
         if (characterList[index])
         {
             characterList[index].SetActive(true);
-        }
-
-        if (updateList)
-        {
-            UpdateList();
         }
     }
 
@@ -73,11 +74,13 @@ public class CharacterSelection : MonoBehaviour
 
     public void UpdateList()
     {
-        characterList = new List<GameObject>(transform.childCount);
+        characterList.Clear();
+        Debug.Log("set new list");
 
         for (int i = 0; i < transform.childCount; i++)
         {
             characterList.Add(transform.GetChild(i).gameObject);
+            Debug.Log("adding gameobject to list");
         }
 
         foreach (GameObject go in characterList)

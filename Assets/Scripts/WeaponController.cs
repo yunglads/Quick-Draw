@@ -17,6 +17,10 @@ public class WeaponController : MonoBehaviour
 
     public Camera playerCam;
 
+    AudioSource audioSource;
+    public AudioClip fire;
+    public AudioClip empty;
+
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
 
@@ -42,7 +46,7 @@ public class WeaponController : MonoBehaviour
 #endif
 
 #if UNITY_ANDROID
-        if (mobileShootPressed && ammoCount > 0)
+        if (mobileShootPressed)
         {
             Shoot();
             mobileShootPressed = false;
@@ -53,11 +57,25 @@ public class WeaponController : MonoBehaviour
         {
             playerCam = GameObject.FindGameObjectWithTag("PlayerCam").GetComponent<Camera>();
         }
+
+        if (audioSource == null)
+        {
+            audioSource = FindObjectOfType<AudioSource>();
+        }
     }
 
     public void Shoot()
     {
-        muzzleFlash.Play();
+        if (ammoCount > 0)
+        {
+            muzzleFlash.Play();
+            audioSource.PlayOneShot(fire, 1f);
+        }
+        else if (ammoCount <= 0)
+        {
+            audioSource.PlayOneShot(empty, 1f);
+            return;
+        }
 
         if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, range))
         {

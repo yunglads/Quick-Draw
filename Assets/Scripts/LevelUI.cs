@@ -44,7 +44,7 @@ public class LevelUI : MonoBehaviour
 
     public void DetailedLevelPage()
     {
-        if (level.starsNeeded > GameStats.Instance.TotalStars)
+        if (level.starsNeeded > GameStats.Instance.totalStars)
         {
             level.isLocked = true;
         }

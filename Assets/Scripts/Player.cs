@@ -76,9 +76,18 @@ public class Player : MonoBehaviour
         {
             levelStars = 2;
         }
+        
+        if (!LevelManagerSystem.Instance.GetCurrentLevel().levelCompleted)
+        {
+            GameStats.Instance.UpdateStars(levelStars);
+            GameStats.Instance.UpdateMoney(LevelManagerSystem.Instance.GetCurrentLevel().levelReward);
+        }
 
-        GameStats.Instance.UpdateStars(levelStars);
-        GameStats.Instance.UpdateMoney(LevelManagerSystem.Instance.GetCurrentLevel().levelReward);
+        if (LevelManagerSystem.Instance.GetCurrentLevel().levelCompleted && levelStars > LevelManagerSystem.Instance.GetCurrentLevel().stars)
+        {
+            GameStats.Instance.UpdateStars(levelStars - 1);
+        }
+
         LevelManagerSystem.Instance.SetLevelStars(levelStars);
 
         LevelManagerSystem.Instance.CompleteLevel(levelTimer);

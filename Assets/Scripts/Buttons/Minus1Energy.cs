@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Minus1Energy : MonoBehaviour
 {
     EnergyManager energyManager;
-    bool isClicked = false;
+    //bool isClicked = false;
 
     private void Update()
     {

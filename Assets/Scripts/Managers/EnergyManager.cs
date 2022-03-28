@@ -5,6 +5,7 @@ using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+[System.Serializable]
 public class EnergyManager : MonoBehaviour
 {
     public int maxEnergy = 10;
@@ -18,8 +19,8 @@ public class EnergyManager : MonoBehaviour
 
     TimeSpan time;
 
-    DateTime currentDateTime;
-    DateTime energyTimer;
+    public DateTime currentDateTime;
+    public DateTime energyTimer;
 
     bool timeSet = false;
     bool energyTimerStarted = false;
@@ -43,7 +44,10 @@ public class EnergyManager : MonoBehaviour
             energyCountText = GameObject.Find("Energy Count").GetComponent<Text>();
         }
 
-        energyCountText.text = currentEnergy.ToString();
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainMenu"))
+        {
+            energyCountText.text = currentEnergy.ToString();
+        }
 
         if (currentEnergy < maxEnergy && !timeSet)
         {
@@ -65,6 +69,12 @@ public class EnergyManager : MonoBehaviour
         if (!energyTimerStarted && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainMenu")) 
         {
             energyTimerText.enabled = false;
+        }
+
+        if (currentEnergy >= maxEnergy)
+        {
+            timeSet = false;
+            energyTimerStarted = false;
         }
 
     }

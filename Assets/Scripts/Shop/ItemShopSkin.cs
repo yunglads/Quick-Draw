@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,7 +51,7 @@ public class ItemShopSkin : MonoBehaviour
                 isPurchaseable = false;
             }
 
-            Debug.Log(skin.name + " + " + item.name);
+            //Debug.Log(skin.name + " + " + item.name);
         }
     }
 
