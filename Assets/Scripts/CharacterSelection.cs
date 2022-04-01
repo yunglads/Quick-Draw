@@ -75,12 +75,12 @@ public class CharacterSelection : MonoBehaviour
     public void UpdateList()
     {
         characterList.Clear();
-        Debug.Log("set new list");
+        //Debug.Log("set new list");
 
         for (int i = 0; i < transform.childCount; i++)
         {
             characterList.Add(transform.GetChild(i).gameObject);
-            Debug.Log("adding gameobject to list");
+            //Debug.Log("adding gameobject to list");
         }
 
         foreach (GameObject go in characterList)

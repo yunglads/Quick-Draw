@@ -21,14 +21,36 @@ public class EnergyManager : MonoBehaviour
 
     public DateTime currentDateTime;
     public DateTime energyTimer;
+    public DateTime oldTimer;
 
     bool timeSet = false;
     bool energyTimerStarted = false;
 
+    bool loadFinished = false;
+    bool reset = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        currentDateTime = WorldTimeAPI.Instance.GetCurrentDateTime();
 
+        //Invoke("OnStartTimerCheck", 4f);
+
+        //for (int i = 0; i < maxEnergy; i++)
+        //{
+        //    if (currentDateTime >= onExitTimer && currentEnergy < maxEnergy)
+        //    {
+        //        currentEnergy++;
+        //        onExitTimer.AddMinutes(10);
+        //        Debug.Log(currentDateTime);
+        //        Debug.Log(onExitTimer);
+        //    }
+        //    else
+        //    {
+        //        loadFinished = true;
+        //        break;
+        //    }
+        //}
     }
 
     // Update is called once per frame
@@ -49,9 +71,15 @@ public class EnergyManager : MonoBehaviour
             energyCountText.text = currentEnergy.ToString();
         }
 
-        if (currentEnergy < maxEnergy && !timeSet)
+        if (currentEnergy < maxEnergy && !loadFinished)
         {
-            SetEnergyTimer();    
+            OnStartTimerCheck();
+            reset = true;
+        }
+
+        if (currentEnergy < maxEnergy && !timeSet && loadFinished)
+        {
+            SetEnergyTimer();
         }
 
         if (timeSet)
@@ -82,10 +110,21 @@ public class EnergyManager : MonoBehaviour
     void SetEnergyTimer()
     {
         currentDateTime = WorldTimeAPI.Instance.GetCurrentDateTime();
-        Debug.Log(currentDateTime);
+        //Debug.Log(currentDateTime);
 
-        energyTimer = currentDateTime.AddMinutes(10);
-        Debug.Log(energyTimer);
+        if (energyTimer < oldTimer)
+        {
+            energyTimer = oldTimer;
+        }
+        else
+        {
+            energyTimer = currentDateTime.AddMinutes(10);
+        }
+
+        //if (energyTimer < currentDateTime)
+        //{
+        //    energyTimer = currentDateTime.AddMinutes(10);
+        //}
 
         timeSet = true;
     }
@@ -105,6 +144,25 @@ public class EnergyManager : MonoBehaviour
             timeSet = false;
             energyTimerStarted = false;
             Debug.Log("energy added checking for new energy");
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        //asdf = WorldTimeAPI.Instance.GetCurrentDateTime();
+    }
+
+    void OnStartTimerCheck()
+    {
+        if (currentDateTime >= oldTimer && reset)
+        {
+            currentEnergy++;
+            oldTimer.AddMinutes(10);
+            reset = false;
+        }
+        else
+        {
+            loadFinished = true;
         }
     }
 }

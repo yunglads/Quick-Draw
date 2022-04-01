@@ -17,6 +17,7 @@ public class GameStats : Singleton<GameStats>
     public int playerGold = 0;
 
     public List<string> tempSkins;
+    public List<string> tempGuns;
 
     public bool uiUpdated = false;
 
@@ -30,20 +31,30 @@ public class GameStats : Singleton<GameStats>
     public Camera mainCamera;
 
     public CharacterSelection characterSelection;
+    public WeaponSelection weaponSelection;
 
     void Start()
     {
         Application.targetFrameRate = 65;
+        Invoke("LoadPlayerData", .5f);
+        Invoke("UpdateUI", 3.9f);
+        Invoke("WaitForLoadToFinish", 4f);
     }
 
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        Invoke("LoadPlayerData", 1f);
     }
 
     void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnApplicationQuit()
+    {
+        SavePlayerData();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -85,6 +96,21 @@ public class GameStats : Singleton<GameStats>
             for (int i = 0; i < characterSelection.characterList.Count; i++)
             { 
                 tempSkins.Add(characterSelection.characterList[i].name);
+            }
+        }
+
+        if(weaponSelection == null)
+        {
+            weaponSelection = FindObjectOfType<WeaponSelection>();
+        }
+
+        if (tempGuns.Count < weaponSelection.weaponList.Count)
+        {
+            tempGuns = new List<string>();
+
+            for (int i = 0; i < weaponSelection.weaponList.Count; i++)
+            {
+                tempGuns.Add(weaponSelection.weaponList[i].name);
             }
         }
     }
@@ -131,13 +157,22 @@ public class GameStats : Singleton<GameStats>
         data.savedTotalStars = totalStars;
         data.savedPlayerMoney = playerMoney;
         data.savedPlayerGold = playerGold;
+        data.savedEnergy = FindObjectOfType<EnergyManager>().currentEnergy;
+        data.savedExitTimer = FindObjectOfType<EnergyManager>().energyTimer.ToBinary();
+        Debug.Log(data.savedExitTimer);
         data.savedLevels = FindObjectOfType<LevelManagerSystem>().levels;
-
+ 
         data.savedSkins = tempSkins;
-        for (int i = 0; i < data.savedSkins.Count; i++)
-        {
-            Debug.Log("Saved skin: " + data.savedSkins[i]);
-        }
+        //for (int i = 0; i < data.savedSkins.Count; i++)
+        //{
+        //    Debug.Log("Saved skin: " + data.savedSkins[i]);
+        //}
+
+        data.savedGuns = tempGuns;
+        //for (int i = 0; i < data.savedGuns.Count; i++)
+        //{
+        //    Debug.Log("Saved skin: " + data.savedGuns[i]);
+        //}
 
         SaveSystem.SavePlayerData(data);
     }
@@ -154,6 +189,8 @@ public class GameStats : Singleton<GameStats>
             totalStars = saveData.savedTotalStars;
             playerMoney = saveData.savedPlayerMoney;
             playerGold = saveData.savedPlayerGold;
+            FindObjectOfType<EnergyManager>().currentEnergy = saveData.savedEnergy;
+            FindObjectOfType<EnergyManager>().oldTimer = DateTime.FromBinary(saveData.savedExitTimer);
             FindObjectOfType<LevelManagerSystem>().levels = saveData.savedLevels;
 
             for (int i = 0; i < GameObject.FindGameObjectWithTag("Player").transform.childCount; i++)
@@ -174,6 +211,24 @@ public class GameStats : Singleton<GameStats>
 
             characterSelection.updateList = true;
 
+            for (int i = 0; i < GameObject.FindGameObjectWithTag("Weapon").transform.childCount; i++)
+            {
+                Destroy(GameObject.FindGameObjectWithTag("Weapon").transform.GetChild(i).gameObject);
+            }
+
+            weaponSelection.weaponList.Clear();
+
+            for (int i = 0; i < saveData.savedGuns.Count; i++)
+            {
+                //characterSelection.characterList.Add(Resources.Load<GameObject>("Characters/" + saveData.savedSkins[i]));
+                GameObject go = Instantiate(Resources.Load<GameObject>("Weapons/" + saveData.savedGuns[i]), GameObject.FindGameObjectWithTag("Weapon").transform);
+                go.name = saveData.savedGuns[i];
+                //characterSelection.updateList = true;
+                Debug.Log("Loaded Gun: " + saveData.savedGuns[i]);
+            }
+
+            weaponSelection.updateList = true;
+
 
             stream.Close();
 
@@ -183,5 +238,10 @@ public class GameStats : Singleton<GameStats>
         {
             Debug.LogError("Save file not found in " + path);
         }
+    }
+
+    void WaitForLoadToFinish()
+    {
+        mainCamera.GetComponent<Animator>().enabled = true;
     }
 }

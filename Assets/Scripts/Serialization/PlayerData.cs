@@ -8,7 +8,9 @@ public class PlayerData
     public int savedTotalStars;
     public float savedPlayerMoney;
     public int savedPlayerGold;
+    public int savedEnergy;
+    public long savedExitTimer;
     public Level[] savedLevels;
     public List<string> savedSkins;
-    public string[] savedGuns;
+    public List<string> savedGuns;
 }

@@ -53,8 +53,8 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        Invoke("CloseShopAtStart", .05f);
-        Invoke("CloseBlackScreen", .1f);
+        Invoke("CloseShopAtStart", 3.9f);
+        Invoke("CloseBlackScreen", 4f);
     }
 
     void Update()

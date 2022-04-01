@@ -1003,7 +1003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4841838006631585776, guid: 0026e08f183c7fb46a3a973645b0070e, type: 3}
       propertyPath: m_Name
-      value: Revolver2
+      value: Revolver 2
       objectReference: {fileID: 0}
     - target: {fileID: 5479428237786526468, guid: 0026e08f183c7fb46a3a973645b0070e, type: 3}
       propertyPath: m_Pivot.x
@@ -9520,7 +9520,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036671711}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e75223b3ac237174391f541787b457ec, type: 2}
   m_CullingMode: 0
@@ -10462,107 +10462,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf7e228c4f7559445b61d3f1f4207327, type: 3}
---- !u!1 &1168560699 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1252669448219538549, guid: 2464c9c1dd1ca3a458f0535b95f56c77, type: 3}
-  m_PrefabInstance: {fileID: 3178529828757916753}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1168560708
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168560699}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1001 &1168912297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14855,7 +14754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1528861204
 Animator:
   serializedVersion: 3
@@ -21633,7 +21532,7 @@ MonoBehaviour:
   purchased: {fileID: 327146722}
   weaponList: {fileID: 0}
   weapon: {fileID: 6742265895089036439, guid: bc552c20c02c8194bb446d91dbb7c511, type: 3}
-  title: Revolver
+  title: Revolver 2
   desc: Uncommon revolver with six rounds and extra force
   price: 25
   isPurchaseable: 1
@@ -23748,28 +23647,8 @@ PrefabInstance:
       value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 4195554456164412035, guid: 2464c9c1dd1ca3a458f0535b95f56c77, type: 3}
-      propertyPath: fire
-      value: 
-      objectReference: {fileID: 8300000, guid: 00a04383a624c834086bcafee8c8d804, type: 3}
-    - target: {fileID: 4195554456164412035, guid: 2464c9c1dd1ca3a458f0535b95f56c77, type: 3}
-      propertyPath: empty
-      value: 
-      objectReference: {fileID: 8300000, guid: 587a3f37adbb9a942883c3fc572878b6, type: 3}
-    - target: {fileID: 4195554456164412035, guid: 2464c9c1dd1ca3a458f0535b95f56c77, type: 3}
-      propertyPath: force
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4195554456164412035, guid: 2464c9c1dd1ca3a458f0535b95f56c77, type: 3}
-      propertyPath: ammoCount
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4195554456164412035, guid: 2464c9c1dd1ca3a458f0535b95f56c77, type: 3}
       propertyPath: setAmmoCount
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4195554456164412035, guid: 2464c9c1dd1ca3a458f0535b95f56c77, type: 3}
-      propertyPath: resetAmmoCount
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2464c9c1dd1ca3a458f0535b95f56c77, type: 3}

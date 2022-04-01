@@ -42,6 +42,11 @@ public class WeaponSelection : MonoBehaviour
 
     private void Update()
     {
+        if (updateList)
+        {
+            Invoke("UpdateList", 1f);
+        }
+
         if (weaponSelector == null)
         {
             weaponSelector = FindObjectOfType<WeaponSelector>();
@@ -50,11 +55,6 @@ public class WeaponSelection : MonoBehaviour
         if (weaponList[index])
         {
             weaponList[index].SetActive(true);
-        }
-
-        if (updateList)
-        {
-            UpdateList();
         }
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainMenu") && !weaponPosUpdated)
@@ -98,11 +98,14 @@ public class WeaponSelection : MonoBehaviour
 
     public void UpdateList()
     {
-        weaponList = new List<GameObject>(transform.childCount);
+        //weaponList = new List<GameObject>(transform.childCount);
+        weaponList.Clear();
+        Debug.Log("set new list");
 
         for (int i = 0; i < transform.childCount; i++)
         {
             weaponList.Add(transform.GetChild(i).gameObject);
+            Debug.Log("adding weapons to list");
         }
 
         foreach (GameObject go in weaponList)
@@ -111,6 +114,24 @@ public class WeaponSelection : MonoBehaviour
         }
         updateList = false;
     }
+
+    //public void UpdateList()
+    //{
+    //    characterList.Clear();
+    //    Debug.Log("set new list");
+
+    //    for (int i = 0; i < transform.childCount; i++)
+    //    {
+    //        characterList.Add(transform.GetChild(i).gameObject);
+    //        Debug.Log("adding gameobject to list");
+    //    }
+
+    //    foreach (GameObject go in characterList)
+    //    {
+    //        go.SetActive(false);
+    //    }
+    //    updateList = false;
+    //}
 
     public void SelectWeapon()
     {
