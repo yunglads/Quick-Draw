@@ -18,6 +18,6 @@ public class Minus1Energy : MonoBehaviour
 
     public void MinusOneEnergy()
     {
-        energyManager.currentEnergy--;
+        energyManager.UseEnergy();
     }
 }

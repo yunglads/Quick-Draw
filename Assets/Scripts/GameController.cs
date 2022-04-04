@@ -43,6 +43,8 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject blackScreen;
 
+    public bool screenClosed = false;
+
     float timer = 0;
 
     private void Awake()
@@ -53,6 +55,8 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        screenClosed = false;
+
         Invoke("CloseShopAtStart", 3.9f);
         Invoke("CloseBlackScreen", 4f);
     }
@@ -192,5 +196,6 @@ public class GameController : MonoBehaviour
     public void CloseBlackScreen()
     {
         blackScreen.SetActive(false);
+        screenClosed = true;
     }
 }

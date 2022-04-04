@@ -36,15 +36,16 @@ public class GameStats : Singleton<GameStats>
     void Start()
     {
         Application.targetFrameRate = 65;
+        //uncomment to load on start
         Invoke("LoadPlayerData", .5f);
         Invoke("UpdateUI", 3.9f);
         Invoke("WaitForLoadToFinish", 4f);
+        
     }
 
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        Invoke("LoadPlayerData", 1f);
     }
 
     void OnDisable()
@@ -54,6 +55,7 @@ public class GameStats : Singleton<GameStats>
 
     private void OnApplicationQuit()
     {
+        //uncomment to save on exit 
         SavePlayerData();
     }
 
@@ -153,13 +155,14 @@ public class GameStats : Singleton<GameStats>
 
     public void SavePlayerData()
     {
+        FindObjectOfType<EnergyManager>().Save();
         PlayerData data = new PlayerData();
         data.savedTotalStars = totalStars;
         data.savedPlayerMoney = playerMoney;
         data.savedPlayerGold = playerGold;
-        data.savedEnergy = FindObjectOfType<EnergyManager>().currentEnergy;
-        data.savedExitTimer = FindObjectOfType<EnergyManager>().energyTimer.ToBinary();
-        Debug.Log(data.savedExitTimer);
+        //data.savedEnergy = FindObjectOfType<EnergyManager>().currentEnergy;
+        //data.savedNextEnergyTime = FindObjectOfType<EnergyManager>().nextEnergyTime.ToBinary();
+        //data.savedLastAddedTime = FindObjectOfType<EnergyManager>().lastAddedTime.ToBinary();
         data.savedLevels = FindObjectOfType<LevelManagerSystem>().levels;
  
         data.savedSkins = tempSkins;
@@ -179,6 +182,7 @@ public class GameStats : Singleton<GameStats>
 
     public void LoadPlayerData()
     {
+        FindObjectOfType<EnergyManager>().Load();
         string path = Application.persistentDataPath + "/player.save";
         if (File.Exists(path))
         {
@@ -189,8 +193,9 @@ public class GameStats : Singleton<GameStats>
             totalStars = saveData.savedTotalStars;
             playerMoney = saveData.savedPlayerMoney;
             playerGold = saveData.savedPlayerGold;
-            FindObjectOfType<EnergyManager>().currentEnergy = saveData.savedEnergy;
-            FindObjectOfType<EnergyManager>().oldTimer = DateTime.FromBinary(saveData.savedExitTimer);
+            //FindObjectOfType<EnergyManager>().currentEnergy = saveData.savedEnergy;
+            //FindObjectOfType<EnergyManager>().nextEnergyTime = DateTime.FromBinary(saveData.savedNextEnergyTime);
+            //FindObjectOfType<EnergyManager>().lastAddedTime = DateTime.FromBinary(saveData.savedLastAddedTime);
             FindObjectOfType<LevelManagerSystem>().levels = saveData.savedLevels;
 
             for (int i = 0; i < GameObject.FindGameObjectWithTag("Player").transform.childCount; i++)
