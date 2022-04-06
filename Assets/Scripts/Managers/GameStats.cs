@@ -37,7 +37,7 @@ public class GameStats : Singleton<GameStats>
     {
         Application.targetFrameRate = 65;
         //uncomment to load on start
-        Invoke("LoadPlayerData", .5f);
+        //Invoke("LoadPlayerData", .5f);
         Invoke("UpdateUI", 3.9f);
         Invoke("WaitForLoadToFinish", 4f);
         
@@ -56,7 +56,7 @@ public class GameStats : Singleton<GameStats>
     private void OnApplicationQuit()
     {
         //uncomment to save on exit 
-        SavePlayerData();
+        //SavePlayerData();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

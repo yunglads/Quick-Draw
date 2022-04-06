@@ -190,6 +190,13 @@ public class GameController : MonoBehaviour
 
     public void CloseShopAtStart()
     {
+        GameObject weaponGrid;
+        GameObject skinsGrid;
+        weaponGrid = GameObject.Find("Weapons Items Grid");
+        skinsGrid = GameObject.Find("Skins Items Grid");
+        weaponGrid.SetActive(false);
+        skinsGrid.SetActive(false);
+        inventoryPanel.SetActive(false);
         shopPanel.SetActive(false);
     }
 

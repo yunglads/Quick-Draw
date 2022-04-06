@@ -17,11 +17,13 @@ public class ItemShopWeapon : MonoBehaviour
     public string title;
     public string desc;
     public float price;
+    public int buyOrder = 0;
 
     public bool isPurchaseable = true;
 
     GameStats gameStats;
     WeaponSelection weaponSelection;
+    SetIndex[] setIndex;
 
     private void Start()
     {
@@ -37,16 +39,14 @@ public class ItemShopWeapon : MonoBehaviour
 
     private void Update()
     {
-        if (!isPurchaseable)
-        {
-            purchased.SetActive(true);
-            GetComponent<Button>().interactable = false;
-            isPurchaseable = false;
-        }
-
         if (weaponList == null)
         {
             weaponList = GameObject.FindGameObjectWithTag("Weapon");
+        }
+
+        if (setIndex == null)
+        {
+            setIndex = FindObjectsOfType<SetIndex>();
         }
 
         foreach (GameObject item in weaponList.GetComponent<WeaponSelection>().weaponList)
@@ -58,22 +58,30 @@ public class ItemShopWeapon : MonoBehaviour
 
             Debug.Log(weapon.name + " + " + item.name);
         }
+
+        if (!isPurchaseable)
+        {
+            purchased.SetActive(true);
+            GetComponent<Button>().interactable = false;
+            isPurchaseable = false;
+        }
     }
 
     public void BuyWeapon()
     {
         if (gameStats.playerMoney >= price && isPurchaseable)
         {
+            for (int i = 0; i < setIndex.Length; i++)
+            {
+                setIndex[i].checkList = true;
+            }
+
             isPurchaseable = false;
             gameStats.playerMoney -= price;
             gameStats.uiUpdated = true;
             GameObject go = Instantiate(weapon, weaponList.transform);
             go.name = weapon.name;
             weaponSelection.updateList = true;
-        }
-        else
-        {
-            //not enough money
         }
     }
 }
