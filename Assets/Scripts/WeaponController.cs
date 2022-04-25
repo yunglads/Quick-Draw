@@ -17,7 +17,7 @@ public class WeaponController : MonoBehaviour
 
     public Camera playerCam;
 
-    AudioSource audioSource;
+    public AudioSource audioSource;
     public AudioClip fire;
     public AudioClip empty;
 
@@ -56,11 +56,6 @@ public class WeaponController : MonoBehaviour
         if (playerCam == null && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("MainMenu"))
         {
             playerCam = GameObject.FindGameObjectWithTag("PlayerCam").GetComponent<Camera>();
-        }
-
-        if (audioSource == null)
-        {
-            audioSource = FindObjectOfType<AudioSource>();
         }
     }
 

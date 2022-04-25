@@ -100,7 +100,10 @@ public class LevelManagerSystem : Singleton<LevelManagerSystem>
 
     public void SetLevelStars(int levelStars)
     {
-        GetCurrentLevel().stars = levelStars;
+        if (GetCurrentLevel().stars < levelStars)
+        {
+           GetCurrentLevel().stars = levelStars;
+        }
     }
 
     public void CompleteLevel(float time)

@@ -30,10 +30,13 @@ public class FightController : Singleton<FightController>
     bool startCounters = false;
     bool fightStarted = false;
     bool timerSet = false;
+    bool audioPlayed = false;
 
     public GameObject mobileUI;
     public GameObject tutorialPanel;
     public GameObject weapon;
+
+    public GameObject introSong;
 
     public Camera playerCam;
     public Camera enemyCam;
@@ -43,6 +46,10 @@ public class FightController : Singleton<FightController>
 
     Player playerController;
     public int enemiesNumber;
+
+    public AudioSource source;
+    public AudioClip draw1;
+    public AudioClip draw2;
 
     protected override void Awake()
     {
@@ -97,6 +104,20 @@ public class FightController : Singleton<FightController>
                     enemy.gunIsDrawn = true;
                 }
 
+                int randomAudio;
+                randomAudio = Random.Range(0, 2);
+
+                if (randomAudio == 0 && !audioPlayed)
+                {
+                    source.PlayOneShot(draw1, 1f);
+                    audioPlayed = true;
+                }
+                else if (randomAudio == 1 && !audioPlayed)
+                {
+                    source.PlayOneShot(draw2, 1f);
+                    audioPlayed = true;
+                }
+
                 drawTimerText.text = "Draw!!!";
 
                 drawButton.gameObject.SetActive(true);
@@ -122,6 +143,7 @@ public class FightController : Singleton<FightController>
     public void DrawButton()
     {
         fightStarted = true;
+        audioPlayed = false;
         drawTimer = 0;
         drawButton.gameObject.SetActive(false);
         drawTimerText.gameObject.SetActive(false);
@@ -189,6 +211,7 @@ public class FightController : Singleton<FightController>
         introCanvas.SetActive(false);
         enemyCam.enabled = false;
         player.SetActive(true);
+        Destroy(introSong);
     }
 
     public void ContinueTutorialButton()

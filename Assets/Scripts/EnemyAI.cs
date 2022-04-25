@@ -27,12 +27,16 @@ public class EnemyAI : MonoBehaviour
     HitPoint hitPoint;
 
     Animator anim;
+    
+    AudioSource source;
+    public AudioClip deathSFX;
     void Start()
     {
         SetRigidbodyState(true);
         //SetColliderState(false);
 
         anim = gameObject.GetComponent<Animator>();
+        source = gameObject.GetComponent<AudioSource>();
 
         rngHit = Random.Range(0, 100);
     }
@@ -81,6 +85,7 @@ public class EnemyAI : MonoBehaviour
     {
         hitPoint = new HitPoint(_position, _force);
         isDead = true;
+        source.PlayOneShot(deathSFX, 1f);
         GetComponent<Animator>().enabled = false;
         //GetComponent<Rigidbody>().isKinematic = false;
         gunHand.GetComponent<Rigidbody>().useGravity = true;

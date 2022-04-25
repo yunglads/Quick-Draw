@@ -62,7 +62,9 @@
     <Compile Include="Assets\Plugins\UnityPurchasing\script\IAPConfigurationHelper.cs" />
     <Compile Include="Assets\Plugins\UnityPurchasing\script\IAPButton.cs" />
     <Compile Include="Assets\Plugins\UnityPurchasing\script\IAPDemoProductUI.cs" />
+    <Compile Include="Assets\Plugins\UnityPurchasing\generated\AppleTangle.cs" />
     <Compile Include="Assets\Plugins\UnityPurchasing\script\Demo\DemoInventory.cs" />
+    <Compile Include="Assets\Plugins\UnityPurchasing\generated\GooglePlayTangle.cs" />
     <Compile Include="Assets\Plugins\UnityPurchasing\script\IAPListener.cs" />
     <Compile Include="Assets\Plugins\UnityPurchasing\script\ComboBox.cs" />
   </ItemGroup>
@@ -79,7 +81,6 @@
      <None Include="Assets\Plugins\UnityPurchasing\Bin\Apple\Apple.dll" />
      <None Include="Assets\Plugins\UnityPurchasing\Bin\Security\Security.dll" />
      <None Include="Assets\Plugins\UnityPurchasing\Bin\Apple\live\Apple.dll" />
-     <None Include="Assets\Plugins\Android\GoogleMobileAdsPlugin.androidlib\AndroidManifest.xml" />
      <None Include="Assets\Plugins\UnityPurchasing\license.txt" />
      <None Include="Assets\Plugins\UnityPurchasing\third party notices.txt" />
      <None Include="Assets\Plugins\UnityPurchasing\Bin\Security\live\Security.dll" />
@@ -301,6 +302,9 @@
     <Reference Include="winrt">
       <HintPath>Assets\Plugins\UnityPurchasing\winrt\winrt.dll</HintPath>
     </Reference>
+    <Reference Include="FacebookStore">
+      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Facebook\FacebookStore.dll</HintPath>
+    </Reference>
     <Reference Include="Purchasing.Common">
       <HintPath>Assets\Plugins\UnityPurchasing\Bin\Purchasing.Common.dll</HintPath>
     </Reference>
@@ -309,9 +313,6 @@
     </Reference>
     <Reference Include="Editor">
       <HintPath>Assets\Plugins\UnityPurchasing\Bin\Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="FacebookStore">
-      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Facebook\FacebookStore.dll</HintPath>
     </Reference>
     <Reference Include="AppleMacos">
       <HintPath>Assets\Plugins\UnityPurchasing\Bin\Apple\AppleMacos.dll</HintPath>
@@ -688,14 +689,14 @@
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Monetization">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Monetization.dll</HintPath>
@@ -720,14 +721,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="GoogleMobileAds.csproj">
-      <Project>{1F96D813-B8D9-5B1C-D03C-5B3BF8F44733}</Project>
-      <Name>GoogleMobileAds</Name>
-    </ProjectReference>
-    <ProjectReference Include="GoogleMobileAds.Editor.csproj">
-      <Project>{3FD93154-CA54-B058-3AC5-A3D725EB10E7}</Project>
-      <Name>GoogleMobileAds.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityGifDecoder.csproj">
       <Project>{0756304D-B01D-DAD4-22F7-04D4A8D414AE}</Project>
       <Name>UnityGifDecoder</Name>

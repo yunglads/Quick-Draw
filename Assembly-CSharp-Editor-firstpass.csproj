@@ -306,6 +306,9 @@
     <Reference Include="Google.VersionHandler">
       <HintPath>Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll</HintPath>
     </Reference>
+    <Reference Include="FacebookStore">
+      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Facebook\FacebookStore.dll</HintPath>
+    </Reference>
     <Reference Include="Google.JarResolver_v1.2.164">
       <HintPath>Assets\ExternalDependencyManager\Editor\Google.JarResolver_v1.2.164.dll</HintPath>
     </Reference>
@@ -318,14 +321,11 @@
     <Reference Include="Editor">
       <HintPath>Assets\Plugins\UnityPurchasing\Bin\Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Google.IOSResolver_v1.2.164">
-      <HintPath>Assets\ExternalDependencyManager\Editor\Google.IOSResolver_v1.2.164.dll</HintPath>
-    </Reference>
-    <Reference Include="FacebookStore">
-      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Facebook\FacebookStore.dll</HintPath>
-    </Reference>
     <Reference Include="Google.PackageManagerResolver_v1.2.164">
       <HintPath>Assets\ExternalDependencyManager\Editor\Google.PackageManagerResolver_v1.2.164.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.IOSResolver_v1.2.164">
+      <HintPath>Assets\ExternalDependencyManager\Editor\Google.IOSResolver_v1.2.164.dll</HintPath>
     </Reference>
     <Reference Include="AppleMacos">
       <HintPath>Assets\Plugins\UnityPurchasing\Bin\Apple\AppleMacos.dll</HintPath>
@@ -711,14 +711,14 @@
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Monetization">
       <HintPath>Library\ScriptAssemblies\UnityEngine.Monetization.dll</HintPath>
@@ -746,14 +746,6 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{3BDD2338-E5E2-5CEF-1273-6B054D1C4997}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
-    <ProjectReference Include="GoogleMobileAds.csproj">
-      <Project>{1F96D813-B8D9-5B1C-D03C-5B3BF8F44733}</Project>
-      <Name>GoogleMobileAds</Name>
-    </ProjectReference>
-    <ProjectReference Include="GoogleMobileAds.Editor.csproj">
-      <Project>{3FD93154-CA54-B058-3AC5-A3D725EB10E7}</Project>
-      <Name>GoogleMobileAds.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="UnityGifDecoder.csproj">
       <Project>{0756304D-B01D-DAD4-22F7-04D4A8D414AE}</Project>

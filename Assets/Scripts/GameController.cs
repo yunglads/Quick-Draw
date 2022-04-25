@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     bool backToMenuButtonClicked = false;
     bool shopButtonClicked = false;
     bool menuFromShopClicked = false;
+    //bool toGraveyard = false;
+    bool graveyardToMenu = false;
 
     [SerializeField] 
     private GameObject playLevelsButton;
@@ -20,6 +22,8 @@ public class GameController : MonoBehaviour
     private GameObject charactersButton;
     [SerializeField] 
     private GameObject inventoryButton;
+    [SerializeField]
+    GameObject creditsButton;
     [SerializeField] 
     private GameObject playerInfoBar;
     [SerializeField] 
@@ -41,7 +45,14 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject inventoryPanel;
     [SerializeField]
+    private GameObject credits;
+    [SerializeField]
     private GameObject blackScreen;
+
+    public AudioSource shopSFX;
+    public AudioClip shopBell1;
+    public AudioClip shopBell2;
+    public AudioClip shopBell3;
 
     public bool screenClosed = false;
 
@@ -56,6 +67,8 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         screenClosed = false;
+
+        //shopSFX = GetComponent<AudioSource>();
 
         Invoke("CloseShopAtStart", 3.9f);
         Invoke("CloseBlackScreen", 4f);
@@ -79,11 +92,12 @@ public class GameController : MonoBehaviour
             if (LevelManagerSystem.Instance.CameraController.GetAnimationInfoShop())
             {
                 shopPanel.SetActive(true);
+                playerInfoBar.SetActive(true);
             }
         }
 
         //Main character screen
-        if (backToMenuButtonClicked || menuFromShopClicked)
+        if (backToMenuButtonClicked || menuFromShopClicked || graveyardToMenu)
         {            
             timer += Time.deltaTime;
             if (timer >= 3f)
@@ -93,10 +107,12 @@ public class GameController : MonoBehaviour
                 charactersButton.SetActive(true);
                 inventoryButton.SetActive(true);
                 playerInfoBar.SetActive(true);
+                creditsButton.SetActive(true);
                 //leftButton.SetActive(false);
                 //rightButton.SetActive(false);
                 backToMenuButtonClicked = false;
                 menuFromShopClicked = false;
+                graveyardToMenu = false;
                 timer = 0;
             }
         }
@@ -110,6 +126,7 @@ public class GameController : MonoBehaviour
         shopButton.SetActive(false);
         charactersButton.SetActive(false);
         inventoryButton.SetActive(false);
+        creditsButton.SetActive(false);
         playerInfoBar.SetActive(false);
 
         levelButtonClicked = true;
@@ -135,6 +152,7 @@ public class GameController : MonoBehaviour
         shopButton.SetActive(true);
         charactersButton.SetActive(true);
         inventoryButton.SetActive(true);
+        creditsButton.SetActive(true);
         playerInfoBar.SetActive(true);
         leftButton.SetActive(false);
         rightButton.SetActive(false);
@@ -147,6 +165,7 @@ public class GameController : MonoBehaviour
         shopButton.SetActive(false);
         charactersButton.SetActive(false);
         inventoryButton.SetActive(false);
+        creditsButton.SetActive(false);
         leftButton.SetActive(true);
         rightButton.SetActive(true);
         selectButton.SetActive(true);
@@ -161,6 +180,9 @@ public class GameController : MonoBehaviour
         charactersButton.SetActive(false);
         inventoryButton.SetActive(false);
         playerInfoBar.SetActive(false);
+        creditsButton.SetActive(false);
+
+        Invoke("PlayRandomShopAudio", 3f);
 
         shopButtonClicked = true;
         menuFromShopClicked = false;
@@ -171,6 +193,7 @@ public class GameController : MonoBehaviour
         LevelManagerSystem.Instance.CameraController.BackFromShopAnimation();
         
         shopPanel.SetActive(false);
+        playerInfoBar.SetActive(false);
 
         shopButtonClicked = false;
         menuFromShopClicked = true;
@@ -186,6 +209,28 @@ public class GameController : MonoBehaviour
     {
         inventoryPanel.SetActive(false);
         shopButton.SetActive(true);
+    }
+
+    public void CreditsButton()
+    {
+        LevelManagerSystem.Instance.CameraController.CreditsAnimation();
+
+        credits.SetActive(true);
+        playLevelsButton.SetActive(false);
+        shopButton.SetActive(false);
+        charactersButton.SetActive(false);
+        inventoryButton.SetActive(false);
+        playerInfoBar.SetActive(false);
+        creditsButton.SetActive(false);
+    }
+
+    public void MenuFromCredits()
+    {
+        LevelManagerSystem.Instance.CameraController.MenuFromCredits();
+
+        credits.SetActive(false);
+
+        graveyardToMenu = true;
     }
 
     public void CloseShopAtStart()
@@ -204,5 +249,26 @@ public class GameController : MonoBehaviour
     {
         blackScreen.SetActive(false);
         screenClosed = true;
+    }
+
+    public void PlayRandomShopAudio()
+    {
+        int randomAudio;
+        randomAudio = Random.Range(0, 3);
+        if (randomAudio == 0)
+        {
+            shopSFX.PlayOneShot(shopBell1, 1f);
+            Debug.Log("Playing audio 1");
+        }
+        else if (randomAudio == 1)
+        {
+            shopSFX.PlayOneShot(shopBell2, 1f);
+            Debug.Log("Playing audio 2");
+        }
+        else if (randomAudio == 2)
+        {
+            shopSFX.PlayOneShot(shopBell3, 1f);
+            Debug.Log("Playing audio 3");
+        }
     }
 }

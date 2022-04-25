@@ -288,8 +288,8 @@ MonoBehaviour:
     mSimulateAppleAskToBuy: 0
     mInterceptApplePromotionalPurchases: 0
     mEnableAmazonSandboxTesting: 0
-    mValidateAppleReceipt: 1
-    mValidateGooglePlayReceipt: 1
+    mValidateAppleReceipt: 0
+    mValidateGooglePlayReceipt: 0
     mProducts: []
   mNotificationSettings:
     mAutoInit: 1

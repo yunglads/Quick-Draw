@@ -70,4 +70,16 @@ public class CameraController : MonoBehaviour
         mainCamera.SetBool("menuFromShopClicked", true);
         mainCamera.SetBool("shopButtonClicked", false);
     }
+
+    public void CreditsAnimation()
+    {
+        mainCamera.SetBool("toGraveyard", true);
+        mainCamera.SetBool("graveyardToMenu", false);
+    }
+
+    public void MenuFromCredits()
+    {
+        mainCamera.SetBool("toGraveyard", false);
+        mainCamera.SetBool("graveyardToMenu", true);
+    }
 }

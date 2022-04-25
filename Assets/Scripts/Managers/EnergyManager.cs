@@ -25,6 +25,9 @@ public class EnergyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Use below code to reset index if index gets stuck on "out of range"
+        PlayerPrefs.SetInt("currentEnergy", maxEnergy);
+
         if (!PlayerPrefs.HasKey("currentEnergy"))
         {
             PlayerPrefs.SetInt("currentEnergy", maxEnergy);
@@ -135,12 +138,12 @@ public class EnergyManager : MonoBehaviour
         return datetime.AddMinutes(duration);
     }
 
-    void UpdateEnergy()
+    public void UpdateEnergy()
     {
         energyCountText.text = currentEnergy.ToString();
     }
 
-    void UpdateTimer()
+    public void UpdateTimer()
     {
         if (currentEnergy >= maxEnergy)
         {

@@ -32,6 +32,7 @@ public class GameStats : Singleton<GameStats>
 
     public CharacterSelection characterSelection;
     public WeaponSelection weaponSelection;
+    EnergyManager energyManager;
 
     void Start()
     {
@@ -69,12 +70,23 @@ public class GameStats : Singleton<GameStats>
 
     private void Update()
     {
+        if (energyManager == null)
+        {
+            energyManager = FindObjectOfType<EnergyManager>();
+        }
+
         if (mainCamera == null)
         {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         }
 
         if (uiUpdated && mainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Menu"))
+        {
+            UpdateUI();
+            uiUpdated = false;
+        }
+
+        if (uiUpdated && mainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Shop"))
         {
             UpdateUI();
             uiUpdated = false;
@@ -142,6 +154,10 @@ public class GameStats : Singleton<GameStats>
         playerMoneyText.text = "$ " + playerMoney.ToString("F2");
         playerGoldText.text = playerGold.ToString();
         totalStarsText.text = totalStars.ToString();
+
+        energyManager.UpdateEnergy();
+        energyManager.UpdateTimer();
+        energyManager.runOnce = false;
 
         //PlayerData data = new PlayerData();
         //data.savedTotalStars = totalStars;

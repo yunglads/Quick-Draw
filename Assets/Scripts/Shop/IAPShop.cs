@@ -6,6 +6,7 @@ using UnityEngine.Purchasing;
 public class IAPShop : MonoBehaviour
 {
     private string goldPack1 = "com.spitfiregames.quickdraw.goldpack1";
+    private string removeAds = "com.spitfiregames.quickdraw.noads";
 
     public GameObject restoreButton;
 
@@ -24,6 +25,11 @@ public class IAPShop : MonoBehaviour
         {
             gamestats.playerGold += 100;
             gamestats.uiUpdated = true;
+        }
+        
+        if (product.definition.id == removeAds)
+        {
+            gamestats.GetComponentInChildren<AdDisabler>().adsDisabled = true;
         }
     }
 
