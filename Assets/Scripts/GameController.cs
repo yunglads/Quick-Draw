@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour
     private GameObject inventoryButton;
     [SerializeField]
     GameObject creditsButton;
+    //[SerializeField]
+    //GameObject optionsButton;
     [SerializeField] 
     private GameObject playerInfoBar;
     [SerializeField] 
@@ -48,6 +50,8 @@ public class GameController : MonoBehaviour
     private GameObject credits;
     [SerializeField]
     private GameObject blackScreen;
+    //[SerializeField]
+    //private GameObject options;
 
     public AudioSource shopSFX;
     public AudioClip shopBell1;
@@ -108,6 +112,7 @@ public class GameController : MonoBehaviour
                 inventoryButton.SetActive(true);
                 playerInfoBar.SetActive(true);
                 creditsButton.SetActive(true);
+                //optionsButton.SetActive(true);
                 //leftButton.SetActive(false);
                 //rightButton.SetActive(false);
                 backToMenuButtonClicked = false;
@@ -127,6 +132,7 @@ public class GameController : MonoBehaviour
         charactersButton.SetActive(false);
         inventoryButton.SetActive(false);
         creditsButton.SetActive(false);
+        //optionsButton.SetActive(false);
         playerInfoBar.SetActive(false);
 
         levelButtonClicked = true;
@@ -153,6 +159,7 @@ public class GameController : MonoBehaviour
         charactersButton.SetActive(true);
         inventoryButton.SetActive(true);
         creditsButton.SetActive(true);
+        //optionsButton.SetActive(true);
         playerInfoBar.SetActive(true);
         leftButton.SetActive(false);
         rightButton.SetActive(false);
@@ -166,6 +173,7 @@ public class GameController : MonoBehaviour
         charactersButton.SetActive(false);
         inventoryButton.SetActive(false);
         creditsButton.SetActive(false);
+        //optionsButton.SetActive(false);
         leftButton.SetActive(true);
         rightButton.SetActive(true);
         selectButton.SetActive(true);
@@ -181,6 +189,7 @@ public class GameController : MonoBehaviour
         inventoryButton.SetActive(false);
         playerInfoBar.SetActive(false);
         creditsButton.SetActive(false);
+        //optionsButton.SetActive(false);
 
         Invoke("PlayRandomShopAudio", 3f);
 
@@ -222,6 +231,16 @@ public class GameController : MonoBehaviour
         inventoryButton.SetActive(false);
         playerInfoBar.SetActive(false);
         creditsButton.SetActive(false);
+        //optionsButton.SetActive(false);
+    }
+    public void OpenOptions()
+    {
+        //options.SetActive(true);
+    }
+
+    public void CloseOptions()
+    {
+        //options.SetActive(false);
     }
 
     public void MenuFromCredits()

@@ -33,6 +33,7 @@ public class GameStats : Singleton<GameStats>
     public CharacterSelection characterSelection;
     public WeaponSelection weaponSelection;
     EnergyManager energyManager;
+    
 
     void Start()
     {

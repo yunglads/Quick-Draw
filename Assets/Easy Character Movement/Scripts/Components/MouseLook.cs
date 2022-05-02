@@ -270,6 +270,12 @@ namespace ECM.Components
             }
         }
 
+        public void ChangeSensitivity(float x, float y)
+        {
+            lateralSensitivity = x;
+            verticalSensitivity = y;
+        }
+
         protected Quaternion ClampPitch(Quaternion q)
         {
             q.x /= q.w;
