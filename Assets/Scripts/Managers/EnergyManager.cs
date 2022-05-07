@@ -15,6 +15,8 @@ public class EnergyManager : MonoBehaviour
     public Text energyTimerText;
     public Text energyCountText;
 
+    public GameObject energyButton;
+
     public DateTime nextEnergyTime;
     public DateTime lastEnergyTime;
 
@@ -180,6 +182,20 @@ public class EnergyManager : MonoBehaviour
             {
                 StartCoroutine(RestoreEnergy());
                 runOnce = true;
+            }
+
+            if (energyButton == null)
+            {
+                energyButton = GameObject.Find("Add Energy Button");
+            }
+
+            if (currentEnergy < maxEnergy)
+            {
+                energyButton.SetActive(true);
+            }
+            else
+            {
+                energyButton.SetActive(false);
             }
         }
 

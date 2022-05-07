@@ -26,6 +26,8 @@ public class GameController : MonoBehaviour
     GameObject creditsButton;
     //[SerializeField]
     //GameObject optionsButton;
+    [SerializeField]
+    GameObject energyPanel;
     [SerializeField] 
     private GameObject playerInfoBar;
     [SerializeField] 
@@ -268,6 +270,15 @@ public class GameController : MonoBehaviour
     {
         blackScreen.SetActive(false);
         screenClosed = true;
+    }
+
+    public void CloseEnergyScreen()
+    {
+        energyPanel.SetActive(false);
+    }
+    public void OpenEnergyScreen()
+    {
+        energyPanel.SetActive(true);
     }
 
     public void PlayRandomShopAudio()
