@@ -16,7 +16,7 @@ public class CharacterSelection : MonoBehaviour
     void Start()
     {
         //Use below code to reset index if index gets stuck on "out of range"
-        PlayerPrefs.SetInt("CharacterSelected", 0);
+        //PlayerPrefs.SetInt("CharacterSelected", 0);
 
         index = PlayerPrefs.GetInt("CharacterSelected");
 

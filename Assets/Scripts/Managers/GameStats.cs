@@ -13,8 +13,8 @@ public class GameStats : Singleton<GameStats>
     public int totalStars = 0;
     [SerializeField]
     public float playerMoney = 0;
-    [SerializeField]
-    public int playerGold = 0;
+    //[SerializeField]
+    //public int playerGold = 0;
 
     public List<string> tempSkins;
     public List<string> tempGuns;
@@ -23,8 +23,8 @@ public class GameStats : Singleton<GameStats>
 
     [SerializeField]
     private Text playerMoneyText;
-    [SerializeField]
-    private Text playerGoldText;
+    //[SerializeField]
+    //private Text playerGoldText;
     [SerializeField]
     private Text totalStarsText;
 
@@ -39,7 +39,7 @@ public class GameStats : Singleton<GameStats>
     {
         Application.targetFrameRate = 65;
         //uncomment to load on start
-        //Invoke("LoadPlayerData", .5f);
+        Invoke("LoadPlayerData", .5f);
         Invoke("UpdateUI", 3.9f);
         Invoke("WaitForLoadToFinish", 4f);
         
@@ -58,7 +58,7 @@ public class GameStats : Singleton<GameStats>
     private void OnApplicationQuit()
     {
         //uncomment to save on exit 
-        //SavePlayerData();
+        SavePlayerData();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -93,7 +93,7 @@ public class GameStats : Singleton<GameStats>
             uiUpdated = false;
         }
 
-        if (playerGoldText == null && playerMoneyText == null && totalStarsText == null && mainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Menu"))
+        if (/*playerGoldText == null &&*/ playerMoneyText == null && totalStarsText == null && mainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Menu"))
         {
             UpdateUI();
             uiUpdated = false;
@@ -142,18 +142,18 @@ public class GameStats : Singleton<GameStats>
 
     public void UpdateGold(int gold)
     {
-        playerGold += gold;
+        //playerGold += gold;
     }
 
     public void UpdateUI()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         playerMoneyText = GameObject.FindGameObjectWithTag("MoneyUI").GetComponent<Text>();
-        playerGoldText = GameObject.FindGameObjectWithTag("GoldUI").GetComponent<Text>();
+        //playerGoldText = GameObject.FindGameObjectWithTag("GoldUI").GetComponent<Text>();
         totalStarsText = GameObject.FindGameObjectWithTag("StarsUI").GetComponent<Text>();
 
         playerMoneyText.text = "$ " + playerMoney.ToString("F2");
-        playerGoldText.text = playerGold.ToString();
+        //playerGoldText.text = playerGold.ToString();
         totalStarsText.text = totalStars.ToString();
 
         energyManager.UpdateEnergy();
@@ -176,7 +176,7 @@ public class GameStats : Singleton<GameStats>
         PlayerData data = new PlayerData();
         data.savedTotalStars = totalStars;
         data.savedPlayerMoney = playerMoney;
-        data.savedPlayerGold = playerGold;
+        //data.savedPlayerGold = playerGold;
         //data.savedEnergy = FindObjectOfType<EnergyManager>().currentEnergy;
         //data.savedNextEnergyTime = FindObjectOfType<EnergyManager>().nextEnergyTime.ToBinary();
         //data.savedLastAddedTime = FindObjectOfType<EnergyManager>().lastAddedTime.ToBinary();
@@ -209,7 +209,7 @@ public class GameStats : Singleton<GameStats>
             PlayerData saveData = (PlayerData)formatter.Deserialize(stream);
             totalStars = saveData.savedTotalStars;
             playerMoney = saveData.savedPlayerMoney;
-            playerGold = saveData.savedPlayerGold;
+            //playerGold = saveData.savedPlayerGold;
             //FindObjectOfType<EnergyManager>().currentEnergy = saveData.savedEnergy;
             //FindObjectOfType<EnergyManager>().nextEnergyTime = DateTime.FromBinary(saveData.savedNextEnergyTime);
             //FindObjectOfType<EnergyManager>().lastAddedTime = DateTime.FromBinary(saveData.savedLastAddedTime);

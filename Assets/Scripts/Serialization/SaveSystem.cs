@@ -27,8 +27,6 @@ public static class SaveSystem
         Debug.Log("Level Data Saved!");
     }
 
-
-
     //public static void LoadPlayerData()
     //{
     //    string path = Application.persistentDataPath + "/player.save";

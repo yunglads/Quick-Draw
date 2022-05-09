@@ -28,7 +28,7 @@ public class EnergyManager : MonoBehaviour
     void Start()
     {
         //Use below code to reset index if index gets stuck on "out of range"
-        PlayerPrefs.SetInt("currentEnergy", maxEnergy);
+        //PlayerPrefs.SetInt("currentEnergy", maxEnergy);
 
         if (!PlayerPrefs.HasKey("currentEnergy"))
         {

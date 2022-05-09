@@ -29,11 +29,11 @@ public class IAPShop : MonoBehaviour
 
     public void OnPurchaseComplete(Product product)
     {
-        if (product.definition.id == goldPack1)
-        {
-            gamestats.playerGold += 100;
-            gamestats.uiUpdated = true;
-        }
+        //if (product.definition.id == goldPack1)
+        //{
+        //    gamestats.playerGold += 100;
+        //    gamestats.uiUpdated = true;
+        //}
         
         if (product.definition.id == removeAds)
         {
