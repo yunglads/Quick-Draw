@@ -14,17 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mAdvertisingSettings:
     mAutoInit: 1
-    mAutoLoadAdsMode: 2
-    mAdCheckingInterval: 10
-    mAdLoadingInterval: 20
+    mAutoLoadAdsMode: 1
+    mAdCheckingInterval: 5
+    mAdLoadingInterval: 5
     mIosDefaultAdNetworks:
-      bannerAdNetwork: 10
-      interstitialAdNetwork: 10
-      rewardedAdNetwork: 10
+      bannerAdNetwork: 9
+      interstitialAdNetwork: 9
+      rewardedAdNetwork: 9
+      rewardedInterstitialNetwork: 0
     mAndroidDefaultAdNetworks:
-      bannerAdNetwork: 10
-      interstitialAdNetwork: 10
-      rewardedAdNetwork: 10
+      bannerAdNetwork: 9
+      interstitialAdNetwork: 9
+      rewardedAdNetwork: 9
+      rewardedInterstitialNetwork: 0
     mAdColony:
       mEnable: 0
       mAppId:
@@ -72,6 +74,9 @@ MonoBehaviour:
       mDefaultRewardedAdId:
         mIosId: ca-app-pub-7473831862896859/3415695707
         mAndroidId: 
+      mDefaultRewardedInterstitialAdId:
+        mIosId: 
+        mAndroidId: 
       mCustomBannerAdIds:
         keys: []
         values: []
@@ -79,6 +84,9 @@ MonoBehaviour:
         keys: []
         values: []
       mCustomRewardedAdIds:
+        keys: []
+        values: []
+      mCustomRewardedInterstitialAdIds:
         keys: []
         values: []
     mAppLovin:
@@ -157,35 +165,6 @@ MonoBehaviour:
         customParams:
           keys: []
           values: []
-    mMoPub:
-      mEnable: 0
-      mReportAppOpen: 0
-      mITuneAppID: 
-      mEnableLocationPassing: 0
-      mUseAdvancedSetting: 0
-      mAllowLegitimateInterest: 0
-      mLogLevel: 70
-      mMediatedNetworks: []
-      mAutoRequestConsent: 0
-      mForceGdprApplicable: 0
-      mDefaultBannerId:
-        mIosId: 
-        mAndroidId: 
-      mDefaultInterstitialAdId:
-        mIosId: 
-        mAndroidId: 
-      mDefaultRewardedAdId:
-        mIosId: 
-        mAndroidId: 
-      mCustomBannerIds:
-        keys: []
-        values: []
-      mCustomInterstitialAdIds:
-        keys: []
-        values: []
-      mCustomRewardedAdIds:
-        keys: []
-        values: []
     mTapjoy:
       mEnable: 0
       mAutoReconnect: 1
@@ -205,17 +184,17 @@ MonoBehaviour:
     mUnityAds:
       mEnable: 1
       mAppId:
-        mIosId: 4038960
-        mAndroidId: 4038961
+        mIosId: 4038958
+        mAndroidId: 4038959
       mDefaultBannerAdId:
         mIosId: 
         mAndroidId: 
       mDefaultInterstitialAdId:
-        mIosId: video
-        mAndroidId: video
+        mIosId: Interstitial_iOS
+        mAndroidId: Interstitial_Android
       mDefaultRewardedAdId:
-        mIosId: rewardedVideo
-        mAndroidId: rewardedVideo
+        mIosId: Rewarded_iOS
+        mAndroidId: Rewarded_Android
       mCustomBannerAdIds:
         keys: []
         values: []
@@ -226,6 +205,7 @@ MonoBehaviour:
         keys: []
         values: []
       mEnableTestMode: 1
+      mUseUnityAd4Client: 1
     mVungleAds:
       mEnable: 0
       mAppId:
@@ -285,12 +265,19 @@ MonoBehaviour:
   mInAppPurchaseSettings:
     mAutoInit: 1
     mTargetAndroidStore: 0
-    mSimulateAppleAskToBuy: 0
+    mSimulateAppleAskToBuy: 1
     mInterceptApplePromotionalPurchases: 0
     mEnableAmazonSandboxTesting: 0
     mValidateAppleReceipt: 0
     mValidateGooglePlayReceipt: 0
-    mProducts: []
+    mProducts:
+    - _name: 
+      _type: 0
+      _id: 
+      _price: 
+      _description: 
+      _storeSpecificIds: []
+      _isEditingAdvanced: 1
   mNotificationSettings:
     mAutoInit: 1
     mAutoInitDelay: 0
@@ -328,6 +315,11 @@ MonoBehaviour:
       mToggleSelectedIndex: 0
       mButtonSelectedIndex: 0
       mEnableCopyPasteMode: 0
+    mIsAppTrackingEnabled: 0
+    mAppTrackingSettings:
+      mIOSInfoPlistKeys:
+      - mKey: NSUserTrackingUsageDescription
+        mValue: '[Your usage description]'
   mRatingRequestSettings:
     mDefaultRatingDialogContent:
       mTitle: Rate $PRODUCT_NAME
@@ -389,4 +381,4 @@ MonoBehaviour:
   mIsNotificationModuleEnable: 0
   mIsSharingModuleEnable: 0
   mActiveModuleIndex: 0
-  mIsSelectingModule: 1
+  mIsSelectingModule: 0

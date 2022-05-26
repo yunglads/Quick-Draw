@@ -124,14 +124,6 @@ namespace EasyMobile
         }
 
         /// <summary>
-        /// Gets the MoPub settings.
-        /// </summary>
-        public MoPubSettings MoPub
-        {
-            get { return mMoPub; }
-        }
-
-        /// <summary>
         /// Gets the Tapjoy settings.
         /// </summary>
         public TapjoySettings Tapjoy
@@ -163,12 +155,14 @@ namespace EasyMobile
             public BannerAdNetwork bannerAdNetwork;
             public InterstitialAdNetwork interstitialAdNetwork;
             public RewardedAdNetwork rewardedAdNetwork;
+            public RewardedInterstitialAdNetwork rewardedInterstitialNetwork;
 
-            public DefaultAdNetworks(BannerAdNetwork banner, InterstitialAdNetwork interstitial, RewardedAdNetwork rewarded)
+            public DefaultAdNetworks(BannerAdNetwork banner, InterstitialAdNetwork interstitial, RewardedAdNetwork rewarded, RewardedInterstitialAdNetwork rewardedInterstitial)
             {
                 bannerAdNetwork = banner;
                 interstitialAdNetwork = interstitial;
                 rewardedAdNetwork = rewarded;
+                rewardedInterstitialNetwork = rewardedInterstitial;
             }
         }
 
@@ -187,9 +181,9 @@ namespace EasyMobile
 
         // Default ad networks.
         [SerializeField]
-        private DefaultAdNetworks mIosDefaultAdNetworks = new DefaultAdNetworks(BannerAdNetwork.None, InterstitialAdNetwork.None, RewardedAdNetwork.None);
+        private DefaultAdNetworks mIosDefaultAdNetworks = new DefaultAdNetworks(BannerAdNetwork.None, InterstitialAdNetwork.None, RewardedAdNetwork.None, RewardedInterstitialAdNetwork.None);
         [SerializeField]
-        private DefaultAdNetworks mAndroidDefaultAdNetworks = new DefaultAdNetworks(BannerAdNetwork.None, InterstitialAdNetwork.None, RewardedAdNetwork.None);
+        private DefaultAdNetworks mAndroidDefaultAdNetworks = new DefaultAdNetworks(BannerAdNetwork.None, InterstitialAdNetwork.None, RewardedAdNetwork.None, RewardedInterstitialAdNetwork.None);
 
         // Network settings.
         [SerializeField]
@@ -206,8 +200,6 @@ namespace EasyMobile
         private FairBidSettings mFairBid = null;
         [SerializeField]
         private IronSourceSettings mIronSource = null;
-        [SerializeField]
-        private MoPubSettings mMoPub = null;
         [SerializeField]
         private TapjoySettings mTapjoy = null;
         [SerializeField]

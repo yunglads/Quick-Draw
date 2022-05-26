@@ -36,17 +36,19 @@ public class Player : MonoBehaviour
 
     public void PlayerDead()
     {
-        playerWeapon.GetComponent<Rigidbody>().useGravity = true;
-        playerWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        //playerWeapon.GetComponentInChildren<Animator>().enabled = false;
+        //playerWeapon.GetComponentInChildren<Rigidbody>().useGravity = true;
+        //playerWeapon.GetComponentInChildren<Rigidbody>().isKinematic = false;
+        //playerWeapon.GetComponentInChildren<Rigidbody>().constraints = RigidbodyConstraints.None;
         playerCamera.GetComponent<Animator>().enabled = true;
         deathPanel.SetActive(true);
         deathPanel.GetComponent<Animator>().enabled = true;
         playerModel.SetActive(false);
         ECM_FirstPerson.GetComponent<MouseLook>().lateralSensitivity = 0;
         ECM_FirstPerson.GetComponent<MouseLook>().verticalSensitivity = 0;
-        ECM_FirstPerson.GetComponent<MouseLook>().lockCursor = false;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        //ECM_FirstPerson.GetComponent<MouseLook>().lockCursor = false;
+        //Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
     }
 
     public void Victory()
@@ -60,8 +62,8 @@ public class Player : MonoBehaviour
         ECM_FirstPerson.GetComponent<MouseLook>().verticalSensitivity = 0;
         ECM_FirstPerson.GetComponent<MouseLook>().lockCursor = false;
 
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
 
         SetLevelResults();
         winPanel.SetActive(true);

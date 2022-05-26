@@ -37,7 +37,7 @@ public class CharacterSelection : MonoBehaviour
     {
         if (updateList)
         {
-            Invoke("UpdateList", 1f);
+            Invoke("UpdateList", 0f);
         }
 
         if (characterList[index])

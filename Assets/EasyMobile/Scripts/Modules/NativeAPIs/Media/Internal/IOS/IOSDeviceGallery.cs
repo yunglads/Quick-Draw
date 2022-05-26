@@ -6,6 +6,7 @@ using EasyMobile.Internal;
 using EasyMobile.iOS.UIKit;
 using EasyMobile.iOS.Foundation;
 using EasyMobile.Internal.iOS;
+using EasyMobile.Internal.iOS.UIKit;
 using EasyMobile.iOS.MobileCoreServices;
 
 namespace EasyMobile.Internal.NativeAPIs.Media
@@ -40,10 +41,10 @@ namespace EasyMobile.Internal.NativeAPIs.Media
             mediaTypes.AddObject(UTTypeConstants.kUTTypeMovie);
             picker.MediaTypes = mediaTypes;
 
-            // Create a delegate for the TBM VC.
+            // Create a delegate for the UIImagePickerController.
             picker.Delegate = new InternalUIImagePickerControllerDelegate(InternalUIImagePickerControllerDelegate.PickerOperation.PickGallery)
             {
-                CloseAndResetMatchmakerVC = () =>
+                CloseAndResetVC = () =>
                 {
                     if (mPickerController != null)
                     {
@@ -62,7 +63,24 @@ namespace EasyMobile.Internal.NativeAPIs.Media
 
             // Now show the VC.
             using (var unityVC = UIViewController.UnityGetGLViewController())
-                unityVC.PresentViewController(picker, true, null);
+                unityVC.PresentViewController(picker, true, () =>
+                {
+                    // Create a delegate for the presentationController to handle when the view is dismissed by swiping down.
+                    if (picker.PresentationController != null)
+                    {
+                        picker.PresentationController.Delegate = new InternalUIAdaptivePresentationControllerDelegate()
+                        {
+                            DidDismiss = (presentatiomController) =>
+                            {
+                                if (mPickerController != null)
+                                {
+                                    mPickerController.DismissViewController(true, null);
+                                    mPickerController = null;
+                                }
+                            }
+                        };
+                    }
+                });
         }
 
         public void SaveImage(Texture2D image, string name, ImageFormat format = ImageFormat.JPG, Action<string> callback = null)
@@ -78,13 +96,17 @@ namespace EasyMobile.Internal.NativeAPIs.Media
             }
 
             byte[] rawImage = TextureUtilities.EncodeAsByteArray(image, format);
-            NSData data = NSData.DataWithBytesNoCopy(rawImage, (uint)rawImage.Length);
-            UIImage uiImage = UIImage.ImageWithData(data);
-            UIFunctions.UIImageWriteToSavedPhotosAlbum(uiImage, (savedImage, nsError) =>
+            using (NSData data = NSData.DataWithBytes(rawImage, (uint)rawImage.Length))
+            {
+                using (UIImage uiImage = UIImage.ImageWithData(data))
                 {
-                    if (callback != null)
-                        callback(nsError != null ? nsError.LocalizedDescription : null);
-                });
+                    UIFunctions.UIImageWriteToSavedPhotosAlbum(uiImage, (savedImage, nsError) =>
+                    {
+                        if (callback != null)
+                            callback(nsError != null ? nsError.LocalizedDescription : null);
+                    });
+                }
+            }
         }
 
         public void LoadImage(MediaResult result, Action<string, Texture2D> callback, int maxSize = -1)

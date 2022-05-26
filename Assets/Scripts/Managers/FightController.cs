@@ -27,6 +27,10 @@ public class FightController : Singleton<FightController>
     float randomXPos;
     float randomYpos;
 
+    public float noAmmoTimer;
+
+    public bool noAmmo = false;
+
     bool startCounters = false;
     bool fightStarted = false;
     bool timerSet = false;
@@ -81,6 +85,8 @@ public class FightController : Singleton<FightController>
 
     void Update()
     {
+        //EmergencyKillPlayer();
+
         if (weapon == null)
         {
             weapon = GameObject.FindGameObjectWithTag("Weapon");
@@ -138,6 +144,21 @@ public class FightController : Singleton<FightController>
                 timerSet = true;
             }
         }
+
+        if (weapon.GetComponentInChildren<WeaponController>().ammoCount <= 0)
+        {
+            noAmmo = true;
+        }
+
+        if (noAmmo)
+        {
+            noAmmoTimer += Time.deltaTime;
+        }
+
+        if (noAmmoTimer >= 5f)
+        {
+            EmergencyKillPlayer();
+        }
     }
 
     public void DrawButton()
@@ -191,6 +212,7 @@ public class FightController : Singleton<FightController>
             playerController.Victory();
             //weapon.transform.SetParent(null);
             Invoke("ResetGunPos", 3f);
+            mobileUI.SetActive(false);
         }
     }
 
@@ -203,6 +225,7 @@ public class FightController : Singleton<FightController>
     {
         playerController.PlayerDead();
         weapon.transform.SetParent(null);
+        mobileUI.SetActive(false);
     }
 
     public void StartFightButton()
@@ -222,5 +245,13 @@ public class FightController : Singleton<FightController>
     void ResetGunPos()
     {
         weapon.GetComponentInChildren<Animator>().SetTrigger("resetGun");
+    }
+
+    void EmergencyKillPlayer()
+    {
+        weapon.GetComponentInChildren<WeaponController>().ammoCount = weapon.GetComponentInChildren<WeaponController>().resetAmmoCount - 1;
+        noAmmo = false;
+        noAmmoTimer = 0;
+        KillPlayer();
     }
 }

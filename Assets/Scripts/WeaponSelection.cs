@@ -23,7 +23,7 @@ public class WeaponSelection : MonoBehaviour
         weaponSelector = FindObjectOfType<WeaponSelector>();
 
         //Use below code to reset index if index gets stuck on "out of range"
-        //PlayerPrefs.SetInt("WeaponSelected", 0);
+        PlayerPrefs.SetInt("WeaponSelected", 0);
 
         index = PlayerPrefs.GetInt("WeaponSelected");
 
@@ -44,7 +44,7 @@ public class WeaponSelection : MonoBehaviour
     {
         if (updateList)
         {
-            Invoke("UpdateList", 1f);
+            Invoke("UpdateList", 0f);
         }
 
         if (weaponSelector == null)

@@ -59,14 +59,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06b4b839971dedf4ab25186c2f417d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalStars: 0
+  totalStars: 0
   playerMoney: 75
-  playerGold: 0
+  tempSkins: []
+  tempGuns: []
   uiUpdated: 0
   playerMoneyText: {fileID: 0}
-  playerGoldText: {fileID: 0}
   totalStarsText: {fileID: 0}
   mainCamera: {fileID: 0}
+  characterSelection: {fileID: 0}
+  weaponSelection: {fileID: 0}
 --- !u!114 &2594867020294305884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,7 +100,7 @@ MonoBehaviour:
     starsNeeded: 0
     completionTime: 0
     isLocked: 0
-    enemyName: roger
+    enemyName: Roger
     levelReward: 5
     twoStarTime: 10
   - levelID: 2
@@ -107,7 +109,7 @@ MonoBehaviour:
     starsNeeded: 1
     completionTime: 0
     isLocked: 1
-    enemyName: amy
+    enemyName: Amy
     levelReward: 5
     twoStarTime: 10
   - levelID: 3
@@ -144,6 +146,15 @@ MonoBehaviour:
     completionTime: 0
     isLocked: 1
     enemyName: Billy the Zombie
+    levelReward: 15
+    twoStarTime: 5
+  - levelID: 7
+    levelCompleted: 0
+    stars: 0
+    starsNeeded: 8
+    completionTime: 0
+    isLocked: 1
+    enemyName: balls
     levelReward: 15
     twoStarTime: 5
   currentLevel: 0

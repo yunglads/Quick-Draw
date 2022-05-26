@@ -20,6 +20,7 @@ public class GameStats : Singleton<GameStats>
     public List<string> tempGuns;
 
     public bool uiUpdated = false;
+    bool loadFinished = false;
 
     [SerializeField]
     private Text playerMoneyText;
@@ -29,20 +30,19 @@ public class GameStats : Singleton<GameStats>
     private Text totalStarsText;
 
     public Camera mainCamera;
+    public Camera mainCameraLevels;
 
     public CharacterSelection characterSelection;
     public WeaponSelection weaponSelection;
     EnergyManager energyManager;
-    
 
     void Start()
     {
-        Application.targetFrameRate = 65;
+        Application.targetFrameRate = 60;
         //uncomment to load on start
-        Invoke("LoadPlayerData", .5f);
+        //Invoke("LoadPlayerData", .5f);
         Invoke("UpdateUI", 3.9f);
         Invoke("WaitForLoadToFinish", 4f);
-        
     }
 
     void OnEnable()
@@ -63,37 +63,43 @@ public class GameStats : Singleton<GameStats>
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "MainMenu")
+        //if (scene.name == "MainMenu" && loadFinished)
+        //{
+        //    UpdateUI();
+        //}
+
+        if (scene.name != "MainMenu")
         {
-            UpdateUI();
+            loadFinished = false;
         }
     }
 
     private void Update()
     {
+        //if (mainCamera == null)
+        //{
+        //    mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        //}
+
+        if (/*playerGoldText == null &&*/ playerMoneyText == null && totalStarsText == null && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainMenu") && mainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Menu") || mainCameraLevels.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Menu"))
+        {
+            UpdateUI();
+            uiUpdated = false;
+            //Debug.Log("looking for text elements");
+        }
+
         if (energyManager == null)
         {
             energyManager = FindObjectOfType<EnergyManager>();
         }
 
-        if (mainCamera == null)
-        {
-            mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        }
-
-        if (uiUpdated && mainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Menu"))
+        if (uiUpdated && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainMenu") && mainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Menu") || mainCameraLevels.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Menu"))
         {
             UpdateUI();
             uiUpdated = false;
         }
 
-        if (uiUpdated && mainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Shop"))
-        {
-            UpdateUI();
-            uiUpdated = false;
-        }
-
-        if (/*playerGoldText == null &&*/ playerMoneyText == null && totalStarsText == null && mainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Menu"))
+        if (uiUpdated && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainMenu") && mainCamera.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Shop") || mainCameraLevels.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Shop"))
         {
             UpdateUI();
             uiUpdated = false;
@@ -167,7 +173,8 @@ public class GameStats : Singleton<GameStats>
         //SaveSystem.SavePlayerData(data);
 
         //uiUpdated = true;
-        Debug.Log("UI found");
+
+        //Debug.Log("UI found");
     }
 
     public void SavePlayerData()
@@ -265,5 +272,6 @@ public class GameStats : Singleton<GameStats>
     void WaitForLoadToFinish()
     {
         mainCamera.GetComponent<Animator>().enabled = true;
+        loadFinished = true;
     }
 }

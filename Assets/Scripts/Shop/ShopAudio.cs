@@ -4,18 +4,9 @@ using UnityEngine;
 
 public class ShopAudio : MonoBehaviour
 {
-    AudioSource shopSFX;
+    public AudioSource shopSFX;
     public AudioClip buy1;
     public AudioClip buy2;
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (shopSFX == null)
-        {
-            shopSFX = FindObjectOfType<AudioSource>();
-        }
-    }
 
     public void PlayRandomShopAudio()
     {

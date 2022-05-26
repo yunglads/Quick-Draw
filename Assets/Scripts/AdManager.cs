@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using EasyMobile;
@@ -9,6 +10,13 @@ public class AdManager : MonoBehaviour
     public Text bannerAdsText;
     public Text interstitialAdsText;
     public Text rewardedAdsText;
+
+    public bool adShown = false;
+
+    //string andriodGameID = "4038959";
+    //string iOSGameID = "4038958";
+
+    //bool testMode;
 
     private void Awake()
     {
@@ -21,7 +29,21 @@ public class AdManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+//        string gameID = null;
+
+//#if UNITY_ANDROID
+//        gameID = andriodGameID;
+//#endif
+
+//#if UNITY_IOS
+//        gameID = iOSGameID;
+//#endif
+
+//        if (!Advertising.IsInitialized())
+//        {
+//            Advertising.Initialize();
+//        }
+
     }
 
     // Update is called once per frame
@@ -61,6 +83,11 @@ public class AdManager : MonoBehaviour
         if (Advertising.IsInterstitialAdReady())
         {
             Advertising.ShowInterstitialAd();
+            Debug.Log("Interstatial Ad Showing");
+        }
+        else
+        {
+            Debug.Log("failed to show add");
         }
     }
 
@@ -69,6 +96,12 @@ public class AdManager : MonoBehaviour
         if (Advertising.IsRewardedAdReady())
         {
             Advertising.ShowRewardedAd();
+            adShown = true;
+            Debug.Log("Reward Ad Showing");
+        }
+        else
+        {
+            Debug.Log("failed to show add");
         }
     }
 }

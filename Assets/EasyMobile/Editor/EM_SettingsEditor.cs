@@ -68,7 +68,6 @@ namespace EasyMobile.Editor
             public static SerializedProperty fbAudienceSettings;
             public static SerializedProperty fairBidSettings;
             public static SerializedProperty ironSourceSettings;
-            public static SerializedProperty mopubSettings;
             public static SerializedProperty tapjoySettings;
             public static SerializedProperty unityAdsSettings;
             public static SerializedProperty vungleAdsSettings;
@@ -104,9 +103,11 @@ namespace EasyMobile.Editor
             public static EMProperty admobDefaultBannerAdId = new EMProperty(new GUIContent("Banner Ad"));
             public static EMProperty admobDefaultInterstitialAdId = new EMProperty(new GUIContent("Interstitial Ad"));
             public static EMProperty admobDefaultRewardedAdId = new EMProperty(new GUIContent("Rewarded Ad"));
+            public static EMProperty admobDefaultRewardedInterstitialAdId = new EMProperty(new GUIContent("Rewarded Interstitial Ad"));
             public static EMProperty admobCustomBannerAdIds = new EMProperty(new GUIContent("Banner Ads"));
             public static EMProperty admobCustomInterstitialAdIds = new EMProperty(new GUIContent("Interstitial Ads"));
             public static EMProperty admobCustomRewardedAdIds = new EMProperty(new GUIContent("Rewarded Ads"));
+            public static EMProperty admobCustomRewardedInterstitialAdIds = new EMProperty(new GUIContent("Rewarded Interstitial Ads"));
             public static EMProperty admobEnableTestMode = new EMProperty(new GUIContent("Enable Test Mode"));
             public static EMProperty admobAdaptiveBanner = new EMProperty(new GUIContent("Use Adaptive Banner"));
             public static EMProperty admobTestDeviceIds = new EMProperty(new GUIContent("Test Device IDs"));
@@ -158,24 +159,6 @@ namespace EasyMobile.Editor
             public static EMProperty ironSourceUseAdvancedSetting = new EMProperty(null, new GUIContent("Use Advanced Settings"));
             public static EMProperty ironSourceSegmentSettings = new EMProperty(null, new GUIContent("Segment Settings"));
 
-            // Mopub properties.
-            public static EMProperty mopubEnabled = new EMProperty(new GUIContent("Mopub enable"));
-            public static EMProperty mopubDefaultBannerAdId = new EMProperty(new GUIContent("Banner Ad"));
-            public static EMProperty mopubDefaultInterstitialAdId = new EMProperty(new GUIContent("Interstitial Ad"));
-            public static EMProperty mopubDefaultRewardedAdId = new EMProperty(new GUIContent("Rewarded Ad"));
-            public static EMProperty mopubCustomBannerAdIds = new EMProperty(new GUIContent("Banner Ads"));
-            public static EMProperty mopubCustomInterstitialAdIds = new EMProperty(new GUIContent("Interstitial Ads"));
-            public static EMProperty mopubCustomRewardedAdIds = new EMProperty(new GUIContent("Rewarded Ads"));
-            public static EMProperty mopubReportAppOpen = new EMProperty(null, new GUIContent("Report App Open", "MoPub Report Application Opened Event Trigger"));
-            public static EMProperty mopubITuneAppID = new EMProperty(null, new GUIContent("App ID", "App ID, used to report application opened event"));
-            public static EMProperty mopubEnableLocationPassing = new EMProperty(null, new GUIContent("Enable Location Passing", "MoPub Location Passing Trigger"));
-            public static EMProperty mopubEnableAdvancedSetting = new EMProperty(null, new GUIContent("Use Advanced Settings"));
-            public static EMProperty mopubAllowLegitimateInterest = new EMProperty(null, new GUIContent("Allow Legitimate Interest", "Allow supported SDK networks to collect user information on the basis of legitimate interest."));
-            public static EMProperty mopubLogLevel = new EMProperty(null, new GUIContent("Log Level", "Changes this to include more detailed information such as adapter version, SDK version and ad life cycle events and operations when logging."));
-            public static EMProperty mopubMediatedNetworks = new EMProperty(null, new GUIContent("Mediated Networks", "Networks used in advanced initialization."));
-            public static EMProperty mopubAutoRequestConsent = new EMProperty(null, new GUIContent("Auto Request Consent", "Auto request GDPR consent dialog when MoPub SDK is initialized and show it if applicable"));
-            public static EMProperty mopubForceGdprApplicable = new EMProperty(null, new GUIContent("Force GDPR Applicable", "Enable this to show GPDR consent in all regions, FOR DEBUG PURPOSE ONLY"));
-
             // Tapjoy properties.
             public static EMProperty tapJoyEnabled = new EMProperty(new GUIContent("Tap joy enable"));
             public static EMProperty tapjoyDefaultInterstitialAdId = new EMProperty(new GUIContent("Interstitial Ad"));
@@ -187,6 +170,7 @@ namespace EasyMobile.Editor
 
             // UnityAds properties.
             public static EMProperty unityAdEnabled = new EMProperty(new GUIContent("Unity Ads enable"));
+            public static EMProperty unityAds4Enabled = new EMProperty(new GUIContent("Unity Ads 4 Enabled"));
             public static EMProperty unityAdsAppId = new EMProperty(new GUIContent("App ID"));
             public static EMProperty unityAdsDefaultBannerAdId = new EMProperty(new GUIContent("Banner Ad"));
             public static EMProperty unityAdsDefaultInterstitialAdId = new EMProperty(new GUIContent("Interstitial Ad"));
@@ -284,6 +268,8 @@ namespace EasyMobile.Editor
             public static EMProperty selectedToggleIndex = new EMProperty(null, new GUIContent("Selected Toggle Index"));
             public static EMProperty selectedButtonIndex = new EMProperty(null, new GUIContent("Selected Button Index"));
             public static EMProperty enableCopyPasteMode = new EMProperty(null, new GUIContent("Enable Copy & Paste", "We need to do this because GUILayout.TextArea, the only TextArea that work with TextEditor, doesn't support copy & paste."));
+            public static EMProperty isAppTrackingEnabled = new EMProperty(null, new GUIContent("Enable App Tracking", "Enable App Tracking API."));
+            public static EMProperty iOSUserTrackingUsageDescription = new EMProperty(null, new GUIContent("User Tracking Usage Description", "[iOS] Will be added into Info.plist if the App Tracking submodule is enabled."));    
         }
 
         // Utility module consists other sub-module properties
@@ -306,13 +292,13 @@ namespace EasyMobile.Editor
         private static class NativeApisProperties
         {
             public static SerializedProperty mainProperty;
-            public static EMProperty isMediaEnabled = new EMProperty(null, new GUIContent("Enable Camera & Gallery", "Enable native camera & gallery apis."));
-            public static EMProperty isContactsEnabled = new EMProperty(null, new GUIContent("Enable Contacts", "Enable native contacts apis."));
-            public static EMProperty iOSPhotoUsageDescription = new EMProperty(null, new GUIContent("Photo Usage Description", "[iOS] Will be added into Info.plist if the Media module is enabled."));
-            public static EMProperty iOSAddPhotoUsageDescription = new EMProperty(null, new GUIContent("Add Photo Usage Description", "[IOS] Will be added into Info.plist of the Media module is enabled. Used when adding photo(s) into device."));
-            public static EMProperty iOSCameraUsageDescription = new EMProperty(null, new GUIContent("Camera Usage Description", "[iOS] Will be added into Info.plist if the Media module is enabled."));
-            public static EMProperty iOSMicrophoneUsageDescription = new EMProperty(null, new GUIContent("Microphone Usage Description", "[iOS] Will be added into Info.plist if the Media module is enabled. Used when recording video."));
-            public static EMProperty iOSContactUsageDescription = new EMProperty(null, new GUIContent("Contacts Usage Description", "[iOS] Will be added into Info.plist if the Contact module is enabled."));
+            public static EMProperty isMediaEnabled = new EMProperty(null, new GUIContent("Enable Camera & Gallery", "Enable native camera & gallery API."));
+            public static EMProperty isContactsEnabled = new EMProperty(null, new GUIContent("Enable Contacts", "Enable native contacts API."));
+            public static EMProperty iOSPhotoUsageDescription = new EMProperty(null, new GUIContent("Photo Usage Description", "[iOS] Will be added into Info.plist if the Media submodule is enabled."));
+            public static EMProperty iOSAddPhotoUsageDescription = new EMProperty(null, new GUIContent("Add Photo Usage Description", "[IOS] Will be added into Info.plist of the Media submodule is enabled. Used when adding photo(s) into device."));
+            public static EMProperty iOSCameraUsageDescription = new EMProperty(null, new GUIContent("Camera Usage Description", "[iOS] Will be added into Info.plist if the Media submodule is enabled."));
+            public static EMProperty iOSMicrophoneUsageDescription = new EMProperty(null, new GUIContent("Microphone Usage Description", "[iOS] Will be added into Info.plist if the Media submodule is enabled. Used when recording video."));
+            public static EMProperty iOSContactUsageDescription = new EMProperty(null, new GUIContent("Contacts Usage Description", "[iOS] Will be added into Info.plist if the Contact submodule is enabled."));
             public static EMProperty iOSExtraUsageDescriptions = new EMProperty(null, new GUIContent("Extra iOS Usage Descriptions", "Define usage descriptions here to add them into Info.plist when building to iOS."));
         }
 #endif
@@ -400,9 +386,11 @@ namespace EasyMobile.Editor
             AdProperties.admobDefaultBannerAdId.property = AdProperties.admobSettings.FindPropertyRelative("mDefaultBannerAdId");
             AdProperties.admobDefaultInterstitialAdId.property = AdProperties.admobSettings.FindPropertyRelative("mDefaultInterstitialAdId");
             AdProperties.admobDefaultRewardedAdId.property = AdProperties.admobSettings.FindPropertyRelative("mDefaultRewardedAdId");
+            AdProperties.admobDefaultRewardedInterstitialAdId.property = AdProperties.admobSettings.FindPropertyRelative("mDefaultRewardedInterstitialAdId");
             AdProperties.admobCustomBannerAdIds.property = AdProperties.admobSettings.FindPropertyRelative("mCustomBannerAdIds");
             AdProperties.admobCustomInterstitialAdIds.property = AdProperties.admobSettings.FindPropertyRelative("mCustomInterstitialAdIds");
             AdProperties.admobCustomRewardedAdIds.property = AdProperties.admobSettings.FindPropertyRelative("mCustomRewardedAdIds");
+            AdProperties.admobCustomRewardedInterstitialAdIds.property = AdProperties.admobSettings.FindPropertyRelative("mCustomRewardedInterstitialAdIds");
             AdProperties.admobEnableTestMode.property = AdProperties.admobSettings.FindPropertyRelative("mEnableTestMode");
             AdProperties.admobAdaptiveBanner.property = AdProperties.admobSettings.FindPropertyRelative("mUseAdaptiveBanner");
             AdProperties.admobTestDeviceIds.property = AdProperties.admobSettings.FindPropertyRelative("mTestDeviceIds");
@@ -459,26 +447,6 @@ namespace EasyMobile.Editor
             AdProperties.ironSourceUseAdvancedSetting.property = AdProperties.ironSourceSettings.FindPropertyRelative("mUseAdvancedSetting");
             AdProperties.ironSourceSegmentSettings.property = AdProperties.ironSourceSettings.FindPropertyRelative("mSegments");
 
-            // Mopub properties.
-            AdProperties.mopubSettings = AdProperties.mainProperty.FindPropertyRelative("mMoPub");
-            AdProperties.mopubEnabled.property = AdProperties.mopubSettings.FindPropertyRelative("mEnable");
-            AdProperties.mopubDefaultBannerAdId.property = AdProperties.mopubSettings.FindPropertyRelative("mDefaultBannerId");
-            AdProperties.mopubDefaultInterstitialAdId.property = AdProperties.mopubSettings.FindPropertyRelative("mDefaultInterstitialAdId");
-            AdProperties.mopubDefaultRewardedAdId.property = AdProperties.mopubSettings.FindPropertyRelative("mDefaultRewardedAdId");
-            AdProperties.mopubCustomBannerAdIds.property = AdProperties.mopubSettings.FindPropertyRelative("mCustomBannerIds");
-            AdProperties.mopubCustomInterstitialAdIds.property = AdProperties.mopubSettings.FindPropertyRelative("mCustomInterstitialAdIds");
-            AdProperties.mopubCustomRewardedAdIds.property = AdProperties.mopubSettings.FindPropertyRelative("mCustomRewardedAdIds");
-
-            AdProperties.mopubReportAppOpen.property = AdProperties.mopubSettings.FindPropertyRelative("mReportAppOpen");
-            AdProperties.mopubITuneAppID.property = AdProperties.mopubSettings.FindPropertyRelative("mITuneAppID");
-            AdProperties.mopubEnableLocationPassing.property = AdProperties.mopubSettings.FindPropertyRelative("mEnableLocationPassing");
-            AdProperties.mopubEnableAdvancedSetting.property = AdProperties.mopubSettings.FindPropertyRelative("mUseAdvancedSetting");
-            AdProperties.mopubAllowLegitimateInterest.property = AdProperties.mopubSettings.FindPropertyRelative("mAllowLegitimateInterest");
-            AdProperties.mopubLogLevel.property = AdProperties.mopubSettings.FindPropertyRelative("mLogLevel");
-            AdProperties.mopubMediatedNetworks.property = AdProperties.mopubSettings.FindPropertyRelative("mMediatedNetworks");
-            AdProperties.mopubAutoRequestConsent.property = AdProperties.mopubSettings.FindPropertyRelative("mAutoRequestConsent");
-            AdProperties.mopubForceGdprApplicable.property = AdProperties.mopubSettings.FindPropertyRelative("mForceGdprApplicable");
-
             // Tapjoy properties.
             AdProperties.tapjoySettings = AdProperties.mainProperty.FindPropertyRelative("mTapjoy");
             AdProperties.tapJoyEnabled.property = AdProperties.tapjoySettings.FindPropertyRelative("mEnable");
@@ -492,6 +460,7 @@ namespace EasyMobile.Editor
             // UnityAds properties.
             AdProperties.unityAdsSettings = AdProperties.mainProperty.FindPropertyRelative("mUnityAds");
             AdProperties.unityAdEnabled.property = AdProperties.unityAdsSettings.FindPropertyRelative("mEnable");
+            AdProperties.unityAds4Enabled.property = AdProperties.unityAdsSettings.FindPropertyRelative("mUseUnityAd4Client");
             AdProperties.unityAdsAppId.property = AdProperties.unityAdsSettings.FindPropertyRelative("mAppId");
             AdProperties.unityAdsDefaultBannerAdId.property = AdProperties.unityAdsSettings.FindPropertyRelative("mDefaultBannerAdId");
             AdProperties.unityAdsDefaultInterstitialAdId.property = AdProperties.unityAdsSettings.FindPropertyRelative("mDefaultInterstitialAdId");
@@ -559,7 +528,7 @@ namespace EasyMobile.Editor
             NotificationProperties.defaultCategory.property = NotificationProperties.mainProperty.FindPropertyRelative("mDefaultCategory");
             NotificationProperties.userCategories.property = NotificationProperties.mainProperty.FindPropertyRelative("mUserCategories");
 
-            // Privacy module properties.
+            // Privacy module properties, since EMP 2.16.0 it becomes a composite module with the App Tracking the first submodule.
             PrivacyProperties.mainProperty = serializedObject.FindProperty("mPrivacySettings");
             PrivacyProperties.consentDialogProperty = PrivacyProperties.mainProperty.FindPropertyRelative("mDefaultConsentDialog");
             PrivacyProperties.consentDialogContent.property = PrivacyProperties.consentDialogProperty.FindPropertyRelative("mContent");
@@ -569,6 +538,7 @@ namespace EasyMobile.Editor
             PrivacyProperties.selectedToggleIndex.property = PrivacyProperties.mainProperty.FindPropertyRelative("mConsentDialogComposerSettings.mToggleSelectedIndex");
             PrivacyProperties.selectedButtonIndex.property = PrivacyProperties.mainProperty.FindPropertyRelative("mConsentDialogComposerSettings.mButtonSelectedIndex");
             PrivacyProperties.enableCopyPasteMode.property = PrivacyProperties.mainProperty.FindPropertyRelative("mConsentDialogComposerSettings.mEnableCopyPasteMode");
+            PrivacyProperties.isAppTrackingEnabled.property = PrivacyProperties.mainProperty.FindPropertyRelative("mIsAppTrackingEnabled");
 
             // Utility module consists of other sub-module properties.
             // RatingRequest properties.

@@ -16,6 +16,7 @@ public class EnergyManager : MonoBehaviour
     public Text energyCountText;
 
     public GameObject energyButton;
+    public GameObject nextLevelButton;
 
     public DateTime nextEnergyTime;
     public DateTime lastEnergyTime;
@@ -169,6 +170,11 @@ public class EnergyManager : MonoBehaviour
         {
             onMainMenu = false;
             //Debug.Log("new scene loaded");
+
+            if (nextLevelButton == null)
+            {
+                nextLevelButton = GameObject.Find("Next Level Button");
+            }
         }
 
         if (!onMainMenu)
@@ -211,6 +217,11 @@ public class EnergyManager : MonoBehaviour
             energyTimerText = GameObject.Find("Timer").GetComponent<Text>();
         }
 
+
+        if (nextLevelButton != null && currentEnergy <= 0)
+        {
+            nextLevelButton.SetActive(false);
+        }
 
         //if (energyTimerStarted && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainMenu"))
         //{

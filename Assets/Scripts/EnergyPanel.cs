@@ -6,6 +6,7 @@ public class EnergyPanel : MonoBehaviour
 {
     GameStats gameStats;
     EnergyManager energyManager;
+    AdManager adManager;
 
     // Update is called once per frame
     void Update()
@@ -19,14 +20,24 @@ public class EnergyPanel : MonoBehaviour
         {
             energyManager = FindObjectOfType<EnergyManager>();
         }
+        
+        if (adManager == null)
+        {
+            adManager = FindObjectOfType<AdManager>();
+        }
     }
 
     public void AdFor1Energy()
     {
-        if (energyManager.currentEnergy < energyManager.maxEnergy)
+        if (energyManager.currentEnergy < energyManager.maxEnergy && adManager.adShown)
         {
             energyManager.currentEnergy++;
             energyManager.runOnce = false;
+            adManager.adShown = false;
+        }
+        else
+        {
+            Debug.Log("no ad shown");
         }
     }
 
